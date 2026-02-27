@@ -33,7 +33,7 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_DIR = SCRIPT_DIR.parent
-DATA_DIR = PROJECT_DIR / "recovered_project_4.6" / "data"
+DATA_DIR = PROJECT_DIR / "src" / "data"
 STELLARIS_DEFAULT = Path.home() / ".local/share/Steam/steamapps/common/Stellaris"
 
 # ---------------------------------------------------------------------------
@@ -120,7 +120,7 @@ def parse_args() -> argparse.Namespace:
         help=f"Path to Stellaris installation (default: {STELLARIS_DEFAULT})",
     )
     p.add_argument(
-        "--output-dir", type=Path, default=SCRIPT_DIR / "Media",
+        "--output-dir", type=Path, default=PROJECT_DIR / "Media",
         help="Output directory for converted media (default: ./Media/)",
     )
     p.add_argument(
@@ -128,7 +128,7 @@ def parse_args() -> argparse.Namespace:
         help=f"Path to Shroudpiercer data/ directory (default: {DATA_DIR})",
     )
     p.add_argument(
-        "--log-file", type=Path, default=SCRIPT_DIR / "extraction.log",
+        "--log-file", type=Path, default=PROJECT_DIR / "extraction.log",
         help="Path for the log file (default: ./extraction.log)",
     )
     p.add_argument(
