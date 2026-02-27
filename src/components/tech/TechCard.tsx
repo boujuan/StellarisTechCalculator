@@ -47,9 +47,10 @@ const TechCard: Component<Props> = (props) => {
     runUpdateCascade();
   };
 
-  const iconUrl = () => `/media/tech_icons/${tech().icon}.avif`;
+  const base = import.meta.env.BASE_URL;
+  const iconUrl = () => `${base}media/tech_icons/${tech().icon}.avif`;
   const categoryIconUrl = () =>
-    `/media/category_icons/category_${tech().category}.avif`;
+    `${base}media/category_icons/category_${tech().category}.avif`;
 
   return (
     <div
