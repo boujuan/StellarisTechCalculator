@@ -1,0 +1,288 @@
+{
+  "tech_refit_standards": [
+    {
+      "suffix": "_beastmasters",
+      "localisation_key": "tech_refit_standards_beastmasters",
+      "trigger": {
+        "is_beastmasters_empire": "yes"
+      },
+      "real_name": "Hatchery Optimization"
+    }
+  ],
+  "tech_thought_enforcement": [
+    {
+      "suffix": "_gestalt",
+      "localisation_key": "tech_thought_enforcement_gestalt",
+      "trigger": {
+        "is_gestalt": "yes"
+      },
+      "real_name": "Thought Pre-Emption"
+    }
+  ],
+  "tech_space_defense_station_improvement": [
+    {
+      "suffix": "_machine_intelligence",
+      "localisation_key": "tech_space_defense_station_improvement_machine_intelligence",
+      "trigger": {
+        "is_machine_empire": "yes"
+      },
+      "real_name": "Optimized Station Construction"
+    }
+  ],
+  "tech_powered_exoskeletons": [
+    {
+      "suffix": "_machine_intelligence",
+      "localisation_key": "tech_powered_exoskeletons_machine_intelligence",
+      "trigger": {
+        "is_machine_empire": "yes"
+      },
+      "real_name": "Improved Servomotors"
+    }
+  ],
+  "tech_integrated_cybernetics": [
+    {
+      "suffix": "_machine_intelligence",
+      "localisation_key": "tech_integrated_cybernetics_machine_intelligence",
+      "trigger": {
+        "is_machine_empire": "yes"
+      },
+      "real_name": "Adaptive Cybernetics"
+    }
+  ],
+  "tech_robomodding": [
+    {
+      "suffix": "_m",
+      "localisation_key": "tech_robomodding_m",
+      "trigger": {
+        "is_machine_empire": "yes"
+      },
+      "real_name": "Machine Template System"
+    }
+  ],
+  "tech_administrative_ai": [
+    {
+      "suffix": "_machine_intelligence",
+      "localisation_key": "tech_administrative_ai_machine_intelligence",
+      "trigger": {
+        "is_machine_empire": "yes"
+      },
+      "real_name": "Academic Optimization"
+    },
+    {
+      "suffix": "_hive_mind",
+      "localisation_key": "tech_administrative_ai_hive_mind",
+      "trigger": {
+        "is_hive_empire": "yes"
+      },
+      "real_name": "Synaptic Enhancers"
+    }
+  ],
+  "tech_self_aware_logic": [
+    {
+      "suffix": "_hive_mind",
+      "localisation_key": "tech_self_aware_logic_hive_mind",
+      "trigger": {
+        "is_hive_empire": "yes"
+      },
+      "real_name": "Autonomous Synapses"
+    }
+  ],
+  "tech_positronic_implants": [
+    {
+      "suffix": "_machine_intelligence",
+      "localisation_key": "tech_positronic_implants_machine_intelligence",
+      "trigger": {
+        "is_machine_empire": "yes"
+      },
+      "real_name": "Positronic Processors"
+    }
+  ],
+  "tech_cryostasis_1": [
+    {
+      "suffix": "_wilderness",
+      "localisation_key": "tech_cryostasis_1_wilderness",
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "real_name": "Seedling Incubation"
+    },
+    {
+      "suffix": "_machine_intelligence",
+      "localisation_key": "tech_cryostasis_1_machine_intelligence",
+      "trigger": {
+        "is_machine_empire": "yes"
+      },
+      "real_name": "Colony Fabrication Drones"
+    }
+  ],
+  "tech_cryostasis_2": [
+    {
+      "suffix": "_wilderness",
+      "localisation_key": "tech_cryostasis_2_wilderness",
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "real_name": "Permanent Incubation"
+    }
+  ],
+  "tech_automated_exploration": [
+    {
+      "suffix": "_machine_intelligence",
+      "localisation_key": "tech_automated_exploration_machine_intelligence",
+      "trigger": {
+        "is_machine_empire": "yes"
+      },
+      "real_name": "Autonomous Exploration Algorithms"
+    }
+  ],
+  "tech_frontier_health": [
+    {
+      "suffix": "_machine_intelligence",
+      "localisation_key": "tech_frontier_health_machine_intelligence",
+      "trigger": {
+        "is_machine_empire": "yes"
+      },
+      "real_name": "Modular Components"
+    }
+  ],
+  "tech_frontier_hospital": [
+    {
+      "suffix": "_machine_intelligence",
+      "localisation_key": "tech_frontier_hospital_machine_intelligence",
+      "trigger": {
+        "is_machine_empire": "yes"
+      },
+      "real_name": "Intelligent Factories"
+    }
+  ],
+  "tech_centralized_command": [
+    {
+      "suffix": "_hive_mind",
+      "localisation_key": "tech_centralized_command_hive_mind",
+      "trigger": {
+        "is_hive_empire": "yes"
+      },
+      "real_name": "Drone Command Centers"
+    },
+    {
+      "suffix": "_machine_intelligence",
+      "localisation_key": "tech_centralized_command_machine_intelligence",
+      "trigger": {
+        "is_machine_empire": "yes"
+      },
+      "real_name": "Maintenance Command"
+    }
+  ],
+  "tech_combat_training": [
+    {
+      "suffix": "_machine_intelligence",
+      "localisation_key": "tech_combat_training_machine_intelligence",
+      "trigger": {
+        "is_machine_empire": "yes"
+      },
+      "real_name": "Field Repairs"
+    }
+  ],
+  "tech_planetary_government": [
+    {
+      "suffix": "_machine_intelligence",
+      "localisation_key": "tech_planetary_government_machine_intelligence",
+      "trigger": {
+        "is_machine_empire": "yes"
+      },
+      "real_name": "Planetary Instantiation"
+    },
+    {
+      "suffix": "_hive_mind",
+      "localisation_key": "tech_planetary_government_hive_mind",
+      "trigger": {
+        "is_hive_empire": "yes"
+      },
+      "real_name": "Planetary Plexus"
+    }
+  ],
+  "tech_planetary_unification": [
+    {
+      "suffix": "_machine_intelligence",
+      "localisation_key": "tech_planetary_unification_machine_intelligence",
+      "trigger": {
+        "is_machine_empire": "yes"
+      },
+      "real_name": "Uniform Data Standards"
+    },
+    {
+      "suffix": "_hive_mind",
+      "localisation_key": "tech_planetary_unification_hive_mind",
+      "trigger": {
+        "is_hive_empire": "yes"
+      },
+      "real_name": "Evolutionary Convergence"
+    }
+  ],
+  "tech_adaptive_bureaucracy": [
+    {
+      "suffix": "_machine_intelligence",
+      "localisation_key": "tech_adaptive_bureaucracy_machine_intelligence",
+      "trigger": {
+        "is_machine_empire": "yes"
+      },
+      "real_name": "Positronic CPUs"
+    }
+  ],
+  "tech_heritage_site": [
+    {
+      "suffix": "_corporate",
+      "localisation_key": "tech_heritage_site_corporate",
+      "trigger": {
+        "is_megacorp": "yes"
+      },
+      "real_name": "Focus-Tested Management"
+    },
+    {
+      "suffix": "_machine_intelligence",
+      "localisation_key": "tech_heritage_site_machine_intelligence",
+      "trigger": {
+        "is_machine_empire": "yes"
+      },
+      "real_name": "Planetary Communications"
+    }
+  ],
+  "tech_hypercomms_forum": [
+    {
+      "suffix": "_corporate",
+      "localisation_key": "tech_hypercomms_forum_corporate",
+      "trigger": {
+        "is_megacorp": "yes"
+      },
+      "real_name": "Post-Relativistic Synergizing"
+    }
+  ],
+  "tech_autocurating_vault": [
+    {
+      "suffix": "_corporate",
+      "localisation_key": "tech_autocurating_vault_corporate",
+      "trigger": {
+        "is_megacorp": "yes"
+      },
+      "real_name": "Vault of Acquisitions"
+    },
+    {
+      "suffix": "_machine_intelligence",
+      "localisation_key": "tech_autocurating_vault_machine_intelligence",
+      "trigger": {
+        "is_machine_empire": "yes"
+      },
+      "real_name": "Alpha Hub"
+    }
+  ],
+  "tech_colonization_1": [
+    {
+      "suffix": "_wilderness",
+      "localisation_key": "tech_colonization_1_wilderness",
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "real_name": "New Worlds Initiative"
+    }
+  ]
+}

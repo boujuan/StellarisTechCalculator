@@ -1,0 +1,1232 @@
+{
+  "tech_archaeoshield": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_archaeoshield",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_archaeoarmor": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_archaeoarmor",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_archaeo_mass_drivers": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_archaeo_mass_drivers",
+      "real_name": "Ancient Macro Shard Batteries",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_archaeo_lasers": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_archaeo_bio_lasers",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_archaeo_point_defence": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_archaeo_point_defence",
+      "real_name": "Ancient Web Slinger",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_archaeo_mass_accelerator": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_archaeo_mass_accelerator",
+      "real_name": "Ancient Fragmentor Artillery",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_archaeo_strike_crafts": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_archaeo_strike_crafts",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_colossus": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_biogenesis_colossus",
+      "inherit_icon": "no",
+      "area": "society",
+      "category": "biology"
+    }
+  ],
+  "tech_industrial_storm_protection": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_storm_relief_center",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_nanite_autocannon": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_nanite_autocannon",
+      "real_name": "Nanite Quill Battery",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_nanite_flak_batteries": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_nanite_flak_batteries",
+      "real_name": "Nanite-Infused Barb Artillery",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_titans": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_biogenesis_titans",
+      "inherit_icon": "no",
+      "area": "society",
+      "category": "biology"
+    }
+  ],
+  "tech_juggernaut": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_biogenesis_juggernaut",
+      "inherit_icon": "no",
+      "area": "society",
+      "category": "biology"
+    }
+  ],
+  "tech_corvette_build_speed": [
+    {
+      "trigger": {
+        "is_beastmasters_empire": "yes"
+      },
+      "name": "tech_small_space_fauna_build_speed",
+      "real_name": "Standardized Small-Scale Cloning",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_corvette_hull_1": [
+    {
+      "trigger": {
+        "is_beastmasters_empire": "yes"
+      },
+      "name": "tech_small_space_fauna_hull_1",
+      "real_name": "Improved Small Space Fauna Tissues",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_corvette_hull_2": [
+    {
+      "trigger": {
+        "is_beastmasters_empire": "yes"
+      },
+      "name": "tech_small_space_fauna_hull_2",
+      "real_name": "Advanced Small Space Fauna Tissues",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_destroyer_build_speed": [
+    {
+      "trigger": {
+        "is_beastmasters_empire": "yes"
+      },
+      "name": "tech_medium_space_fauna_build_speed",
+      "real_name": "Standardized Medium-Scale Cloning",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_destroyer_hull_1": [
+    {
+      "trigger": {
+        "is_beastmasters_empire": "yes"
+      },
+      "name": "tech_medium_space_fauna_hull_1",
+      "real_name": "Improved Medium Space Fauna Tissues",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_destroyer_hull_2": [
+    {
+      "trigger": {
+        "is_beastmasters_empire": "yes"
+      },
+      "name": "tech_medium_space_fauna_hull_2",
+      "real_name": "Advanced Medium Space Fauna Tissues",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_cruiser_build_speed": [
+    {
+      "trigger": {
+        "is_beastmasters_empire": "yes"
+      },
+      "name": "tech_large_space_fauna_build_speed",
+      "real_name": "Standardized Large-Scale Cloning",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_cruiser_hull_1": [
+    {
+      "trigger": {
+        "is_beastmasters_empire": "yes"
+      },
+      "name": "tech_large_space_fauna_hull_1",
+      "real_name": "Improved Large Space Fauna Tissues",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_cruiser_hull_2": [
+    {
+      "trigger": {
+        "is_beastmasters_empire": "yes"
+      },
+      "name": "tech_large_space_fauna_hull_2",
+      "real_name": "Advanced Large Space Fauna Tissues",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_battleship_build_speed": [
+    {
+      "trigger": {
+        "is_beastmasters_empire": "yes"
+      },
+      "name": "tech_extra_large_space_fauna_build_speed",
+      "real_name": "Standardized Huge-Scale Cloning",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_battleship_hull_1": [
+    {
+      "trigger": {
+        "is_beastmasters_empire": "yes"
+      },
+      "name": "tech_extra_large_space_fauna_hull_1",
+      "real_name": "Improved Huge Space Fauna Tissues",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_battleship_hull_2": [
+    {
+      "trigger": {
+        "is_beastmasters_empire": "yes"
+      },
+      "name": "tech_extra_large_space_fauna_hull_2",
+      "real_name": "Advanced Huge Space Fauna Tissues",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_titan_hull_1": [
+    {
+      "trigger": {
+        "is_beastmasters_empire": "yes"
+      },
+      "name": "tech_titanic_space_fauna_hull_1",
+      "real_name": "Improved Gigantic Space Fauna Tissues",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_titan_hull_2": [
+    {
+      "trigger": {
+        "is_beastmasters_empire": "yes"
+      },
+      "name": "tech_titanic_space_fauna_hull_2",
+      "real_name": "Advanced Gigantic Space Fauna Tissues",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_strike_craft_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_strike_craft_1",
+      "real_name": "Basic Fighter Wing",
+      "inherit_icon": "no",
+      "area": "society",
+      "category": "biology"
+    }
+  ],
+  "tech_strike_craft_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_strike_craft_2",
+      "real_name": "Improved Fighter Wing",
+      "inherit_icon": "no",
+      "area": "society",
+      "category": "biology"
+    }
+  ],
+  "tech_strike_craft_3": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_strike_craft_3",
+      "real_name": "Advanced Fighter Wing",
+      "inherit_icon": "no",
+      "area": "society",
+      "category": "biology"
+    }
+  ],
+  "tech_strike_craft_skrand": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_strike_craft_skrand",
+      "inherit_icon": "no",
+      "area": "society",
+      "category": "biology"
+    }
+  ],
+  "tech_ship_armor_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_ship_armor_1",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_ship_armor_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_ship_armor_2",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_ship_armor_3": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_ship_armor_3",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_ship_armor_4": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_ship_armor_4",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_ship_armor_5": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_ship_armor_5",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_thrusters_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bioship_thrusters_1",
+      "real_name": "Chemical Stellar Motor Organs",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_thrusters_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bioship_thrusters_2",
+      "real_name": "Ion Stellar Motor Organs",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_thrusters_3": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bioship_thrusters_3",
+      "real_name": "Plasma Stellar Motor Organs",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_thrusters_4": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bioship_thrusters_4",
+      "real_name": "Impulse Stellar Motor Organs",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_basic_industry": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_industry",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_mineral_purification_1": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_mineral_purification_1",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_mineral_purification_2": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_mineral_purification_2",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_alloys_1": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_alloys_1",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_alloys_2": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_alloys_2",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_mass_drivers_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_mass_drivers_1",
+      "real_name": "Shard Accelerator",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_mass_drivers_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_mass_drivers_2",
+      "real_name": "Bio-Coil Shard Accelerator",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_mass_drivers_3": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_mass_drivers_3",
+      "real_name": "Shard Rail Accelerator",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_mass_drivers_4": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_mass_drivers_4",
+      "real_name": "Advanced Shard Rail Accelerator",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_mass_drivers_5": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_mass_drivers_5",
+      "real_name": "Shard Gauss Accelerator",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_kinetic_artillery_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_kinetic_artillery_1",
+      "real_name": "Chitin Battery",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_kinetic_artillery_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_kinetic_artillery_2",
+      "real_name": "Chitin Artillery",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_mass_accelerator_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_mass_accelerator_1",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_mass_accelerator_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_mass_accelerator_2",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_autocannons_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_autocannons_1",
+      "real_name": "Quill Battery",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_autocannons_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_autocannons_2",
+      "real_name": "Ripper Quill Battery",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_autocannons_3": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_autocannons_3",
+      "real_name": "Stormfire Quill Battery",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_flak_batteries_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_flak_batteries_1",
+      "real_name": "Barb Batteries",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_flak_batteries_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_flak_batteries_2",
+      "real_name": "Barb Cannons",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_flak_batteries_3": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_flak_batteries_3",
+      "real_name": "Barb Artillery",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_swarmer_missiles_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_swarmer_missiles_1",
+      "real_name": "Bio-Swarmer Missiles",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_swarmer_missiles_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_swarmer_missiles_2",
+      "real_name": "Bio-Whirlwind Missiles",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_dark_matter_deflector": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_dark_matter_deflector",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_dark_matter_power_core": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_dark_matter_power_core",
+      "real_name": "Dark Matter Metabolism",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_dark_matter_propulsion": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bioship_thrusters_5",
+      "real_name": "Dark Matter Stellar Motor Organs",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_dragon_armor": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_dragon_armor",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_basic_science_lab_2": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_science_lab_2",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_basic_science_lab_3": [
+    {
+      "trigger": [
+        {
+          "is_wilderness_empire": "yes"
+        },
+        {
+          "has_ascension_perk": "ap_weather_control"
+        }
+      ],
+      "name": "tech_wilderness_science_lab_3",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_cryostasis_1": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_cryostasis_1_wilderness",
+      "real_name": "Seedling Incubation"
+    }
+  ],
+  "tech_cryostasis_2": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_cryostasis_2_wilderness",
+      "real_name": "Permanent Incubation"
+    }
+  ],
+  "tech_fission_power": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_fission_power",
+      "real_name": "Fission Metabolism",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_fusion_power": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_fusion_power",
+      "real_name": "Fusion Metabolism",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_cold_fusion_power": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_cold_fusion_power",
+      "real_name": "Cold Fusion Metabolism",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_antimatter_power": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_antimatter_power",
+      "real_name": "Antimatter Metabolism",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_zero_point_power": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_zero_point_power",
+      "real_name": "Zero Point Metabolism",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_shields_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_shields_1",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_shields_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_shields_2",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_shields_3": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_shields_3",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_shields_4": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_shields_4",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_shields_5": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_shields_5",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_planetary_shield_generator": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_shield_generator",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_power_hub_1": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_power_hub_1",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_power_hub_2": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_power_hub_2",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_hyper_drive_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_hyper_drive_1",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_hyper_drive_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_hyper_drive_2",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_hyper_drive_3": [
+    {
+      "trigger": [
+        {
+          "country_uses_bio_ships": "yes"
+        },
+        {
+          "has_ascension_perk": "ap_weather_control"
+        }
+      ],
+      "name": "tech_bio_hyper_drive_3",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_jump_drive_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_jump_drive_1",
+      "real_name": "Jump Organ",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_lasers_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_lasers_1",
+      "real_name": "Red Beam Projector",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_lasers_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_lasers_2",
+      "real_name": "Blue Beam Projector",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_lasers_3": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_lasers_3",
+      "real_name": "UV Beam Projector",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_lasers_4": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_lasers_4",
+      "real_name": "X-Ray Beam Projector",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_lasers_5": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_lasers_5",
+      "real_name": "Gamma Beam Projector",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_energy_lance_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_energy_lance_1",
+      "real_name": "Particle Beam",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_energy_lance_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_energy_lance_2",
+      "real_name": "Tachyon Beam",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_plasma_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_plasma_1",
+      "real_name": "Bio-Plasma Thrower",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_plasma_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_plasma_2",
+      "real_name": "Bio-Plasma Accelerator",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_plasma_3": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_plasma_3",
+      "real_name": "Bio-Plasma Cannon",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_arc_emitter_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_arc_emitter_1",
+      "real_name": "Lightning Emitter",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_arc_emitter_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_arc_emitter_2",
+      "real_name": "Focused Lightning Emitter",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_disruptors_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_disruptors_1",
+      "real_name": "Molecular Disruptor",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_disruptors_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_disruptors_2",
+      "real_name": "Ion Molecular Disruptor",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_disruptors_3": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_disruptors_3",
+      "real_name": "Phased Molecular Disruptor",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_energy_torpedoes_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_energy_torpedoes_1",
+      "real_name": "Proton Thrower",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_energy_torpedoes_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_energy_torpedoes_2",
+      "real_name": "Neutron Thrower",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_pd_tracking_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_pd_tracking_1",
+      "real_name": "Sentinel Snapper Gun",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_pd_tracking_2": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_pd_tracking_2",
+      "real_name": "Barrier Snapper Gun",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_pd_tracking_3": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_pd_tracking_3",
+      "real_name": "Guardian Snapper Gun",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_mining_drone_weapon_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_mining_bio_laser",
+      "real_name": "Mining Beam Projector",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_psionic_bombers": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_psionic_bombers",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_psionic_lightning": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_psionic_lightning",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_psionic_disruptor": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_psionic_disruptor",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_zro_launcher": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_zro_launcher",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_planetary_defenses": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_planetary_defenses",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_food_processing_1": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_food_processing_1",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_food_processing_2": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_food_processing_2",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_colonization_1": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_colonization_1_wilderness",
+      "real_name": "New Worlds Initiative"
+    }
+  ],
+  "tech_refit_standards": [
+    {
+      "trigger": {
+        "is_beastmasters_empire": "yes"
+      },
+      "name": "tech_refit_standards_beastmasters",
+      "real_name": "Hatchery Optimization",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_global_defense_grid": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_defense_grid",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_thought_enforcement": [
+    {
+      "trigger": {
+        "is_gestalt": "yes"
+      },
+      "name": "tech_thought_enforcement_gestalt",
+      "real_name": "Thought Pre-Emption"
+    }
+  ],
+  "tech_psi_jump_drive_1": [
+    {
+      "trigger": {
+        "country_uses_bio_ships": "yes"
+      },
+      "name": "tech_bio_psi_jump_drive_1",
+      "real_name": "Psionic Jump Organ",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_planetary_government": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_government",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_colonial_centralization": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_colonial_centralization",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_galactic_administration": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_galactic_administration",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_volatile_motes": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_volatile_motes",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_exotic_gases": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_exotic_gases",
+      "inherit_icon": "no"
+    }
+  ],
+  "tech_rare_crystals": [
+    {
+      "trigger": {
+        "is_wilderness_empire": "yes"
+      },
+      "name": "tech_wilderness_rare_crystals",
+      "inherit_icon": "no"
+    }
+  ]
+}

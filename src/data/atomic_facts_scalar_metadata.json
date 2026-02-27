@@ -1,0 +1,250 @@
+{
+  "Current Game Year": {
+    "type": "slider",
+    "min": 2200,
+    "max": 2400,
+    "step": 1,
+    "default": 2200,
+    "values": {
+      "years_passed:5": 2205,
+      "years_passed:6": 2206,
+      "years_passed:11": 2211,
+      "years_passed:16": 2216,
+      "years_passed:26": 2226,
+      "years_passed:31": 2231,
+      "years_passed:36": 2236,
+      "years_passed:41": 2241,
+      "years_passed:51": 2251,
+      "years_passed:61": 2261,
+      "years_passed:66": 2266,
+      "years_passed:71": 2271,
+      "years_passed:91": 2291,
+      "years_passed:96": 2296,
+      "years_passed:101": 2101,
+      "years_passed:131": 2131,
+      "years_passed:141": 2141,
+      "years_passed:151": 2151
+    }
+  },
+  "Highest Councillor Base Skill": {
+    "type": "slider",
+    "min": 1,
+    "max": 10,
+    "step": 1,
+    "default": 1,
+    "values": {
+      "councilor_base_skill:2": 2,
+      "councilor_base_skill:3": 3,
+      "councilor_base_skill:4": 4,
+      "councilor_base_skill:5": 5,
+      "councilor_base_skill:6": 6,
+      "councilor_base_skill:7": 7,
+      "councilor_base_skill:8": 8,
+      "councilor_base_skill:9": 9
+    }
+  },
+  "Shroudwalker Teacher Councillor Skill Level": {
+    "type": "slider",
+    "min": 0,
+    "max": 20,
+    "step": 1,
+    "default": 0,
+    "values": {
+      "COUNCILOR:councilor_shroudwalker_teacher": 1
+    }
+  },
+  "Storm Caller Councillor Skill Level": {
+    "type": "slider",
+    "min": 0,
+    "max": 20,
+    "step": 1,
+    "default": 0,
+    "values": {
+      "is_councilor_type = councilor_storm_callers": 1
+    }
+  },
+  "Galactic Nemesis Crisis Level": {
+    "type": "slider",
+    "min": 0,
+    "max": 5,
+    "step": 1,
+    "default": 0,
+    "values": {
+      "has_ascension_perk:ap_become_the_crisis": 1,
+      "has_crisis_level:crisis_level_2": 2,
+      "has_country_flag:can_build_star_eaters": 5
+    }
+  },
+  "Cosmogenesis Crisis Level": {
+    "type": "slider",
+    "min": 0,
+    "max": 5,
+    "step": 1,
+    "default": 0,
+    "values": {
+      "has_ascension_perk:ap_cosmogenesis": 1,
+      "has_crisis_level:crisis_cosmogenesis_level_1": 1,
+      "has_crisis_level:crisis_cosmogenesis_level_2": 2,
+      "has_crisis_level:crisis_cosmogenesis_level_3": 3,
+      "has_crisis_level:crisis_cosmogenesis_level_4": 4,
+      "has_crisis_level:crisis_cosmogenesis_level_5": 5
+    }
+  },
+  "Number of Pops in Synaptic Lathe": {
+    "type": "slider",
+    "min": 0,
+    "max": 10000,
+    "step": 100,
+    "default": 0,
+    "values": {
+      "num_pops_lathe:5000": 5000,
+      "num_pops_lathe:5001": 5001,
+      "num_pops_lathe:10000": 10000
+    }
+  },
+  "Behemoth Fury Crisis Level": {
+    "type": "slider",
+    "min": 0,
+    "max": 5,
+    "step": 1,
+    "default": 0,
+    "values": {
+      "has_menace_perk:menp_behemoth_ever_hungry": 5
+    }
+  },
+  "Galactic Hyperthermia Crisis Level": {
+    "type": "slider",
+    "min": 0,
+    "max": 5,
+    "step": 1,
+    "default": 0,
+    "values": {
+      "has_ascension_perk:ap_galactic_hyperthermia": 1
+    }
+  },
+  "Number of Cosmic Storms Encountered": {
+    "type": "slider",
+    "min": 0,
+    "max": 5,
+    "step": 1,
+    "default": 0,
+    "values": {
+      "num_cosmic_storms_encountered:1": 1,
+      "num_cosmic_storms_encountered:3": 3,
+      "num_cosmic_storms_encountered:4": 4,
+      "num_cosmic_storms_encountered:5": 5
+    }
+  },
+  "Number of Colonised Planets": {
+    "type": "slider",
+    "min": 1,
+    "max": 21,
+    "step": 1,
+    "default": 1,
+    "values": {
+      "num_owned_planets:2": 2,
+      "num_owned_planets:3": 3,
+      "num_owned_planets:4": 4,
+      "num_owned_planets:5": 5,
+      "num_owned_planets:6": 6,
+      "num_owned_planets:7": 7,
+      "num_owned_planets:8": 8,
+      "num_owned_planets:9": 9,
+      "num_owned_planets:10": 10,
+      "num_owned_planets:11": 11,
+      "num_owned_planets:16": 16,
+      "num_owned_planets:21": 21
+    }
+  },
+  "Number of Starbases Starport Tier or Higher": {
+    "type": "slider",
+    "min": 0,
+    "max": 6,
+    "step": 1,
+    "default": 1,
+    "values": {
+      "num_starport:3": 3
+    }
+  },
+  "Number of Starbases Starhold Tier or Higher": {
+    "type": "slider",
+    "min": 0,
+    "max": 6,
+    "step": 1,
+    "default": 0,
+    "values": {
+      "num_starhold:1": 1,
+      "num_starhold:2": 2,
+      "num_starhold:3": 3,
+      "num_starhold:4": 4,
+      "num_starhold:5": 5,
+      "num_starhold:6": 6
+    }
+  },
+  "Number of Starbases Starfortress Tier or Higher": {
+    "type": "slider",
+    "min": 0,
+    "max": 6,
+    "step": 1,
+    "default": 0,
+    "values": {
+      "num_starfortress:3": 3
+    }
+  },
+  "Number of Starbases Citadel Tier or Higher": {
+    "type": "slider",
+    "min": 0,
+    "max": 6,
+    "step": 1,
+    "default": 0,
+    "values": {
+      "num_citadel:1": 1,
+      "num_citadel:2": 2,
+      "num_citadel:3": 3,
+      "num_citadel:4": 4,
+      "num_citadel:5": 5,
+      "num_citadel:6": 6
+    }
+  },
+  "Number of Pops Enslaved": {
+    "type": "slider",
+    "min": 0,
+    "max": 3000,
+    "step": 1000,
+    "default": 0,
+    "values": {
+      "num_pops_enslaved:1000": 1000,
+      "num_pops_enslaved:2000": 2000,
+      "num_pops_enslaved:3000": 3000
+    }
+  },
+  "Number of Communications": {
+    "type": "slider",
+    "min": 0,
+    "max": 5,
+    "step": 1,
+    "default": 0,
+    "values": {
+      "num_communications:1": 1,
+      "num_communications:2": 2,
+      "num_communications:3": 3,
+      "num_communications:4": 4,
+      "num_communications:5": 5,
+      "can_form_federation_with_empire:yes": 1
+    }
+  },
+  "Space Weather Exploitation Resolution Level": {
+    "type": "slider",
+    "min": 0,
+    "max": 5,
+    "step": 1,
+    "default": 0,
+    "values": {
+      "is_active_resolution = resolution_cosmic_storms_shared_knowledge": 1,
+      "is_active_resolution = resolution_cosmic_storms_protection_initiative": 2,
+      "is_active_resolution = resolution_cosmic_storms_galactic_management": 3,
+      "is_active_resolution = resolution_cosmic_storms_utilization_protocols": 4,
+      "is_active_resolution = resolution_cosmic_storms_manipulation_mandate": 5
+    }
+  }
+}

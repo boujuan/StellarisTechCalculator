@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* Stellaris-themed color palette */
+@theme {
+  --color-physics: #3b82f6;
+  --color-physics-dark: #1e3a5f;
+  --color-society: #22c55e;
+  --color-society-dark: #1a3d2a;
+  --color-engineering: #f59e0b;
+  --color-engineering-dark: #5c3d0a;
+  --color-rare: #a855f7;
+  --color-rare-dark: #3b1a5c;
+  --color-dangerous: #ef4444;
+  --color-dangerous-dark: #5c1a1a;
+
+  --color-bg-primary: #0f1114;
+  --color-bg-secondary: #1a1d23;
+  --color-bg-tertiary: #252830;
+  --color-border: #333740;
+  --color-text-primary: #e4e7ec;
+  --color-text-secondary: #9ca3af;
+  --color-text-muted: #6b7280;
+}
+
+/* Base styles */
+body {
+  @apply bg-bg-primary text-text-primary font-sans m-0 p-0 min-h-screen;
+}
+
+#root {
+  @apply min-h-screen;
+}
+
+/* Scrollbar styling for the dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-bg-secondary;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-text-muted;
+}

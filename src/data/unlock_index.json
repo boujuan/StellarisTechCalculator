@@ -1,0 +1,1269 @@
+{
+  "tech_archaeostudies": [
+    "tech_archaeoshield",
+    "tech_archaeoarmor",
+    "tech_archaeo_detection_scrambler",
+    "tech_archaeo_titan_beam",
+    "tech_archaeo_mass_drivers",
+    "tech_archaeo_lasers",
+    "tech_archaeo_point_defence",
+    "tech_archaeo_missiles",
+    "tech_archaeo_mass_accelerator",
+    "tech_archaeo_strike_crafts",
+    "tech_archaeo_rampart",
+    "tech_archaeo_overcharger",
+    "tech_archaeo_refinery"
+  ],
+  "tech_titans": [
+    "tech_colossus",
+    "tech_titan_hull_1"
+  ],
+  "tech_colossus": [
+    "tech_pk_cracker",
+    "tech_pk_shielder",
+    "tech_pk_neutron",
+    "tech_pk_godray",
+    "tech_pk_nanobots",
+    "tech_pk_smelter"
+  ],
+  "tech_maulers": [
+    "tech_mauler_build_speed",
+    "tech_mauler_growth_1",
+    "tech_weavers",
+    "tech_mandibles_2"
+  ],
+  "tech_mauler_growth_1": [
+    "tech_mauler_growth_2",
+    "tech_growth_chamber_1"
+  ],
+  "tech_weavers": [
+    "tech_weaver_build_speed",
+    "tech_weaver_growth_1",
+    "tech_harbingers",
+    "tech_weaver_bio_healing_1",
+    "tech_weaver_bio_evasion_1",
+    "tech_weaver_bio_fire_rate_1",
+    "tech_weaver_bio_confuser_1",
+    "tech_weaver_bio_anti_evasion_1",
+    "tech_weaver_bio_anti_fire_rate_1"
+  ],
+  "tech_weaver_growth_1": [
+    "tech_weaver_growth_2",
+    "tech_growth_chamber_1"
+  ],
+  "tech_harbingers": [
+    "tech_harbinger_build_speed",
+    "tech_harbinger_growth_1",
+    "tech_stingers",
+    "tech_swarmer_missiles_1",
+    "tech_energy_torpedoes_1"
+  ],
+  "tech_harbinger_growth_1": [
+    "tech_harbinger_growth_2",
+    "tech_growth_chamber_1"
+  ],
+  "tech_stingers": [
+    "tech_stinger_build_speed",
+    "tech_stinger_growth_1",
+    "tech_growth_chamber_1",
+    "tech_mass_accelerator_1",
+    "tech_swarmer_missiles_1",
+    "tech_mega_engineering",
+    "tech_energy_lance_1",
+    "tech_arc_emitter_1"
+  ],
+  "tech_stinger_growth_1": [
+    "tech_stinger_growth_2",
+    "tech_growth_chamber_1"
+  ],
+  "tech_growth_chamber_1": [
+    "tech_growth_chamber_2"
+  ],
+  "tech_mauler_growth_2": [
+    "tech_growth_chamber_2"
+  ],
+  "tech_weaver_growth_2": [
+    "tech_growth_chamber_2"
+  ],
+  "tech_harbinger_growth_2": [
+    "tech_growth_chamber_2",
+    "tech_juggernaut"
+  ],
+  "tech_stinger_growth_2": [
+    "tech_growth_chamber_2",
+    "tech_titans"
+  ],
+  "tech_rare_crystals": [
+    "tech_mandibles_2",
+    "tech_weaver_bio_evasion_4",
+    "tech_weaver_bio_evasion_5",
+    "tech_weaver_bio_anti_evasion_4",
+    "tech_weaver_bio_anti_evasion_5",
+    "tech_armor_hardeners_1",
+    "tech_luxuries_1",
+    "tech_engineering_2",
+    "tech_engineering_3",
+    "tech_hyper_relays",
+    "tech_interstellar_economics",
+    "tech_paradise_dome",
+    "tech_holographic_rituals"
+  ],
+  "tech_mine_rare_crystals": [
+    "tech_mandibles_2",
+    "tech_weaver_bio_evasion_4",
+    "tech_weaver_bio_evasion_5",
+    "tech_weaver_bio_anti_evasion_4",
+    "tech_weaver_bio_anti_evasion_5",
+    "tech_luxuries_1",
+    "tech_engineering_2",
+    "tech_engineering_3",
+    "tech_hyper_relays",
+    "tech_interstellar_economics",
+    "tech_paradise_dome",
+    "tech_holographic_rituals"
+  ],
+  "tech_mandibles_2": [
+    "tech_mandibles_3"
+  ],
+  "tech_weaver_bio_healing_1": [
+    "tech_weaver_bio_healing_2"
+  ],
+  "tech_weaver_bio_healing_2": [
+    "tech_weaver_bio_healing_3"
+  ],
+  "tech_mine_exotic_gases": [
+    "tech_weaver_bio_healing_4",
+    "tech_weaver_bio_healing_5",
+    "tech_cloaking_2",
+    "tech_basic_science_lab_2",
+    "tech_power_hub_2",
+    "tech_society_2",
+    "tech_society_3",
+    "tech_frontier_hospital",
+    "tech_hyper_entertainment_forum"
+  ],
+  "tech_weaver_bio_healing_3": [
+    "tech_weaver_bio_healing_4"
+  ],
+  "tech_exotic_gases": [
+    "tech_weaver_bio_healing_4",
+    "tech_weaver_bio_healing_5",
+    "tech_cloaking_2",
+    "tech_basic_science_lab_2",
+    "tech_shield_hardeners_1",
+    "tech_power_hub_2",
+    "tech_society_2",
+    "tech_society_3",
+    "tech_frontier_hospital",
+    "tech_hyper_entertainment_forum"
+  ],
+  "tech_weaver_bio_healing_4": [
+    "tech_weaver_bio_healing_5"
+  ],
+  "tech_weaver_bio_healing_5": [
+    "tech_weaver_bio_healing_6"
+  ],
+  "tech_weaver_bio_evasion_1": [
+    "tech_weaver_bio_evasion_2"
+  ],
+  "tech_weaver_bio_evasion_2": [
+    "tech_weaver_bio_evasion_3"
+  ],
+  "tech_weaver_bio_evasion_3": [
+    "tech_weaver_bio_evasion_4"
+  ],
+  "tech_weaver_bio_evasion_4": [
+    "tech_weaver_bio_evasion_5"
+  ],
+  "tech_weaver_bio_evasion_5": [
+    "tech_weaver_bio_evasion_6"
+  ],
+  "tech_weaver_bio_fire_rate_1": [
+    "tech_weaver_bio_fire_rate_2"
+  ],
+  "tech_weaver_bio_fire_rate_2": [
+    "tech_weaver_bio_fire_rate_3"
+  ],
+  "tech_weaver_bio_fire_rate_3": [
+    "tech_weaver_bio_fire_rate_4"
+  ],
+  "tech_volatile_motes": [
+    "tech_weaver_bio_fire_rate_4",
+    "tech_weaver_bio_fire_rate_5",
+    "tech_weaver_bio_confuser_4",
+    "tech_weaver_bio_confuser_5",
+    "tech_weaver_bio_anti_fire_rate_4",
+    "tech_weaver_bio_anti_fire_rate_5",
+    "tech_mineral_purification_2",
+    "tech_alloys_1",
+    "tech_physics_2",
+    "tech_food_processing_2"
+  ],
+  "tech_mine_volatile_motes": [
+    "tech_weaver_bio_fire_rate_4",
+    "tech_weaver_bio_fire_rate_5",
+    "tech_weaver_bio_confuser_4",
+    "tech_weaver_bio_confuser_5",
+    "tech_weaver_bio_anti_fire_rate_4",
+    "tech_weaver_bio_anti_fire_rate_5",
+    "tech_mineral_purification_2",
+    "tech_alloys_1",
+    "tech_physics_2",
+    "tech_food_processing_2"
+  ],
+  "tech_weaver_bio_fire_rate_4": [
+    "tech_weaver_bio_fire_rate_5"
+  ],
+  "tech_weaver_bio_fire_rate_5": [
+    "tech_weaver_bio_fire_rate_6"
+  ],
+  "tech_weaver_bio_confuser_1": [
+    "tech_weaver_bio_confuser_2"
+  ],
+  "tech_weaver_bio_confuser_2": [
+    "tech_weaver_bio_confuser_3"
+  ],
+  "tech_weaver_bio_confuser_3": [
+    "tech_weaver_bio_confuser_4"
+  ],
+  "tech_weaver_bio_confuser_4": [
+    "tech_weaver_bio_confuser_5"
+  ],
+  "tech_weaver_bio_confuser_5": [
+    "tech_weaver_bio_confuser_6"
+  ],
+  "tech_weaver_bio_anti_evasion_1": [
+    "tech_weaver_bio_anti_evasion_2"
+  ],
+  "tech_weaver_bio_anti_evasion_2": [
+    "tech_weaver_bio_anti_evasion_3"
+  ],
+  "tech_weaver_bio_anti_evasion_3": [
+    "tech_weaver_bio_anti_evasion_4"
+  ],
+  "tech_weaver_bio_anti_evasion_4": [
+    "tech_weaver_bio_anti_evasion_5"
+  ],
+  "tech_weaver_bio_anti_evasion_5": [
+    "tech_weaver_bio_anti_evasion_6"
+  ],
+  "tech_weaver_bio_anti_fire_rate_1": [
+    "tech_weaver_bio_anti_fire_rate_2"
+  ],
+  "tech_weaver_bio_anti_fire_rate_2": [
+    "tech_weaver_bio_anti_fire_rate_3"
+  ],
+  "tech_weaver_bio_anti_fire_rate_3": [
+    "tech_weaver_bio_anti_fire_rate_4"
+  ],
+  "tech_weaver_bio_anti_fire_rate_4": [
+    "tech_weaver_bio_anti_fire_rate_5"
+  ],
+  "tech_weaver_bio_anti_fire_rate_5": [
+    "tech_weaver_bio_anti_fire_rate_6"
+  ],
+  "tech_starbase_3": [
+    "tech_deep_space_citadel",
+    "tech_starbase_4",
+    "tech_habitat_1",
+    "tech_modular_engineering",
+    "tech_defense_platform_hull_1",
+    "tech_orbital_ring_tier_1"
+  ],
+  "tech_industrial_storm_protection": [
+    "tech_storm_manipulation",
+    "tech_advanced_industrial_storm_protection",
+    "tech_storm_prediction_1"
+  ],
+  "tech_storm_manipulation": [
+    "tech_advanced_storm_manipulation"
+  ],
+  "tech_storm_prediction_1": [
+    "tech_storm_prediction_2",
+    "tech_ship_hull_storm_breaker_1",
+    "tech_ship_storm_weapons_1"
+  ],
+  "tech_ship_hull_storm_breaker_1": [
+    "tech_ship_hull_storm_breaker_2"
+  ],
+  "tech_ship_storm_weapons_1": [
+    "tech_ship_storm_weapons_2"
+  ],
+  "tech_sensors_2": [
+    "tech_experimental_subspace_navigation",
+    "tech_detection_array",
+    "tech_sensors_3"
+  ],
+  "tech_starbase_2": [
+    "tech_solar_panel_network",
+    "tech_corvettes",
+    "tech_starbase_3",
+    "tech_strike_craft_1"
+  ],
+  "tech_corvettes": [
+    "tech_destroyers",
+    "tech_corvette_build_speed",
+    "tech_corvette_hull_1",
+    "tech_torpedoes_1"
+  ],
+  "tech_destroyers": [
+    "tech_cruisers",
+    "tech_destroyer_build_speed",
+    "tech_destroyer_hull_1"
+  ],
+  "tech_cruisers": [
+    "tech_battleships",
+    "tech_cruiser_build_speed",
+    "tech_cruiser_hull_1"
+  ],
+  "tech_battleships": [
+    "tech_titans",
+    "tech_juggernaut",
+    "tech_battleship_build_speed",
+    "tech_battleship_hull_1",
+    "tech_mass_accelerator_1",
+    "tech_mega_engineering",
+    "tech_energy_lance_1",
+    "tech_arc_emitter_1"
+  ],
+  "tech_starbase_5": [
+    "tech_juggernaut",
+    "tech_habitat_3",
+    "tech_mega_engineering"
+  ],
+  "tech_corvette_hull_1": [
+    "tech_corvette_hull_2"
+  ],
+  "tech_destroyer_hull_1": [
+    "tech_destroyer_hull_2"
+  ],
+  "tech_cruiser_hull_1": [
+    "tech_cruiser_hull_2"
+  ],
+  "tech_battleship_hull_1": [
+    "tech_battleship_hull_2"
+  ],
+  "tech_titan_hull_1": [
+    "tech_titan_hull_2"
+  ],
+  "tech_space_construction": [
+    "tech_starbase_1",
+    "tech_space_mining_1",
+    "tech_space_science_1",
+    "tech_mine_living_metal",
+    "tech_mine_betharian",
+    "tech_mine_volatile_motes",
+    "tech_mine_exotic_gases",
+    "tech_mine_rare_crystals"
+  ],
+  "tech_starbase_1": [
+    "tech_starbase_2",
+    "tech_space_defense_station_1"
+  ],
+  "tech_starbase_4": [
+    "tech_starbase_5",
+    "tech_habitat_2",
+    "tech_space_defense_station_improvement"
+  ],
+  "tech_habitat_1": [
+    "tech_habitat_2"
+  ],
+  "tech_habitat_2": [
+    "tech_habitat_3"
+  ],
+  "tech_modular_engineering": [
+    "tech_space_defense_station_improvement"
+  ],
+  "tech_strike_craft_1": [
+    "tech_strike_craft_2"
+  ],
+  "tech_strike_craft_2": [
+    "tech_strike_craft_3"
+  ],
+  "tech_planetary_defenses": [
+    "tech_assault_armies",
+    "tech_ground_defense_planning"
+  ],
+  "tech_ship_armor_1": [
+    "tech_ship_armor_2"
+  ],
+  "tech_ship_armor_2": [
+    "tech_ship_armor_3",
+    "tech_advanced_metallurgy_1",
+    "tech_planetary_infrastructure_1"
+  ],
+  "tech_ship_armor_3": [
+    "tech_ship_armor_4",
+    "tech_repeatable_improved_armor_output"
+  ],
+  "tech_ship_armor_4": [
+    "tech_ship_armor_5",
+    "tech_advanced_metallurgy_2",
+    "tech_planetary_infrastructure_2"
+  ],
+  "tech_advanced_metallurgy_1": [
+    "tech_armor_hardeners_1",
+    "tech_advanced_metallurgy_2"
+  ],
+  "tech_armor_hardeners_1": [
+    "tech_armor_hardeners_2"
+  ],
+  "tech_mine_living_metal": [
+    "tech_armor_hardeners_2"
+  ],
+  "tech_thrusters_1": [
+    "tech_thrusters_2",
+    "tech_afterburners_1"
+  ],
+  "tech_thrusters_2": [
+    "tech_thrusters_3"
+  ],
+  "tech_thrusters_3": [
+    "tech_thrusters_4",
+    "tech_afterburners_2"
+  ],
+  "tech_basic_industry": [
+    "tech_powered_exoskeletons",
+    "tech_mining_1",
+    "tech_alloys_1",
+    "tech_luxuries_1",
+    "tech_volatile_motes",
+    "tech_exotic_gases",
+    "tech_rare_crystals"
+  ],
+  "tech_space_mining_1": [
+    "tech_space_mining_2"
+  ],
+  "tech_space_mining_2": [
+    "tech_space_mining_3"
+  ],
+  "tech_space_mining_3": [
+    "tech_space_mining_4"
+  ],
+  "tech_space_mining_4": [
+    "tech_space_mining_5"
+  ],
+  "tech_mining_1": [
+    "tech_mining_2",
+    "tech_mineral_purification_1"
+  ],
+  "tech_mining_2": [
+    "tech_mining_3"
+  ],
+  "tech_colonial_centralization": [
+    "tech_mineral_purification_2",
+    "tech_alloys_2",
+    "tech_luxuries_2",
+    "tech_droid_workers",
+    "tech_integrated_cybernetics",
+    "tech_basic_science_lab_3",
+    "tech_global_research_initiative",
+    "tech_power_hub_2",
+    "tech_galactic_markets",
+    "tech_frontier_hospital",
+    "tech_galactic_administration",
+    "tech_planetary_infrastructure_1",
+    "tech_global_production_strategy",
+    "tech_living_state",
+    "tech_collective_self",
+    "tech_autonomous_agents",
+    "tech_hypercomms_forum",
+    "tech_autocurating_vault",
+    "tech_consecration_fields",
+    "tech_hive_confluence",
+    "tech_wilderness_confluence",
+    "tech_federation_code",
+    "tech_capital_productivity_2",
+    "tech_node_reformatting_1",
+    "tech_node_culling_1",
+    "tech_binary_motivators"
+  ],
+  "tech_mineral_purification_1": [
+    "tech_mineral_purification_2"
+  ],
+  "tech_alloys_1": [
+    "tech_alloys_2",
+    "tech_advanced_metallurgy_1",
+    "tech_global_production_strategy"
+  ],
+  "tech_alloys_2": [
+    "tech_advanced_metallurgy_2"
+  ],
+  "tech_luxuries_1": [
+    "tech_luxuries_2",
+    "tech_consumer_good_refinement_1"
+  ],
+  "tech_basic_science_lab_1": [
+    "tech_engineering_1",
+    "tech_basic_science_lab_2",
+    "tech_physics_1",
+    "tech_administrative_ai",
+    "tech_society_1"
+  ],
+  "tech_engineering_1": [
+    "tech_engineering_2"
+  ],
+  "tech_engineering_2": [
+    "tech_engineering_3"
+  ],
+  "tech_powered_exoskeletons": [
+    "tech_robotic_workers",
+    "tech_integrated_cybernetics",
+    "tech_robomodding_m"
+  ],
+  "tech_robotic_workers": [
+    "tech_droid_workers",
+    "tech_robomodding"
+  ],
+  "tech_droid_workers": [
+    "tech_synthetic_workers",
+    "tech_robomodding_points_1"
+  ],
+  "tech_galactic_administration": [
+    "tech_synthetic_workers",
+    "tech_robot_assembly_complex",
+    "tech_orbital_ring_tier_1",
+    "tech_planetary_infrastructure_2",
+    "tech_transcendent_faith",
+    "tech_xeno_relations",
+    "tech_capital_productivity_3",
+    "tech_nanite_assemblers",
+    "tech_mega_assembly"
+  ],
+  "tech_sapient_ai": [
+    "tech_synthetic_workers",
+    "tech_combat_computers_3"
+  ],
+  "tech_synthetic_workers": [
+    "tech_synthetic_leaders",
+    "tech_robomodding_points_2"
+  ],
+  "tech_robomodding": [
+    "tech_robot_assembly_complex",
+    "tech_fe_assembly_1",
+    "tech_robomodding_points_1"
+  ],
+  "tech_afterburners_1": [
+    "tech_afterburners_2"
+  ],
+  "tech_assembly_pattern": [
+    "tech_construction_templates"
+  ],
+  "tech_housing_1": [
+    "tech_housing_2",
+    "tech_paradise_dome"
+  ],
+  "tech_mineral_purification_2": [
+    "tech_repeatable_improved_tile_mineral_output"
+  ],
+  "tech_defense_platform_hull_1": [
+    "tech_repeatable_improved_military_station_damage",
+    "tech_repeatable_improved_military_station_health"
+  ],
+  "tech_swarmer_missiles_2": [
+    "tech_repeatable_weapon_type_explosive_damage",
+    "tech_repeatable_weapon_type_explosive_fire_rate"
+  ],
+  "tech_missiles_3": [
+    "tech_repeatable_weapon_type_explosive_damage",
+    "tech_repeatable_weapon_type_explosive_fire_rate",
+    "tech_missiles_4"
+  ],
+  "tech_mass_drivers_3": [
+    "tech_repeatable_weapon_type_kinetic_damage",
+    "tech_repeatable_weapon_type_kinetic_fire_rate",
+    "tech_mass_drivers_4"
+  ],
+  "tech_construction_templates": [
+    "tech_repeatable_reduced_building_time"
+  ],
+  "tech_mass_drivers_1": [
+    "tech_mass_drivers_2"
+  ],
+  "tech_mass_drivers_2": [
+    "tech_mass_drivers_3",
+    "tech_autocannons_1"
+  ],
+  "tech_mass_drivers_4": [
+    "tech_mass_drivers_5",
+    "tech_kinetic_artillery_1",
+    "tech_mass_accelerator_1"
+  ],
+  "tech_mass_drivers_5": [
+    "tech_kinetic_artillery_2",
+    "tech_mass_accelerator_2"
+  ],
+  "tech_kinetic_artillery_1": [
+    "tech_kinetic_artillery_2"
+  ],
+  "tech_mass_accelerator_1": [
+    "tech_mass_accelerator_2"
+  ],
+  "tech_autocannons_1": [
+    "tech_autocannons_2"
+  ],
+  "tech_autocannons_2": [
+    "tech_autocannons_3"
+  ],
+  "tech_flak_batteries_1": [
+    "tech_flak_batteries_2"
+  ],
+  "tech_flak_batteries_2": [
+    "tech_flak_batteries_3"
+  ],
+  "tech_missiles_1": [
+    "tech_missiles_2"
+  ],
+  "tech_fusion_power": [
+    "tech_missiles_2",
+    "tech_cold_fusion_power",
+    "tech_reactor_boosters_2"
+  ],
+  "tech_missiles_2": [
+    "tech_missiles_3",
+    "tech_swarmer_missiles_1"
+  ],
+  "tech_missiles_4": [
+    "tech_missiles_5"
+  ],
+  "tech_swarmer_missiles_1": [
+    "tech_swarmer_missiles_2"
+  ],
+  "tech_torpedoes_1": [
+    "tech_torpedoes_2",
+    "tech_energy_torpedoes_1"
+  ],
+  "tech_torpedoes_2": [
+    "tech_torpedoes_3"
+  ],
+  "tech_shields_5": [
+    "tech_dark_matter_deflector"
+  ],
+  "tech_zero_point_power": [
+    "tech_dark_matter_power_core",
+    "tech_mega_engineering",
+    "tech_jump_drive_1"
+  ],
+  "tech_thrusters_4": [
+    "tech_dark_matter_propulsion"
+  ],
+  "tech_fe_affluence_1": [
+    "tech_fe_affluence_2"
+  ],
+  "tech_fe_nourishment_1": [
+    "tech_fe_nourishment_2"
+  ],
+  "tech_fe_fabricator_1": [
+    "tech_fe_fabricator_2"
+  ],
+  "tech_fe_singularity_1": [
+    "tech_fe_singularity_2"
+  ],
+  "tech_fe_forge_1": [
+    "tech_fe_forge_2"
+  ],
+  "tech_fe_dome_1": [
+    "tech_fe_dome_2"
+  ],
+  "tech_fe_fortress_1": [
+    "tech_fe_fortress_2"
+  ],
+  "tech_fe_administration_1": [
+    "tech_fe_administration_2"
+  ],
+  "tech_robomodding_m": [
+    "tech_fe_assembly_1",
+    "tech_binary_motivators"
+  ],
+  "tech_fe_assembly_1": [
+    "tech_fe_assembly_2"
+  ],
+  "tech_fe_clinic_1": [
+    "tech_fe_clinic_2"
+  ],
+  "tech_fe_security_1": [
+    "tech_fe_security_2"
+  ],
+  "tech_fe_market_1": [
+    "tech_fe_market_2"
+  ],
+  "tech_fe_silo_1": [
+    "tech_fe_silo_2"
+  ],
+  "tech_fe_entertainment_1": [
+    "tech_fe_entertainment_2"
+  ],
+  "tech_fe_lab_1": [
+    "tech_fe_lab_2"
+  ],
+  "tech_fe_mine_1": [
+    "tech_fe_mine_2"
+  ],
+  "tech_shields_2": [
+    "tech_cloaking_1",
+    "tech_shields_3"
+  ],
+  "tech_cloaking_1": [
+    "tech_cloaking_2"
+  ],
+  "tech_shields_3": [
+    "tech_cloaking_2",
+    "tech_shields_4",
+    "tech_shield_rechargers_1",
+    "tech_planetary_shield_generator"
+  ],
+  "tech_cloaking_2": [
+    "tech_cloaking_3"
+  ],
+  "tech_shields_4": [
+    "tech_cloaking_3",
+    "tech_shields_5",
+    "tech_repeatable_improved_shield_output"
+  ],
+  "tech_dark_matter_deflector": [
+    "tech_cloaking_dark_matter"
+  ],
+  "tech_cloaking_3": [
+    "tech_cloaking_dark_matter"
+  ],
+  "tech_psi_jump_drive_1": [
+    "tech_cloaking_psi"
+  ],
+  "tech_detection_array": [
+    "tech_dark_matter_detection",
+    "tech_assisted_detection"
+  ],
+  "tech_mine_dark_matter": [
+    "tech_dark_matter_detection"
+  ],
+  "tech_gravity_wells": [
+    "tech_gravity_snare_capacity_1",
+    "tech_containment_vessel",
+    "tech_alien_cloning"
+  ],
+  "tech_gravity_snare_capacity_1": [
+    "tech_gravity_snare_capacity_2"
+  ],
+  "tech_gravity_snare_capacity_2": [
+    "tech_gravity_snare_capacity_3"
+  ],
+  "tech_alien_cloning": [
+    "tech_improved_incubators",
+    "tech_controlled_mutations"
+  ],
+  "tech_improved_incubators": [
+    "tech_metabolic_gases"
+  ],
+  "tech_controlled_mutations": [
+    "tech_controlled_mutations_2",
+    "tech_thrusters_bio_integration",
+    "tech_hyper_drive_bio_integration",
+    "tech_sensors_bio_integration",
+    "tech_combat_computers_bio_integration"
+  ],
+  "tech_controlled_mutations_2": [
+    "tech_unique_mutation_space_amoeba",
+    "tech_unique_mutation_tiyanki",
+    "tech_unique_mutation_voidworm",
+    "tech_unique_mutation_cutholoid",
+    "tech_unique_mutation_crystalline_entity",
+    "tech_unique_mutation_restorative_enzymes",
+    "tech_unique_mutation_starborne_biology"
+  ],
+  "tech_akx_worm_2": [
+    "tech_akx_worm_3"
+  ],
+  "tech_akx_worm_1": [
+    "tech_akx_worm_3"
+  ],
+  "tech_mega_engineering": [
+    "tech_science_nexus",
+    "tech_sentry_array",
+    "tech_strategic_coordination",
+    "tech_interstellar_assembly",
+    "tech_mega_art",
+    "tech_gateway_construction",
+    "tech_dyson_sphere",
+    "tech_matter_decompressor",
+    "tech_ring_world",
+    "tech_mega_shipyard",
+    "tech_quantum_catapult"
+  ],
+  "tech_hyper_drive_3": [
+    "tech_gateway_activation"
+  ],
+  "tech_gateway_activation": [
+    "tech_gateway_construction"
+  ],
+  "tech_planetary_infrastructure_1": [
+    "tech_orbital_ring_tier_1",
+    "tech_planetary_infrastructure_2"
+  ],
+  "tech_hyper_drive_2": [
+    "tech_hyper_relays",
+    "tech_hyper_drive_3",
+    "tech_wormhole_stabilization"
+  ],
+  "tech_basic_science_lab_2": [
+    "tech_basic_science_lab_3",
+    "tech_global_research_initiative",
+    "tech_neuro_quantum_links"
+  ],
+  "tech_space_science_1": [
+    "tech_space_science_2"
+  ],
+  "tech_space_science_2": [
+    "tech_space_science_3"
+  ],
+  "tech_space_science_3": [
+    "tech_space_science_4"
+  ],
+  "tech_space_science_4": [
+    "tech_space_science_5"
+  ],
+  "tech_physics_1": [
+    "tech_physics_2"
+  ],
+  "tech_physics_2": [
+    "tech_physics_3"
+  ],
+  "tech_administrative_ai": [
+    "tech_cryostasis_1",
+    "tech_self_aware_logic",
+    "tech_combat_computers_1",
+    "tech_consumer_good_refinement_1",
+    "tech_autocurating_vault"
+  ],
+  "tech_colonization_1": [
+    "tech_cryostasis_1",
+    "tech_colonization_2",
+    "tech_mountain_range",
+    "tech_volcano",
+    "tech_dangerous_wildlife",
+    "tech_dense_jungle",
+    "tech_quicksand_basin",
+    "tech_noxious_swamp",
+    "tech_massive_glacier",
+    "tech_toxic_kelp",
+    "tech_deep_sinkhole",
+    "tech_terrestrial_sculpting"
+  ],
+  "tech_cryostasis_1": [
+    "tech_cryostasis_2"
+  ],
+  "tech_self_aware_logic": [
+    "tech_cryostasis_2",
+    "tech_sapient_ai",
+    "tech_positronic_implants",
+    "tech_combat_computers_2",
+    "tech_synchronized_defences",
+    "tech_consumer_good_refinement_2"
+  ],
+  "tech_combat_computers_1": [
+    "tech_combat_computers_2",
+    "tech_auxiliary_fire_control"
+  ],
+  "tech_combat_computers_2": [
+    "tech_combat_computers_3",
+    "tech_combat_computers_autonomous"
+  ],
+  "tech_consumer_good_refinement_1": [
+    "tech_consumer_good_refinement_2"
+  ],
+  "tech_luxuries_2": [
+    "tech_consumer_good_refinement_2"
+  ],
+  "tech_integrated_cybernetics": [
+    "tech_neuro_quantum_links"
+  ],
+  "tech_colonial_bureaucracy": [
+    "tech_encryption_1",
+    "tech_decryption_1",
+    "tech_galactic_bureaucracy"
+  ],
+  "tech_encryption_1": [
+    "tech_encryption_2"
+  ],
+  "tech_encryption_2": [
+    "tech_encryption_3"
+  ],
+  "tech_decryption_1": [
+    "tech_decryption_2"
+  ],
+  "tech_decryption_2": [
+    "tech_decryption_3"
+  ],
+  "tech_fission_power": [
+    "tech_fusion_power",
+    "tech_reactor_boosters_1"
+  ],
+  "tech_cold_fusion_power": [
+    "tech_antimatter_power"
+  ],
+  "tech_antimatter_power": [
+    "tech_zero_point_power",
+    "tech_reactor_boosters_3"
+  ],
+  "tech_reactor_boosters_1": [
+    "tech_reactor_boosters_2"
+  ],
+  "tech_reactor_boosters_2": [
+    "tech_reactor_boosters_3"
+  ],
+  "tech_shields_1": [
+    "tech_shields_2"
+  ],
+  "tech_shield_rechargers_1": [
+    "tech_shield_hardeners_1"
+  ],
+  "tech_mine_zro": [
+    "tech_shield_hardeners_2"
+  ],
+  "tech_shield_hardeners_1": [
+    "tech_shield_hardeners_2"
+  ],
+  "tech_sensors_3": [
+    "tech_sensors_4",
+    "tech_mine_zro"
+  ],
+  "tech_power_plant_1": [
+    "tech_power_plant_2"
+  ],
+  "tech_power_plant_2": [
+    "tech_power_plant_3",
+    "tech_power_hub_1"
+  ],
+  "tech_power_plant_3": [
+    "tech_power_plant_4",
+    "tech_repeatable_improved_tile_energy_output"
+  ],
+  "tech_power_hub_1": [
+    "tech_power_hub_2"
+  ],
+  "tech_hyper_drive_1": [
+    "tech_hyper_drive_2",
+    "tech_ftl_inhibitor"
+  ],
+  "tech_lasers_4": [
+    "tech_repeatable_weapon_type_energy_damage",
+    "tech_lasers_5",
+    "tech_energy_lance_1",
+    "tech_energy_torpedoes_1"
+  ],
+  "tech_lasers_2": [
+    "tech_repeatable_weapon_type_energy_fire_rate",
+    "tech_lasers_3",
+    "tech_plasma_1",
+    "tech_disruptors_1"
+  ],
+  "tech_lasers_1": [
+    "tech_lasers_2"
+  ],
+  "tech_lasers_3": [
+    "tech_lasers_4"
+  ],
+  "tech_energy_lance_1": [
+    "tech_energy_lance_2"
+  ],
+  "tech_lasers_5": [
+    "tech_energy_lance_2"
+  ],
+  "tech_plasma_1": [
+    "tech_plasma_2"
+  ],
+  "tech_plasma_2": [
+    "tech_plasma_3"
+  ],
+  "tech_disruptors_3": [
+    "tech_arc_emitter_1"
+  ],
+  "tech_arc_emitter_1": [
+    "tech_arc_emitter_2"
+  ],
+  "tech_disruptors_1": [
+    "tech_disruptors_2"
+  ],
+  "tech_disruptors_2": [
+    "tech_disruptors_3"
+  ],
+  "tech_energy_torpedoes_1": [
+    "tech_energy_torpedoes_2"
+  ],
+  "tech_pd_tracking_1": [
+    "tech_pd_tracking_2"
+  ],
+  "tech_pd_tracking_2": [
+    "tech_pd_tracking_3"
+  ],
+  "tech_psionic_aura": [
+    "tech_aura_intensification",
+    "tech_aura_resonation"
+  ],
+  "tech_interplanetary_commerce": [
+    "tech_space_trading"
+  ],
+  "tech_space_trading": [
+    "tech_interstellar_economics"
+  ],
+  "tech_interstellar_economics": [
+    "tech_galactic_markets"
+  ],
+  "tech_industrial_farming": [
+    "tech_eco_simulation",
+    "tech_bio_reactor"
+  ],
+  "tech_eco_simulation": [
+    "tech_gene_crops",
+    "tech_food_processing_1"
+  ],
+  "tech_gene_crops": [
+    "tech_nano_vitality_crops",
+    "tech_repeatable_improved_tile_food_output"
+  ],
+  "tech_nano_vitality_crops": [
+    "tech_nutrient_replication"
+  ],
+  "tech_food_processing_1": [
+    "tech_food_processing_2"
+  ],
+  "tech_society_1": [
+    "tech_society_2"
+  ],
+  "tech_society_2": [
+    "tech_society_3"
+  ],
+  "tech_space_exploration": [
+    "tech_colonization_1"
+  ],
+  "tech_colonization_2": [
+    "tech_colonization_3"
+  ],
+  "tech_colonization_3": [
+    "tech_colonization_4",
+    "tech_tomb_world_adaption"
+  ],
+  "tech_colonization_4": [
+    "tech_colonization_5"
+  ],
+  "tech_basic_health": [
+    "tech_frontier_health"
+  ],
+  "tech_genome_mapping": [
+    "tech_frontier_health",
+    "tech_vitality_boosters",
+    "tech_epigenetic_triggers",
+    "tech_cloning",
+    "tech_gene_tailoring",
+    "tech_subdermal_stimulation"
+  ],
+  "tech_frontier_health": [
+    "tech_frontier_hospital"
+  ],
+  "tech_terrestrial_sculpting": [
+    "tech_ecological_adaptation",
+    "tech_climate_restoration",
+    "tech_volcanic_terraforming"
+  ],
+  "tech_volcano": [
+    "tech_volcanic_terraforming"
+  ],
+  "tech_cloning": [
+    "tech_gene_banks"
+  ],
+  "tech_gene_tailoring": [
+    "tech_gene_seed_purification",
+    "tech_glandular_acclimation",
+    "tech_gene_expressions"
+  ],
+  "tech_epigenetic_triggers": [
+    "tech_morphogenetic_field_mastery"
+  ],
+  "tech_vitality_boosters": [
+    "tech_selected_lineages",
+    "tech_repeatable_improved_leader_life_span"
+  ],
+  "tech_selected_lineages": [
+    "tech_capacity_boosters"
+  ],
+  "tech_doctrine_fleet_size_1": [
+    "tech_doctrine_fleet_size_2"
+  ],
+  "tech_doctrine_fleet_size_2": [
+    "tech_doctrine_fleet_size_3"
+  ],
+  "tech_doctrine_fleet_size_3": [
+    "tech_doctrine_fleet_size_4"
+  ],
+  "tech_doctrine_fleet_size_4": [
+    "tech_doctrine_fleet_size_5"
+  ],
+  "tech_interstellar_fleet_traditions": [
+    "tech_refit_standards"
+  ],
+  "tech_refit_standards": [
+    "tech_command_matrix"
+  ],
+  "tech_doctrine_navy_size_1": [
+    "tech_doctrine_navy_size_2"
+  ],
+  "tech_doctrine_navy_size_2": [
+    "tech_doctrine_navy_size_3"
+  ],
+  "tech_doctrine_navy_size_3": [
+    "tech_doctrine_navy_size_4"
+  ],
+  "tech_centralized_command": [
+    "tech_combat_training"
+  ],
+  "tech_ground_defense_planning": [
+    "tech_global_defense_grid"
+  ],
+  "tech_psionic_theory": [
+    "tech_telepathy",
+    "tech_psionic_barrier",
+    "tech_psionic_shield",
+    "tech_covenant_composer",
+    "tech_covenant_eater",
+    "tech_covenant_instrument",
+    "tech_covenant_cradle",
+    "tech_covenant_whisperers"
+  ],
+  "tech_telepathy": [
+    "tech_precognition_interface",
+    "tech_thought_enforcement"
+  ],
+  "tech_precognition_interface": [
+    "tech_psi_jump_drive_1"
+  ],
+  "tech_galactic_ambitions": [
+    "tech_manifest_destiny",
+    "tech_interstellar_campaigns",
+    "tech_repeatable_improved_starbase_capacity"
+  ],
+  "tech_interstellar_campaigns": [
+    "tech_galactic_campaigns"
+  ],
+  "tech_galactic_campaigns": [
+    "tech_existential_campaigns"
+  ],
+  "tech_planetary_government": [
+    "tech_planetary_unification",
+    "tech_holographic_rituals"
+  ],
+  "tech_planetary_unification": [
+    "tech_colonial_centralization",
+    "tech_adaptive_bureaucracy",
+    "tech_cultural_heritage",
+    "tech_capital_productivity_1"
+  ],
+  "tech_subdermal_stimulation": [
+    "tech_tracking_implants"
+  ],
+  "tech_galactic_bureaucracy": [
+    "tech_tracking_implants",
+    "tech_repeatable_improved_core_system_cap"
+  ],
+  "tech_adaptive_bureaucracy": [
+    "tech_effective_bureaucracy",
+    "tech_colonial_bureaucracy"
+  ],
+  "tech_autonomous_agents": [
+    "tech_embodied_dynamism"
+  ],
+  "tech_artificial_moral_codes": [
+    "tech_synthetic_thought_patterns",
+    "tech_penal_colonies",
+    "tech_resort_colonies"
+  ],
+  "tech_unity_of_purpose": [
+    "tech_collective_production_methods",
+    "tech_resource_processing_algorithms"
+  ],
+  "tech_holo_entertainment": [
+    "tech_hyper_entertainment_forum"
+  ],
+  "tech_cultural_heritage": [
+    "tech_heritage_site"
+  ],
+  "tech_heritage_site": [
+    "tech_hypercomms_forum"
+  ],
+  "tech_holographic_rituals": [
+    "tech_consecration_fields"
+  ],
+  "tech_consecration_fields": [
+    "tech_transcendent_faith"
+  ],
+  "tech_hive_node": [
+    "tech_hive_cluster"
+  ],
+  "tech_hive_cluster": [
+    "tech_hive_confluence"
+  ],
+  "tech_wilderness_node": [
+    "tech_wilderness_cluster"
+  ],
+  "tech_wilderness_cluster": [
+    "tech_wilderness_confluence"
+  ],
+  "tech_neural_implants": [
+    "tech_slave_colonies"
+  ],
+  "tech_federation_code": [
+    "tech_xeno_diplomacy"
+  ],
+  "tech_xeno_diplomacy": [
+    "tech_xeno_relations"
+  ],
+  "tech_capital_productivity_1": [
+    "tech_capital_productivity_2"
+  ],
+  "tech_capital_productivity_2": [
+    "tech_capital_productivity_3"
+  ],
+  "tech_node_reformatting_1": [
+    "tech_node_reformatting_2"
+  ],
+  "tech_node_reformatting_2": [
+    "tech_node_reformatting_3"
+  ],
+  "tech_node_culling_1": [
+    "tech_node_culling_2"
+  ],
+  "tech_node_culling_2": [
+    "tech_node_culling_3"
+  ],
+  "tech_bio_reactor": [
+    "tech_bio_reactor_2"
+  ],
+  "tech_combat_training": [
+    "tech_repeatable_improved_army_damage",
+    "tech_repeatable_improved_army_health"
+  ],
+  "tech_doctrine_navy_size_4": [
+    "tech_repeatable_naval_cap"
+  ],
+  "tech_doctrine_fleet_size_5": [
+    "tech_repeatable_command_limit"
+  ],
+  "tech_strike_craft_3": [
+    "tech_repeatable_weapon_type_strike_craft_fire_damage",
+    "tech_repeatable_weapon_type_strike_craft_fire_rate"
+  ],
+  "tech_sensors_4": [
+    "tech_mine_dark_matter"
+  ],
+  "tech_robomodding_points_1": [
+    "tech_robomodding_points_2"
+  ],
+  "tech_binary_motivators": [
+    "tech_nanite_assemblers",
+    "tech_mega_assembly"
+  ],
+  "tech_adaptive_combat_algorithms": [
+    "tech_biomechanics"
+  ],
+  "tech_micro_replicators": [
+    "tech_self_assembling_components"
+  ]
+}

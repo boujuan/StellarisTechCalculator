@@ -1,0 +1,935 @@
+{
+  "DLC": {
+    "facts": {
+      "Utopia": [
+        "has_utopia:yes",
+        "host_has_dlc:Utopia"
+      ],
+      "Apocalypse": [
+        "host_has_dlc:Apocalypse"
+      ],
+      "Distant Stars": [
+        "host_has_dlc:Distant Stars Story Pack"
+      ],
+      "Megacorp": [
+        "host_has_dlc:Megacorp"
+      ],
+      "Ancient Relics": [
+        "has_ancrel:yes"
+      ],
+      "Federations": [
+        "host_has_dlc:Federations"
+      ],
+      "Nemesis": [
+        "has_nemesis:yes"
+      ],
+      "Overlord": [
+        "has_overlord_dlc:yes"
+      ],
+      "First Contact": [
+        "has_first_contact_dlc:yes"
+      ],
+      "Galactic Paragons": [
+        "has_paragon_dlc:yes"
+      ],
+      "Astral Planes": [
+        "has_astral_planes_dlc:yes"
+      ],
+      "The Machine Age": [
+        "has_machine_age_dlc:yes"
+      ],
+      "Cosmic Storms": [
+        "has_cosmic_storms_dlc:yes"
+      ],
+      "Grand Archive": [
+        "has_grand_archive_dlc:yes"
+      ],
+      "Biogenesis": [
+        "has_biogenesis_dlc:yes"
+      ],
+      "Shadows of the Shroud": [
+        "has_shroud_dlc:yes"
+      ],
+      "Infernals": [
+        "has_infernals:yes"
+      ]
+    }
+  },
+  "Game Year": {
+    "facts": {
+      "Current Game Year": [
+        "years_passed:5",
+        "years_passed:6",
+        "years_passed:11",
+        "years_passed:16",
+        "years_passed:21",
+        "years_passed:26",
+        "years_passed:31",
+        "years_passed:36",
+        "years_passed:41",
+        "years_passed:51",
+        "years_passed:61",
+        "years_passed:66",
+        "years_passed:71",
+        "years_passed:91",
+        "years_passed:96",
+        "years_passed:101",
+        "years_passed:131",
+        "years_passed:141",
+        "years_passed:151"
+      ]
+    }
+  },
+  "Empire Setup": {
+    "Origins": {
+      "facts": {
+        "Endbringers": [
+          "has_origin:origin_endbringers"
+        ],
+        "Fruitful Partnership": [
+          "has_origin:origin_fruitful"
+        ],
+        "Life Seeded": [
+          "has_origin:origin_life_seeded"
+        ],
+        "Mechanists": [
+          "has_origin:origin_mechanists"
+        ],
+        "Mind Wardens": [
+          "has_origin:origin_mindwardens"
+        ],
+        "Necrophage": [
+          "has_origin:origin_necrophage",
+          "has_trait:trait_necrophage"
+        ],
+        "Overtuned": [
+          "has_origin:origin_overtuned"
+        ],
+        "Red Giant": [
+          "has_origin:origin_red_giant"
+        ],
+        "Shattered Ring": [
+          "has_origin:origin_shattered_ring"
+        ],
+        "Shroud-Forged": [
+          "has_origin:origin_shroud_forged"
+        ],
+        "Slingshot to the Stars": [
+          "has_origin:origin_star_slingshot"
+        ],
+        "Stormchasers": [
+          "has_origin:origin_storm_chasers"
+        ],
+        "Synthetic Fertility": [
+          "has_origin:origin_synthetic_fertility"
+        ],
+        "Knights of the Toxic God": [
+          "has_origin:origin_toxic_knights"
+        ],
+        "Void Dweller": [
+          "has_void_dweller_origin:yes",
+          "is_void_dweller_empire:yes"
+        ],
+        "Wilderness": [
+          "is_wilderness_empire:yes"
+        ]
+      }
+    },
+    "Ethics": {
+      "facts": {
+        "Gestalt Consciousness": [
+          "is_gestalt:yes",
+          "has_ethic:ethic_gestalt_consciousness"
+        ],
+        "Militarist": [
+          "has_ethic:ethic_militarist"
+        ],
+        "Fanatic Militarist": [
+          "has_ethic:ethic_fanatic_militarist"
+        ],
+        "Pacifist": [
+          "has_ethic:ethic_pacifist"
+        ],
+        "Fanatic Pacifist": [
+          "has_ethic:ethic_fanatic_pacifist"
+        ],
+        "Xenophobe": [
+          "has_ethic:ethic_xenophobe"
+        ],
+        "Fanatic Xenophobe": [
+          "has_ethic:ethic_fanatic_xenophobe"
+        ],
+        "Xenophile": [
+          "has_ethic:ethic_xenophile"
+        ],
+        "Fanatic Xenophile": [
+          "has_ethic:ethic_fanatic_xenophile"
+        ],
+        "Authoritarian": [
+          "has_ethic:ethic_authoritarian"
+        ],
+        "Fanatic Authoritarian": [
+          "has_ethic:ethic_fanatic_authoritarian"
+        ],
+        "Egalitarian": [
+          "has_ethic:ethic_egalitarian"
+        ],
+        "Fanatic Egalitarian": [
+          "has_ethic:ethic_fanatic_egalitarian"
+        ],
+        "Materialist": [
+          "has_ethic:ethic_materialist"
+        ],
+        "Fanatic Materialist": [
+          "has_ethic:ethic_fanatic_materialist"
+        ],
+        "Spiritualist": [
+          "has_ethic:ethic_spiritualist"
+        ],
+        "Fanatic Spiritualist": [
+          "has_ethic:ethic_fanatic_spiritualist"
+        ]
+      }
+    },
+    "Authority": {
+      "facts": {
+        "Hive Mind": [
+          "is_hive_empire:yes"
+        ],
+        "Machine Intelligence": [
+          "is_machine_empire:yes"
+        ],
+        "Corporate": [
+          "is_megacorp:yes"
+        ],
+        "Advanced Cloning Authority": [
+          "is_cloning_authority:yes"
+        ]
+      }
+    },
+    "Civics": {
+      "facts": {
+        "Dystopian Society": [
+          "has_civic:civic_dystopian_society"
+        ],
+        "Inward perfection": [
+          "has_civic:civic_inwards_perfection"
+        ],
+        "Driven Assimilator": [
+          "has_civic:civic_machine_assimilator",
+          "has_valid_civic:civic_machine_assimilator"
+        ],
+        "Guided Sapience": [
+          "has_civic:civic_machine_guided_sapience",
+          "is_guided_sapience_empire:yes"
+        ],
+        "Rogue Servitor": [
+          "has_civic:civic_machine_servitor",
+          "has_valid_civic:civic_machine_servitor"
+        ],
+        "Storm Devotion": [
+          "has_storm_attraction_civic:yes"
+        ],
+        "Agrarian Idyll": [
+          "has_valid_civic:civic_agrarian_idyll"
+        ],
+        "Fanatic Purifiers": [
+          "has_valid_civic:civic_fanatic_purifiers"
+        ],
+        "Devouring Swarm": [
+          "has_valid_civic:civic_hive_devouring_swarm"
+        ],
+        "Natural Design": [
+          "has_valid_civic:civic_hive_natural_design",
+          "has_valid_civic:civic_natural_design",
+          "is_natural_design_empire:yes"
+        ],
+        "Determined Exterminator": [
+          "has_valid_civic:civic_machine_terminator"
+        ],
+        "Police State": [
+          "has_valid_civic:civic_police_state"
+        ],
+        "Anglers": [
+          "is_anglers_empire:yes"
+        ],
+        "Beastmasters": [
+          "is_beastmasters_empire:yes"
+        ],
+        "Catalytic Processing": [
+          "is_catalytic_empire:yes"
+        ],
+        "Eager Explorers": [
+          "is_eager_explorer_empire:yes"
+        ],
+        "Entropy Drinkers": [
+          "is_entropy_drinkers_empire:yes"
+        ],
+        "Galactic Curators": [
+          "is_galactic_curators_empire:yes"
+        ],
+        "Player Forgers": [
+          "is_world_forger_empire:yes"
+        ],
+        "Memorialists": [
+          "is_memorialist_empire:yes"
+        ],
+        "Terravore": [
+          "is_lithoid_devouring_swarm:yes"
+        ],
+        "Scorched World Heralds": [
+          "has_valid_civic:civic_hive_scorched_earth",
+          "has_valid_civic:civic_scorched_earth"
+        ],
+        "Dimensional Worship": [
+          "is_dimensional_worship_empire:yes"
+        ],
+        "Tankbound": [
+          "is_tankbound_empire:yes"
+        ]
+      }
+    },
+    "Shipset": {
+      "facts": {
+        "Using Biological Shipset": [
+          "country_uses_bio_ships:yes"
+        ]
+      }
+    }
+  },
+  "Council": {
+    "Expertise Traits": {
+      "facts": {
+        "Computing": [
+          "TRAIT:leader_trait_expertise_computing"
+        ],
+        "Field Manipulation": [
+          "TRAIT:leader_trait_expertise_field_manipulation"
+        ],
+        "Particles": [
+          "TRAIT:leader_trait_expertise_particles"
+        ],
+        "Archaeostudies": [
+          "TRAIT:leader_trait_expertise_archaeostudies"
+        ],
+        "Biology": [
+          "TRAIT:leader_trait_expertise_biology"
+        ],
+        "Military Theory": [
+          "TRAIT:leader_trait_expertise_military_theory"
+        ],
+        "New Worlds": [
+          "TRAIT:leader_trait_expertise_new_worlds"
+        ],
+        "Psionics": [
+          "TRAIT:leader_trait_expertise_psionics"
+        ],
+        "Statecraft": [
+          "TRAIT:leader_trait_expertise_statecraft"
+        ],
+        "Industry": [
+          "TRAIT:leader_trait_expertise_industry"
+        ],
+        "Materials": [
+          "TRAIT:leader_trait_expertise_materials"
+        ],
+        "Propulsion": [
+          "TRAIT:leader_trait_expertise_propulsion"
+        ],
+        "Voidcraft": [
+          "TRAIT:leader_trait_expertise_voidcraft"
+        ]
+      }
+    },
+    "Traits": {
+      "facts": {
+        "Maniacal": [
+          "TRAIT:leader_trait_maniacal",
+          "TRAIT:leader_trait_maniacal_2",
+          "TRAIT:leader_trait_maniacal_3"
+        ],
+        "Spark of Genius": [
+          "TRAIT:leader_trait_spark_of_genius",
+          "TRAIT:leader_trait_spark_of_genius_2"
+        ],
+        "Curator Insight": [
+          "TRAIT:leader_trait_curator",
+          "has_modifier:curator_insight"
+        ],
+        "Psionic/ Chosen Trait": [
+          "TRAIT:leader_trait_psionic",
+          "TRAIT:leader_trait_instrument_chosen",
+          "TRAIT:leader_trait_chosen",
+          "TRAIT:leader_trait_composer_chosen",
+          "TRAIT:leader_trait_whisperers_chosen"
+        ],
+        "Cunning": [
+          "TRAIT:leader_trait_fotd_scientist"
+        ]
+      }
+    },
+    "Council Positions": {
+      "facts": {
+        "Shroudwalker Teacher Councillor Skill Level": [
+          "COUNCILOR:councilor_shroudwalker_teacher",
+          "has_trait:leader_trait_shroudwalker"
+        ],
+        "Storm Caller Councillor Skill Level": [
+          "is_councilor_type = councilor_storm_callers"
+        ]
+      }
+    },
+    "Misc": {
+      "facts": {
+        "Highest Councillor Base Skill": [
+          "councilor_base_skill:2",
+          "councilor_base_skill:3",
+          "councilor_base_skill:4",
+          "councilor_base_skill:5",
+          "councilor_base_skill:6",
+          "councilor_base_skill:7",
+          "councilor_base_skill:8",
+          "councilor_base_skill:9"
+        ],
+        "Finished Impenetrable Border Agenda": [
+          "has_modifier:agenda_impenetrable_border_finish"
+        ]
+      }
+    }
+  },
+  "Traditions & Ascension Perks": {
+    "Traditions": {
+      "facts": {
+        "Diplomacy: Adoption": [
+          "has_tradition:tr_diplomacy_adopt"
+        ],
+        "Discovery: Adoption": [
+          "has_tradition:tr_discovery_adopt"
+        ],
+        "Domestication: Adoption": [
+          "has_tradition:tr_domestication_adopt"
+        ],
+        "Expansion: Adoption": [
+          "has_tradition:tr_expansion_adopt"
+        ],
+        "Expansion: Finisher": [
+          "has_tradition:tr_expansion_finish"
+        ],
+        "Harmony: Adoption": [
+          "has_tradition:tr_harmony_adopt"
+        ],
+        "Nanotech: Flood of Supremacy": [
+          "has_tradition:tr_nanotech_4"
+        ],
+        "Prosperity: Adoption": [
+          "has_tradition:tr_prosperity_adopt"
+        ],
+        "Prosperity: Finisher": [
+          "has_tradition:tr_prosperity_finish"
+        ],
+        "Psionic: Adoption": [
+          "has_psionic_ascension:yes"
+        ],
+        "Subterfuge: Adoption": [
+          "has_tradition:tr_subterfuge_adopt"
+        ],
+        "Supremacy: Adoption": [
+          "has_tradition:tr_supremacy_adopt"
+        ],
+        "Unyielding: Adoption": [
+          "has_tradition:tr_unyielding_adopt"
+        ]
+      }
+    },
+    "Ascension Perks": {
+      "facts": {
+        "Archaeo-Engineers": [
+          "has_ascension_perk:ap_archaeoengineers"
+        ],
+        "Engineered Evolution": [
+          "has_ascension_perk:ap_engineered_evolution"
+        ],
+        "Enigmatic Engineering": [
+          "has_ascension_perk:ap_enigmatic_engineering"
+        ],
+        "Eternal Vigilance": [
+          "has_ascension_perk:ap_eternal_vigilance"
+        ],
+        "Galactic Force Projection": [
+          "has_ascension_perk:ap_galactic_force_projection"
+        ],
+        "Galactic Weather Control": [
+          "has_ascension_perk:ap_weather_control"
+        ],
+        "Galactic Wonders": [
+          "has_ascension_perk:ap_galactic_wonders_megacorp",
+          "has_ascension_perk:ap_galactic_wonders_utopia_and_megacorp",
+          "has_ascension_perk:ap_galactic_wonders_utopia"
+        ],
+        "Grasp the Void": [
+          "has_ascension_perk:ap_grasp_the_void"
+        ],
+        "Master Builders": [
+          "has_ascension_perk:ap_master_builders"
+        ],
+        "Mastery of Nature": [
+          "has_ascension_perk:ap_mastery_of_nature"
+        ],
+        "One Vision": [
+          "has_ascension_perk:ap_one_vision"
+        ],
+        "Organo-Machine Interfacing": [
+          "has_ascension_perk:ap_organo_machine_interfacing_assimilator",
+          "has_ascension_perk:ap_organo_machine_interfacing"
+        ],
+        "Synthetic Evolution": [
+          "has_ascension_perk:ap_synthetic_evolution",
+          "has_country_flag:advanced_identity_creation"
+        ],
+        "Technological Ascendancy": [
+          "has_ascension_perk:ap_technological_ascendancy"
+        ],
+        "The Flesh is Weak": [
+          "has_ascension_perk:ap_the_flesh_is_weak"
+        ],
+        "Ascension Perks Used: 6": [
+          "num_ascension_perk_slots:6"
+        ],
+        "Colossus Project: Special Project": [
+          "has_country_flag:colossus_project"
+        ]
+      }
+    },
+    "Crisis": {
+      "facts": {
+        "Galactic Nemesis Crisis Level": [
+          "has_ascension_perk:ap_become_the_crisis",
+          "has_crisis_level:crisis_level_2",
+          "has_country_flag:can_build_star_eaters"
+        ],
+        "Cosmogenesis Crisis Level": [
+          "has_ascension_perk:ap_cosmogenesis",
+          "has_crisis_level:crisis_cosmogenesis_level_1",
+          "has_crisis_level:crisis_cosmogenesis_level_2",
+          "has_crisis_level:crisis_cosmogenesis_level_3",
+          "has_crisis_level:crisis_cosmogenesis_level_4",
+          "has_crisis_level:crisis_cosmogenesis_level_5"
+        ],
+        "Own Synaptic Lathe": [
+          "is_planet_class:pc_cosmogenesis_world"
+        ],
+        "Number of Pops in Synaptic Lathe": [
+          "num_pops_lathe:5000",
+          "num_pops_lathe:5001",
+          "num_pops_lathe:10000"
+        ],
+        "Behemoth Fury Crisis Level": [
+          "has_menace_perk:menp_behemoth_ever_hungry"
+        ],
+        "Galactic Hyperthermia Crisis Level": [
+          "has_ascension_perk:ap_galactic_hyperthermia"
+        ],
+        "Formed Covenant: End of the Cycle": [
+          "has_country_flag:covenant_end_of_the_cycle"
+        ],
+        "Granted Cetana Knowledge": [
+          "has_country_flag:synth_queen_knowledge"
+        ]
+      }
+    }
+  },
+  "Exploration": {
+    "facts": {
+      "L-Cluster Opened": [
+        "has_country_flag:completed_lcluster_chain",
+        "has_global_flag:l_cluster_opened"
+      ],
+      "Encountered L-Gate": [
+        "has_country_flag:encountered_first_lgate",
+        "has_seen_any_bypass:lgate"
+      ],
+      "Seen Gateway": [
+        "has_seen_any_bypass:gateway"
+      ],
+      "Seen Hyper Relay": [
+        "has_seen_any_bypass:relay_bypass"
+      ],
+      "Seen Wormhole": [
+        "has_seen_any_bypass:wormhole"
+      ],
+      "Encountered Space Fauna": [
+        "has_encountered_any_fauna:yes"
+      ],
+      "Encountered a Psionic Aura": [
+        "has_encountered_psionic_auras:yes"
+      ],
+      "Number of Cosmic Storms Encountered": [
+        "num_cosmic_storms_encountered:1",
+        "num_cosmic_storms_encountered:3",
+        "num_cosmic_storms_encountered:4",
+        "num_cosmic_storms_encountered:5"
+      ],
+      "Acquired a Grand Archive Specimen": [
+        "acquired_specimen_count:1"
+      ],
+      "Acquired Javorian Pox Relic": [
+        "has_relic:r_pox_sample"
+      ],
+      "Acquired Psionic Archive Relic": [
+        "has_relic:r_zro_crystal"
+      ],
+      "Finished Precursor Event Chain": [
+        "has_completed_precursor_research:yes"
+      ],
+      "Shoulders of Giant Origin: Obtained Closure": [
+        "has_country_flag:origin_shoulders_closure"
+      ],
+      "Collected Minor Artifact": [
+        "minor_artifacts:1"
+      ],
+      "Completed 3 Dig Sites": [
+        "dig_sites_complete:3"
+      ],
+      "Obtained Fauna DNA": [
+        "has_any_dna:yes"
+      ],
+      "Found Presapients": [
+        "has_country_flag:found_presapients"
+      ],
+      "Found Astral Threads": [
+        "has_country_flag:astral_threads_found",
+        "astral_threads:1",
+        "exists:astral_rift",
+        "is_astral_scar:yes"
+      ],
+      "Found Dark Matter": [
+        "has_country_flag:dark_matter_found",
+        "sr_dark_matter:1"
+      ]
+    }
+  },
+  "Empire State": {
+    "Resources": {
+      "facts": {
+        "Volatile Motes in Empire": [
+          "has_deposit:d_dust_caverns",
+          "has_deposit:d_dust_desert",
+          "has_deposit:d_volatile_motes_1",
+          "has_deposit:d_volatile_motes_2",
+          "has_deposit:d_volatile_motes_3",
+          "has_deposit:d_volatile_motes_4",
+          "has_deposit:d_volatile_motes_5"
+        ],
+        "Rare Crystals in Empire": [
+          "has_deposit:d_crystal_forest",
+          "has_deposit:d_crystal_reef",
+          "has_deposit:d_crystalline_caverns",
+          "has_deposit:d_rare_crystals_1",
+          "has_deposit:d_rare_crystals_2",
+          "has_deposit:d_rare_crystals_3",
+          "has_deposit:d_rare_crystals_4",
+          "has_deposit:d_rare_crystals_5"
+        ],
+        "Exotic Gases in Emprie": [
+          "has_deposit:d_bubbling_swamp",
+          "has_deposit:d_exotic_mountain",
+          "has_deposit:d_fuming_bog",
+          "has_deposit:d_exotic_gases_1",
+          "has_deposit:d_exotic_gases_2",
+          "has_deposit:d_exotic_gases_3",
+          "has_deposit:d_exotic_gases_4",
+          "has_deposit:d_exotic_gases_5"
+        ],
+        "Zoo Exhibit in Empire: Pets/ Avian Reserve/ Presapient/ Livestock/ Disconnected Drone": [
+          "has_deposit:d_alien_pets_deposit",
+          "has_deposit:d_avian_reserve",
+          "is_sapient:no",
+          "is_livestock:yes",
+          "has_disconnected_drone_citizenship_type:yes"
+        ],
+        "Nanites in Empire": [
+          "nanites:1"
+        ],
+        "Betharian Stone in Empire": [
+          "has_deposit:d_betharian_deposit"
+        ],
+        "Living Metal in Empire": [
+          "has_deposit:d_living_metal_deposit"
+        ],
+        "Nebula in Empire": [
+          "is_inside_nebula:yes"
+        ]
+      }
+    },
+    "Districts & Buildings": {
+      "facts": {
+        "Generator District in Empire": [
+          "district_generator:1",
+          "district_hab_energy:1",
+          "district_photosynthesis_fields:1",
+          "has_any_generator_zone:yes"
+        ],
+        "Mining District in Empire": [
+          "district_mining:1",
+          "district_hab_mining:1",
+          "district_hollow_mountains:1",
+          "has_any_mining_zone:yes"
+        ],
+        "Farming District in Empire": [
+          "has_any_capped_planet_farming_district:yes",
+          "has_any_agriculture_zone:yes"
+        ],
+        "Built Faculty of Archaeostudies": [
+          "archaeo_building:1"
+        ]
+      }
+    },
+    "Planets": {
+      "facts": {
+        "Number of Colonised Planets": [
+          "num_owned_planets:2",
+          "num_owned_planets:3",
+          "num_owned_planets:4",
+          "num_owned_planets:5",
+          "num_owned_planets:6",
+          "num_owned_planets:7",
+          "num_owned_planets:8",
+          "num_owned_planets:9",
+          "num_owned_planets:10",
+          "num_owned_planets:11",
+          "num_owned_planets:16",
+          "num_owned_planets:21"
+        ],
+        "Own a Habitat": [
+          "is_planet_class:pc_habitat"
+        ],
+        "Own a Tomb World": [
+          "is_planet_class:pc_nuked"
+        ],
+        "Own a Volcanic World": [
+          "is_planet_class:pc_volcanic"
+        ]
+      }
+    },
+    "Tile Blockers on Colonies": {
+      "facts": {
+        "Massive Glacier": [
+          "has_deposit:d_massive_glacier"
+        ],
+        "Toxic Kelp": [
+          "has_deposit:d_toxic_kelp"
+        ],
+        "Dense Jungle": [
+          "has_deposit:d_dense_jungle"
+        ],
+        "Quicksand Basin": [
+          "has_deposit:d_quicksand_basin"
+        ],
+        "Deep Sinkhole": [
+          "has_deposit:d_deep_sinkhole"
+        ],
+        "Noxious Swamp": [
+          "has_deposit:d_noxious_swamp"
+        ],
+        "Dangerous Wildlife": [
+          "has_deposit:d_dangerous_wildlife_blocker"
+        ],
+        "Active Volcano": [
+          "has_deposit:d_active_volcano"
+        ],
+        "Impassable Mountains": [
+          "has_deposit:d_mountain_range"
+        ]
+      }
+    },
+    "Structures": {
+      "facts": {
+        "Number of Starbases Starport Tier or Higher": [
+          "num_starport:3"
+        ],
+        "Number of Starbases Starhold Tier or Higher": [
+          "num_starhold:1",
+          "num_starhold:2",
+          "num_starhold:3",
+          "num_starhold:4",
+          "num_starhold:5",
+          "num_starhold:6"
+        ],
+        "Number of Starbases Starfortress Tier or Higher": [
+          "num_starfortress:3"
+        ],
+        "Number of Starbases Citadel Tier or Higher": [
+          "num_citadel:1",
+          "num_citadel:2",
+          "num_citadel:3",
+          "num_citadel:4",
+          "num_citadel:5",
+          "num_citadel:6"
+        ],
+        "Have any Megastructure in Empire": [
+          "has_any_megastructure_in_empire:yes"
+        ],
+        "Own Dyson Swarm": [
+          "has_megastructure:dyson_swarm_1",
+          "has_megastructure:dyson_swarm_2",
+          "has_megastructure:dyson_swarm_3"
+        ],
+        "Own Hyper Relay": [
+          "has_megastructure:hyper_relay",
+          "has_megastructure:hyper_relay_restored",
+          "has_megastructure:hyper_relay_ruined"
+        ],
+        "Own Arc Furnace": [
+          "has_megastructure:orbital_arc_furnace_1",
+          "has_megastructure:orbital_arc_furnace_2",
+          "has_megastructure:orbital_arc_furnace_3",
+          "has_megastructure:orbital_arc_furnace_4"
+        ],
+        "Own Quantum Catapult": [
+          "has_megastructure:quantum_catapult_1",
+          "has_megastructure:quantum_catapult_2",
+          "has_megastructure:quantum_catapult_3",
+          "has_megastructure:quantum_catapult_restored",
+          "has_megastructure:quantum_catapult_restored_slingshot",
+          "has_megastructure:quantum_catapult_ruined",
+          "has_megastructure:quantum_catapult_ruined_slingshot"
+        ],
+        "Own Gateway": [
+          "owns_any_bypass:gateway"
+        ],
+        "Own L-Gate": [
+          "owns_any_bypass:lgate"
+        ],
+        "Own Wormhole": [
+          "owns_any_bypass:wormhole"
+        ]
+      }
+    },
+    "Pops and Species": {
+      "facts": {
+        "Main Species: Organics": [
+          "is_organic_species:yes"
+        ],
+        "Main Species: Lithoid": [
+          "is_lithoid_empire:yes"
+        ],
+        "Main Species: Machine": [
+          "is_mechanical_empire:yes"
+        ],
+        "Main Species: Infernal": [
+          "is_infernal_empire:yes"
+        ],
+        "Own Pop with Trait: Latent Psionic": [
+          "is_latent_psionic_species:yes"
+        ],
+        "Own Pop with Trait: Psionic": [
+          "is_psionic_species:yes",
+          "has_psionic_species_trait:yes"
+        ],
+        "Own Pop with Trait: Aquatic": [
+          "has_trait:trait_aquatic",
+          "has_trait:trait_robot_aquatic"
+        ],
+        "Own Pop with Trait: Nascent Stage": [
+          "has_trait:trait_nascent_stage"
+        ],
+        "Empire Uses Food": [
+          "country_uses_food:yes"
+        ],
+        "Empire Uses Consumer Goods": [
+          "country_uses_consumer_goods:yes"
+        ],
+        "Empire has Non-Lithoid-Subspecies": [
+          "has_country_flag:non_lithoid_subspecies"
+        ],
+        "Number of Pops Enslaved": [
+          "num_pops_enslaved:1000",
+          "num_pops_enslaved:2000",
+          "num_pops_enslaved:3000"
+        ]
+      }
+    },
+    "Policy": {
+      "facts": {
+        "Allows Slavery": [
+          "allows_slavery:yes",
+          "is_enslaved:yes"
+        ],
+        "Robots Outlawed": [
+          "has_policy_flag:robots_outlawed"
+        ],
+        "AI Outlawed": [
+          "has_policy_flag:ai_outlawed"
+        ]
+      }
+    }
+  },
+  "Diplomacy": {
+    "facts": {
+      "Number of Communications": [
+        "num_communications:1",
+        "num_communications:2",
+        "num_communications:3",
+        "num_communications:4",
+        "num_communications:5",
+        "can_form_federation_with_empire:yes"
+      ],
+      "Member of Galactic Community": [
+        "is_galactic_community_member:yes"
+      ],
+      "Part of Galactic Market": [
+        "has_country_flag:has_market_access"
+      ],
+      "Unchained Knowedge: Extradimensional Experimentation Passed": [
+        "is_active_resolution:resolution_galacticstudies_extradimensional_experimentation"
+      ],
+      "Space Weather Exploitation Resolution Level": [
+        "is_active_resolution = resolution_cosmic_storms_shared_knowledge",
+        "is_active_resolution = resolution_cosmic_storms_protection_initiative",
+        "is_active_resolution = resolution_cosmic_storms_galactic_management",
+        "is_active_resolution = resolution_cosmic_storms_utilization_protocols",
+        "is_active_resolution = resolution_cosmic_storms_manipulation_mandate"
+      ],
+      "Is Vassal: Bulwark": [
+        "TYPE:bulwark"
+      ],
+      "Is Vassal: Prospectorium": [
+        "TYPE:prospectorium"
+      ],
+      "Is Vassal: Scholarium": [
+        "TYPE:scholarium"
+      ],
+      "In Federation": [
+        "has_federation:yes"
+      ],
+      "No Fleet Contribution in Federation": [
+        "has_federation_law:fleet_contribution_none"
+      ],
+      "Level 3 Research Cooperative": [
+        "has_federation_perk:rare_tech_boost"
+      ],
+      "Level 5 Holy Covenant": [
+        "has_make_spiritualist_perk:yes"
+      ],
+      "Formed First Spy Network": [
+        "has_country_flag:first_spynetwork"
+      ]
+    }
+  },
+  "Miscellaneous": {
+    "facts": {
+      "Jaunted Traveller Secret Revealed": [
+        "has_country_flag:jaunted_traveler_secret_revealed"
+      ],
+      "Number of Fallen Empire Techs Complete": [
+        "fe_techs_completed:4"
+      ],
+      "Payback Origin: Out of Warranty Gene Clinic Weight": [
+        "has_country_flag:payback_researching_gene_clinics"
+      ],
+      "Red Giant Origin: Gone Supernova": [
+        "has_country_flag:starfire_cannon_unlocked"
+      ]
+    }
+  }
+}
