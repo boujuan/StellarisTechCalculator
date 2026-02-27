@@ -1,4 +1,5 @@
-import { createSignal, type JSX, type Component } from "solid-js";
+import { createSignal, createEffect, on, type JSX, type Component } from "solid-js";
+import { useAccordionCommand } from "./AccordionContext";
 
 interface Props {
   title: string;
@@ -9,6 +10,21 @@ interface Props {
 
 const SectionAccordion: Component<Props> = (props) => {
   const [open, setOpen] = createSignal(props.defaultOpen ?? false);
+  const command = useAccordionCommand();
+
+  // React to expand/collapse all commands
+  createEffect(
+    on(
+      () => command().expandCount,
+      () => { if (command().expandCount > 0) setOpen(true); },
+    )
+  );
+  createEffect(
+    on(
+      () => command().collapseCount,
+      () => { if (command().collapseCount > 0) setOpen(false); },
+    )
+  );
 
   return (
     <div class="border-b border-border">

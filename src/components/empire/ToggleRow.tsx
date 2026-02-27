@@ -5,6 +5,8 @@ import { runUpdateCascade } from "../../engine/updateCascade";
 interface Props {
   displayName: string;
   facts: string[];
+  disabled?: boolean;
+  onBeforeToggle?: (newValue: boolean) => void;
 }
 
 const ToggleRow: Component<Props> = (props) => {
@@ -16,20 +18,37 @@ const ToggleRow: Component<Props> = (props) => {
   };
 
   const toggle = () => {
-    const newValue = !isChecked();
+    const checked = isChecked();
+    // When disabled, only allow toggling OFF (unchecking)
+    if (props.disabled && !checked) return;
+
+    const newValue = !checked;
+    props.onBeforeToggle?.(newValue);
     for (const fact of props.facts) {
       setAtomicValue(fact, newValue);
     }
     runUpdateCascade();
   };
 
+  const isDisabledForOn = () => props.disabled && !isChecked();
+
   return (
-    <label class="flex items-center gap-2 py-0.5 cursor-pointer hover:bg-bg-tertiary rounded px-1 -mx-1">
+    <label
+      class={`flex items-center gap-2 py-0.5 rounded px-1 -mx-1 ${
+        isDisabledForOn()
+          ? "opacity-40 cursor-not-allowed"
+          : "cursor-pointer hover:bg-bg-tertiary"
+      }`}
+      title={props.displayName}
+    >
       <input
         type="checkbox"
         checked={isChecked()}
         onChange={toggle}
-        class="w-4 h-4 accent-physics shrink-0"
+        disabled={isDisabledForOn()}
+        class={`w-4 h-4 accent-physics shrink-0 ${
+          isDisabledForOn() ? "cursor-not-allowed" : ""
+        }`}
       />
       <span class="text-sm text-text-secondary select-none">
         {props.displayName}

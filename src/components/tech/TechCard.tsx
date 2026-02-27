@@ -10,14 +10,14 @@ interface Props {
 }
 
 const AREA_COLORS: Record<string, { bg: string; border: string; text: string }> = {
-  physics: { bg: "bg-physics-dark", border: "border-physics/30", text: "text-physics" },
-  society: { bg: "bg-society-dark", border: "border-society/30", text: "text-society" },
-  engineering: { bg: "bg-engineering-dark", border: "border-engineering/30", text: "text-engineering" },
+  physics: { bg: "bg-physics-dark", border: "border-physics/60", text: "text-physics" },
+  society: { bg: "bg-society-dark", border: "border-society/60", text: "text-society" },
+  engineering: { bg: "bg-engineering-dark", border: "border-engineering/60", text: "text-engineering" },
 };
 
 const BORDER_MOD_COLORS: Record<string, string> = {
-  rare: "border-rare/50",
-  dangerous: "border-dangerous/50",
+  rare: "border-rare/80",
+  dangerous: "border-dangerous/80",
 };
 
 const TechCard: Component<Props> = (props) => {
@@ -54,11 +54,11 @@ const TechCard: Component<Props> = (props) => {
 
   return (
     <div
-      class={`rounded border p-2 cursor-pointer transition-all select-none
+      class={`rounded-lg border-2 p-3 cursor-pointer transition-all select-none
         ${borderStyle()}
         ${isResearched() ? "opacity-40" : ""}
         ${isPermanent() ? "opacity-25" : ""}
-        ${isDrawnLast() ? "ring-1 ring-dangerous/50" : ""}
+        ${isDrawnLast() ? "ring-2 ring-dangerous/60" : ""}
         ${isAvailable() ? "hover:brightness-110" : ""}
         ${areaStyle().bg}
       `}
@@ -75,7 +75,7 @@ const TechCard: Component<Props> = (props) => {
           loading="lazy"
         />
         <div class="min-w-0 flex-1">
-          <div class="text-xs font-medium text-text-primary truncate">
+          <div class="text-sm font-semibold text-text-primary truncate">
             {tech().real_name}
           </div>
           <div class="flex items-center gap-1">
@@ -100,12 +100,12 @@ const TechCard: Component<Props> = (props) => {
 
       {/* Stats row */}
       <Show when={isAvailable()}>
-        <div class="flex justify-between text-[10px] mt-1 pt-1 border-t border-white/10">
-          <span class="text-text-muted">
-            W: <span class="text-text-secondary">{formatWeight(state().current_weight)}</span>
+        <div class="flex justify-between text-xs mt-1 pt-1 border-t border-white/10">
+          <span class="text-text-muted" title="Base weight — determines how likely this tech is to appear relative to others">
+            W: <span class="text-text-primary">{formatWeight(state().current_weight)}</span>
           </span>
-          <span class="text-text-muted">
-            <span class="text-text-primary font-medium">
+          <span class="text-text-muted" title="Hit chance — Monte Carlo probability (%) this tech appears in your next research offer">
+            <span class="text-text-primary font-semibold">
               {formatPercent(state().hit_chance)}
             </span>
           </span>
@@ -116,6 +116,7 @@ const TechCard: Component<Props> = (props) => {
                   ? "text-society"
                   : "text-dangerous"
               }
+              title="Delta — net weight change if you research this tech first (positive = unlocks valuable techs)"
             >
               {formatDelta(state().delta_weight)}
             </span>

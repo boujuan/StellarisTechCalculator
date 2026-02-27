@@ -13,7 +13,7 @@ const SearchBar: Component<Props> = (props) => {
       value={props.value}
       onInput={(e) => props.onInput(e.currentTarget.value)}
       placeholder={props.placeholder ?? "Search technologies..."}
-      class="bg-bg-primary border border-border rounded px-3 py-1 text-sm text-text-primary placeholder-text-muted w-64 focus:outline-none focus:border-physics"
+      class="bg-bg-primary border border-border rounded px-3 py-2 text-sm text-text-primary placeholder-text-muted w-64 focus:outline-none focus:border-physics"
     />
   );
 };

@@ -5,6 +5,7 @@ import Toolbar from "./components/layout/Toolbar";
 import TechGrid from "./components/tech/TechGrid";
 import ResearchSummary from "./components/tech/ResearchSummary";
 import SaveLoadDialog from "./components/common/SaveLoadDialog";
+import TutorialOverlay from "./components/common/TutorialOverlay";
 import { initMonteCarloWorker, dispatchHitChances } from "./workers/workerApi";
 import { setHitChanceDispatcher, runUpdateCascade } from "./engine/updateCascade";
 
@@ -13,8 +14,9 @@ type AreaFilter = "all" | Area;
 const App: Component = () => {
   const [search, setSearch] = createSignal("");
   const [areaFilter, setAreaFilter] = createSignal<AreaFilter>("all");
-  const [sortBy, setSortBy] = createSignal("name");
+  const [sortBy, setSortBy] = createSignal("hit_chance");
   const [showSaveLoad, setShowSaveLoad] = createSignal(false);
+  const [availableOnly, setAvailableOnly] = createSignal(false);
 
   onMount(() => {
     // Initialize Web Worker
@@ -42,6 +44,8 @@ const App: Component = () => {
           sortBy={sortBy()}
           onSortChange={setSortBy}
           onSaveLoad={() => setShowSaveLoad(true)}
+          availableOnly={availableOnly()}
+          onAvailableOnlyChange={setAvailableOnly}
         />
 
         {/* Summary bar */}
@@ -55,6 +59,7 @@ const App: Component = () => {
             search={search()}
             areaFilter={areaFilter()}
             sortBy={sortBy()}
+            availableOnly={availableOnly()}
           />
         </div>
       </main>
@@ -63,6 +68,9 @@ const App: Component = () => {
       <Show when={showSaveLoad()}>
         <SaveLoadDialog onClose={() => setShowSaveLoad(false)} />
       </Show>
+
+      {/* Tutorial overlay */}
+      <TutorialOverlay />
     </div>
   );
 };

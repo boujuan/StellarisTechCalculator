@@ -10,6 +10,7 @@ interface Props {
   search: string;
   areaFilter: AreaFilter;
   sortBy: string;
+  availableOnly: boolean;
 }
 
 const TechGrid: Component<Props> = (props) => {
@@ -20,6 +21,7 @@ const TechGrid: Component<Props> = (props) => {
     // Filter
     let ids = allTechIds.filter((id) => {
       const tech = activeTechnologies[id];
+      const ts = techState[id];
 
       // Area filter
       if (area !== "all" && tech.area !== area) return false;
@@ -30,7 +32,14 @@ const TechGrid: Component<Props> = (props) => {
       }
 
       // Hide permanent techs by default (they're never in the pool)
-      if (techState[id].permanent === 1) return false;
+      if (ts.permanent === 1) return false;
+
+      // Available-only filter: only show techs that can appear in research pool
+      if (props.availableOnly) {
+        if (!(ts.prereqs_met === 1 && ts.researched === 0 && ts.current_weight > 0)) {
+          return false;
+        }
+      }
 
       return true;
     });
@@ -59,7 +68,7 @@ const TechGrid: Component<Props> = (props) => {
   });
 
   return (
-    <div class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-2">
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-3">
       <For each={filteredAndSorted()}>
         {(techId) => <TechCard techId={techId} />}
       </For>
