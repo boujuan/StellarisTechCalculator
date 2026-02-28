@@ -16,7 +16,12 @@ const App: Component = () => {
   const [areaFilter, setAreaFilter] = createSignal<AreaFilter>("all");
   const [sortBy, setSortBy] = createSignal("hit_chance");
   const [showSaveLoad, setShowSaveLoad] = createSignal(false);
-  const [techViewFilters, setTechViewFilters] = createSignal<Set<string>>(new Set(["current"]));
+  const [techViewFilters, setTechViewFilters] = createSignal<Set<string>>(new Set(["available", "previous", "permanent"]));
+
+  // Tutorial panel — auto-show on first visit
+  const [showTutorial, setShowTutorial] = createSignal(
+    localStorage.getItem("stellaris_tc_tutorial_dismissed") !== "true"
+  );
 
   // Zoom level — persisted in localStorage
   const savedZoom = parseFloat(localStorage.getItem("stellaris_tc_zoom") ?? "1");
@@ -45,7 +50,7 @@ const App: Component = () => {
 
   return (
     <div class="flex h-screen overflow-hidden" data-area={areaFilter()}>
-      <Sidebar />
+      <Sidebar onShowTutorial={() => setShowTutorial(true)} />
 
       <main class="flex-1 flex flex-col overflow-hidden">
         <Toolbar
@@ -86,7 +91,9 @@ const App: Component = () => {
       </Show>
 
       {/* Tutorial overlay */}
-      <TutorialOverlay />
+      <Show when={showTutorial()}>
+        <TutorialOverlay onClose={() => setShowTutorial(false)} />
+      </Show>
     </div>
   );
 };

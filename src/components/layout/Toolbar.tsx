@@ -41,15 +41,22 @@ const SORT_OPTIONS = [
   { label: "Area", value: "area", title: "Group by research area: physics, society, engineering" },
 ];
 
-const TECH_VIEW_FILTERS: { key: string; label: string; desc: string; colorClass: string }[] = [
-  { key: "current", label: "Current", desc: "Available pool + drawn last + permanent unresearched", colorClass: "text-physics" },
-  { key: "potential", label: "Potential", desc: "All techs passing the potential check", colorClass: "text-society" },
+const PRESET_FILTERS: { key: string; label: string; desc: string; colorClass: string; filters: string[] }[] = [
+  { key: "current", label: "Current", desc: "Default view — available techs, drawn-last options, and permanent techs", colorClass: "text-physics", filters: ["available", "previous", "permanent"] },
+  { key: "current_researched", label: "Current + Past", desc: "Current view plus already-researched technologies", colorClass: "text-physics", filters: ["available", "researched", "previous", "permanent"] },
+  { key: "potential", label: "Potential", desc: "All technologies passing the potential check (correct DLC, empire type, prerequisites)", colorClass: "text-society", filters: ["potential"] },
+  { key: "not_possible", label: "Not Possible", desc: "Technologies that fail the potential check and cannot currently be researched", colorClass: "text-dangerous", filters: ["not_possible"] },
+  { key: "all", label: "All", desc: "Show every technology regardless of availability or research status", colorClass: "text-text-primary", filters: ["available", "potential", "researched", "previous", "permanent", "zero_weight", "not_possible"] },
+];
+
+const INDIVIDUAL_FILTERS: { key: string; label: string; desc: string; colorClass: string }[] = [
+  { key: "available", label: "Available", desc: "Techs in your current research pool (prerequisites met, positive weight)", colorClass: "text-physics" },
+  { key: "potential", label: "Potential", desc: "All techs passing the potential check (includes blocked prerequisites)", colorClass: "text-society" },
   { key: "researched", label: "Researched", desc: "Already researched technologies", colorClass: "text-engineering" },
-  { key: "previous", label: "Previous Options", desc: "Techs marked as drawn last", colorClass: "text-rare" },
-  { key: "permanent", label: "Permanent Options", desc: "Always-available repeatable techs", colorClass: "text-text-secondary" },
-  { key: "zero_weight", label: "Zero Weight", desc: "Techs with zero base weight", colorClass: "text-text-muted" },
-  { key: "not_possible", label: "Not Possible", desc: "Techs failing the potential check", colorClass: "text-dangerous" },
-  { key: "all", label: "All", desc: "Show every tech (overrides other filters)", colorClass: "text-text-primary" },
+  { key: "previous", label: "Previous Options", desc: "Technologies marked as drawn last turn", colorClass: "text-rare" },
+  { key: "permanent", label: "Permanent Options", desc: "Always-available repeatable technologies", colorClass: "text-text-secondary" },
+  { key: "zero_weight", label: "Zero Weight", desc: "Techs with zero base weight (require specific conditions to appear)", colorClass: "text-text-muted" },
+  { key: "not_possible", label: "Not Possible", desc: "Techs failing the potential check — cannot be researched", colorClass: "text-dangerous" },
 ];
 
 const base = import.meta.env.BASE_URL;
@@ -103,26 +110,36 @@ const Toolbar: Component<Props> = (props) => {
   const currentSortLabel = () =>
     SORT_OPTIONS.find((o) => o.value === props.sortBy)?.label ?? "Sort";
 
-  const toggleFilter = (key: string) => {
-    if (key === "all") {
-      props.onTechViewChange(new Set(["all"]));
-      return;
-    }
+  const selectPreset = (key: string) => {
+    const preset = PRESET_FILTERS.find(p => p.key === key);
+    if (!preset) return;
+    props.onTechViewChange(new Set(preset.filters));
+  };
+
+  const toggleIndividual = (key: string) => {
     const next = new Set(props.techViewFilters);
-    next.delete("all");
-    // Mutual exclusivity
-    if (key === "potential") next.delete("not_possible");
-    if (key === "not_possible") next.delete("potential");
-    // Toggle
     if (next.has(key)) next.delete(key);
     else next.add(key);
-    // If empty, default to "all"
-    if (next.size === 0) next.add("all");
+    // If nothing remains, default back to "Current" preset
+    if (next.size === 0) {
+      selectPreset("current");
+      return;
+    }
     props.onTechViewChange(next);
   };
 
+  // Derived: a preset is "active" when the filter set exactly matches its combination
+  const activePreset = () => {
+    const size = props.techViewFilters.size;
+    for (const preset of PRESET_FILTERS) {
+      if (preset.filters.length !== size) continue;
+      if (preset.filters.every(k => props.techViewFilters.has(k))) return preset.key;
+    }
+    return null;
+  };
+
   const activeFilterCount = () => {
-    if (props.techViewFilters.has("all")) return 0;
+    if (activePreset() === "all") return 0;
     return props.techViewFilters.size;
   };
 
@@ -223,13 +240,11 @@ const Toolbar: Component<Props> = (props) => {
         >
           <span class="text-text-muted text-xs">View:</span>
           <span class="font-medium">
-            {props.techViewFilters.has("all")
-              ? "All"
-              : activeFilterCount() === 1
-                ? TECH_VIEW_FILTERS.find((f) => props.techViewFilters.has(f.key))?.label ?? "Filter"
-                : `${activeFilterCount()} active`}
+            {activePreset()
+              ? PRESET_FILTERS.find(p => p.key === activePreset())?.label ?? "Filter"
+              : `${activeFilterCount()} active`}
           </span>
-          <Show when={activeFilterCount() > 1}>
+          <Show when={!activePreset() && activeFilterCount() > 1}>
             <span class="ml-0.5 w-4 h-4 rounded-full bg-engineering/30 text-engineering text-[10px] font-bold flex items-center justify-center">
               {activeFilterCount()}
             </span>
@@ -242,43 +257,74 @@ const Toolbar: Component<Props> = (props) => {
           <div class="absolute top-full left-0 mt-1 z-50 min-w-64 bg-bg-secondary border border-border rounded-lg shadow-2xl overflow-hidden"
             style={{ "box-shadow": "0 4px 24px rgba(0,0,0,0.5), 0 0 8px var(--color-glow-engineering)" }}
           >
+            {/* Preset section header */}
             <div class="px-3 py-1.5 border-b border-border/50">
-              <span class="text-[10px] text-text-muted uppercase tracking-wider font-medium">Tech View Filters</span>
+              <span class="text-[10px] text-text-muted uppercase tracking-wider font-medium">Presets</span>
             </div>
-            <For each={TECH_VIEW_FILTERS}>
-              {(filter) => {
-                const isChecked = () => props.techViewFilters.has(filter.key);
-                const isDisabled = () => {
-                  // Disable "Potential" when "Not Possible" is active and vice versa (shown as dimmed)
-                  if (filter.key === "potential" && props.techViewFilters.has("not_possible")) return true;
-                  if (filter.key === "not_possible" && props.techViewFilters.has("potential")) return true;
-                  return false;
-                };
-                const checkboxImg = () => isChecked() ? cbPressed : cbNormal;
 
+            {/* Preset radio buttons */}
+            <For each={PRESET_FILTERS}>
+              {(filter) => {
+                const isActive = () => activePreset() === filter.key;
                 return (
                   <button
                     class={`w-full flex items-center gap-2.5 px-3 py-1.5 text-left transition-colors ${
-                      isDisabled()
-                        ? "opacity-30 cursor-not-allowed"
-                        : isChecked()
-                          ? "bg-bg-tertiary/50"
-                          : "hover:bg-bg-tertiary"
+                      isActive() ? "bg-bg-tertiary/50" : "hover:bg-bg-tertiary"
                     }`}
-                    onClick={() => { if (!isDisabled()) toggleFilter(filter.key); }}
+                    onClick={() => selectPreset(filter.key)}
+                    title={filter.desc}
+                  >
+                    {/* Radio indicator */}
+                    <span class={`shrink-0 w-3.5 h-3.5 rounded-full border-2 flex items-center justify-center transition-colors ${
+                      isActive()
+                        ? "border-physics bg-physics/20"
+                        : "border-text-muted/50 bg-transparent"
+                    }`}>
+                      <Show when={isActive()}>
+                        <span class="w-1.5 h-1.5 rounded-full bg-physics" />
+                      </Show>
+                    </span>
+                    <div class="flex flex-col min-w-0">
+                      <span class={`text-sm font-medium ${isActive() ? filter.colorClass : "text-text-secondary"}`}>
+                        {filter.label}
+                      </span>
+                      <span class="text-[10px] text-text-muted leading-tight">{filter.desc}</span>
+                    </div>
+                  </button>
+                );
+              }}
+            </For>
+
+            {/* Separator */}
+            <div class="border-t border-border/50 mx-2 my-0.5" />
+
+            {/* Individual filters header */}
+            <div class="px-3 py-1">
+              <span class="text-[10px] text-text-muted uppercase tracking-wider font-medium">Individual Filters</span>
+            </div>
+
+            {/* Individual filter checkboxes */}
+            <For each={INDIVIDUAL_FILTERS}>
+              {(filter) => {
+                const isChecked = () => props.techViewFilters.has(filter.key);
+                const checkboxImg = () => isChecked() ? cbPressed : cbNormal;
+                return (
+                  <button
+                    class={`w-full flex items-center gap-2.5 px-3 py-1.5 text-left transition-colors ${
+                      isChecked() ? "bg-bg-tertiary/50" : "hover:bg-bg-tertiary"
+                    }`}
+                    onClick={() => toggleIndividual(filter.key)}
                     title={filter.desc}
                   >
                     <span
-                      class={`stellaris-check shrink-0 ${isChecked() ? "is-checked" : ""} ${isDisabled() ? "is-disabled" : ""}`}
+                      class={`stellaris-check shrink-0 ${isChecked() ? "is-checked" : ""}`}
                       style={{
                         "background-image": `url(${checkboxImg()})`,
                         width: "18px",
                         height: "18px",
                       }}
                       onMouseEnter={(e) => {
-                        if (!isDisabled() && !isChecked()) {
-                          e.currentTarget.style.backgroundImage = `url(${cbHover})`;
-                        }
+                        if (!isChecked()) e.currentTarget.style.backgroundImage = `url(${cbHover})`;
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.backgroundImage = `url(${checkboxImg()})`;

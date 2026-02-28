@@ -34,15 +34,9 @@ const TechGrid: Component<Props> = (props) => {
       }
 
       // Tech View filters (inclusive OR)
-      if (!filters.has("all")) {
+      {
         let passes = false;
-        if (filters.has("current")) {
-          if (
-            (ts.prereqs_met === 1 && ts.researched === 0 && ts.current_weight > 0) ||
-            ts.drawn_last === 1 ||
-            (ts.permanent === 1 && ts.researched === 0)
-          ) passes = true;
-        }
+        if (filters.has("available") && ts.prereqs_met === 1 && ts.researched === 0 && ts.current_weight > 0) passes = true;
         if (filters.has("potential") && ts.potential === 1) passes = true;
         if (filters.has("researched") && ts.researched === 1) passes = true;
         if (filters.has("previous") && ts.drawn_last === 1) passes = true;

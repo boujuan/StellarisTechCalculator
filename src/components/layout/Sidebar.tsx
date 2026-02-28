@@ -55,7 +55,11 @@ function sectionHasMatch(sectionName: string, filter: string): boolean {
 
 // ── Sidebar component ──────────────────────────────────────────────────
 
-const Sidebar: Component = () => {
+interface SidebarProps {
+  onShowTutorial: () => void;
+}
+
+const Sidebar: Component<SidebarProps> = (props) => {
   const sectionNames = () => Object.keys(metadata);
 
   // Expand/Collapse all
@@ -263,10 +267,59 @@ const Sidebar: Component = () => {
         </div>
       </AccordionProvider>
 
+      {/* Persistent footer — ? button, GitHub, version */}
+      <div class="border-t border-border bg-bg-secondary/95 px-3 py-2 relative z-10 shrink-0">
+        <div class="flex items-center gap-2">
+          <button
+            onClick={props.onShowTutorial}
+            class="w-8 h-8 rounded-full bg-bg-tertiary border-2 border-physics/50 text-physics font-bold text-sm
+                   hover:bg-physics/20 hover:border-physics transition-all flex items-center justify-center"
+            title="Show tutorial / help"
+          >
+            ?
+          </button>
+          <a
+            href="https://github.com/boujuan/StellarisTechCalculator"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-8 h-8 rounded-full bg-bg-tertiary border-2 border-text-muted/30 text-text-muted
+                   hover:bg-text-muted/10 hover:border-text-secondary hover:text-text-secondary transition-all flex items-center justify-center"
+            title="View source on GitHub"
+          >
+            <svg viewBox="0 0 16 16" class="w-4 h-4 fill-current" aria-hidden="true">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </a>
+          <span class="text-[10px] text-text-muted/60 leading-tight select-none">
+            <a
+              href="https://github.com/boujuan/StellarisTechCalculator/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-physics transition-colors"
+              title="View changelog on GitHub"
+            >
+              v{__APP_VERSION__}
+            </a>
+            {" | "}
+            <a
+              href="https://stellaris.paradoxwikis.com/Patch_4.3.X"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-physics transition-colors"
+              title="View Stellaris patch notes"
+            >
+              Stellaris {__STELLARIS_VERSION__}
+            </a>
+            <br />
+            <span class="text-text-muted/40">boujuan</span>
+          </span>
+        </div>
+      </div>
+
       {/* Scroll to top button — always rendered, visibility toggled via opacity */}
       <button
         onClick={() => scrollRef?.scrollTo({ top: 0, behavior: "smooth" })}
-        class="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-bg-tertiary border border-border text-text-muted hover:text-physics flex items-center justify-center shadow-lg transition-all duration-300 z-20 hover:shadow-[0_0_8px_var(--color-glow-physics)]"
+        class="absolute bottom-14 right-3 w-9 h-9 rounded-full bg-bg-tertiary border border-border text-text-muted hover:text-physics flex items-center justify-center shadow-lg transition-all duration-300 z-20 hover:shadow-[0_0_8px_var(--color-glow-physics)]"
         style={{
           opacity: showScrollTop() ? "1" : "0",
           transform: showScrollTop() ? "translateY(0)" : "translateY(8px)",

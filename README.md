@@ -12,9 +12,12 @@ A browser-based technology research probability calculator for [Stellaris](https
 - **Expertise & council** — per-category expertise levels and councillor position modifiers
 - **Tech swaps** — 126 conditional technology replacements evaluated in real time
 - **Delta weights** — see the opportunity cost of researching each tech
-- **Search, filter & sort** — find techs by name, filter by area (Physics/Society/Engineering), sort by weight, hit chance, tier, or delta
+- **Tech View presets & filters** — 5 presets (Current, Current + Past, Potential, Not Possible, All) with 7 individual filters that can be toggled independently. Presets are shortcuts that set filter combinations; manual tweaks auto-deselect the preset
+- **Search, filter & sort** — find techs by name, filter by area (Physics/Society/Engineering), sort by 8 criteria: hit chance, weight, name, tier, delta, base weight, category, or area
+- **Zoom controls** — adjust tech card size (60%–140%), persisted across sessions
 - **Save/Load** — persist empire configurations to localStorage or export/import as JSON
-- **Self-contained** — all data and 800+ AVIF icons ship with the app. No Stellaris installation needed.
+- **Tutorial overlay** — built-in guide for new users, auto-shown on first visit
+- **Self-contained** — all data and 800+ AVIF icons ship with the app. No Stellaris installation needed. Version tracking shows app + Stellaris version in the sidebar footer
 - **~73 KB** gzipped JavaScript bundle (+ 4 KB CSS)
 
 ## Screenshots
@@ -106,7 +109,7 @@ src/
 │   ├── layout/              # App shell (Sidebar, Toolbar)
 │   ├── empire/              # Empire modifier controls
 │   ├── tech/                # Tech cards, grid, summary
-│   └── common/              # Search bar, save/load dialog
+│   └── common/              # Save/load dialog, tutorial overlay
 │
 └── utils/                   # Debounce, number formatting
 ```
