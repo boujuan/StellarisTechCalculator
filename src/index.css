@@ -86,9 +86,12 @@ body {
 
 /* ── Scrollbar styling ── */
 
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #333740 #1a1d23;
+/* Firefox fallback — scoped so it doesn't disable WebKit pseudo-elements in Chrome 121+ */
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #333740 #1a1d23;
+  }
 }
 
 ::-webkit-scrollbar {

@@ -29,6 +29,7 @@
 - [x] Increase size of 'x' reset buttons on search bars. Make them more clear and styled to the rest of Stellaris style with glow orange circle style.
 - [x] Make scrollbars match style of Stellaris, thicker and glow color
 - [ ] Add instructions and descriptions what it does and how to use for each section on hover. eg: expertise traits show what increasing each number does (number of leaders in council having such trait?)
+- [ ] Make all DLCs checked the default
 
 ## Feature Ideas
 
@@ -42,3 +43,4 @@
 - [ ] Add further sorting rules (lookup other app)
 - [ ] Settings page for Monte Carlo engine — tweak max iterations, convergence threshold, epsilon. Consider alternative probability engines (exact combinatorial for small pools, importance sampling) for faster/more precise results
 - [ ] Add localization in different languages. Pull it from the game files
+- [ ] Version number should include the Stellaris version it is compatible with (now 4.3.x)
