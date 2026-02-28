@@ -1,10 +1,11 @@
-import { For, createSignal, onMount, type Component } from "solid-js";
+import { For, Show, createSignal, onMount, type Component } from "solid-js";
 import {
   councilExpertise,
   setCouncilExpertiseTier,
   recomputeExpertiseBonus,
 } from "../../state/empireState";
 import { runUpdateCascade } from "../../engine/updateCascade";
+import { isFromSave } from "../../state/importState";
 
 // ── Expertise → area mapping + tooltip data ──────────────────────────
 
@@ -53,7 +54,7 @@ const TIER_TOOLTIPS: Record<number, string> = {
 
 // ── Scrolling name sub-component ─────────────────────────────────────
 
-const ScrollName: Component<{ name: string; colorClass: string; tooltip: string }> = (props) => {
+const ScrollName: Component<{ name: string; colorClass: string; tooltip: string; factKey?: string }> = (props) => {
   let containerRef: HTMLDivElement | undefined;
   let textRef: HTMLSpanElement | undefined;
   const [scrollDist, setScrollDist] = createSignal(0);
@@ -73,20 +74,28 @@ const ScrollName: Component<{ name: string; colorClass: string; tooltip: string 
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
     >
-      <div ref={containerRef} class="overflow-hidden whitespace-nowrap">
-        <span
-          ref={textRef}
-          class="inline-block text-xs"
-          style={{
-            animation:
-              hovering() && scrollDist() > 0
-                ? "expertise-scroll 2s ease-in-out infinite"
-                : "none",
-            "--scroll-x": `-${scrollDist()}px`,
-          }}
-        >
-          {props.name}
-        </span>
+      <div class="flex items-center gap-1">
+        <div ref={containerRef} class="overflow-hidden whitespace-nowrap flex-1">
+          <span
+            ref={textRef}
+            class="inline-block text-xs"
+            style={{
+              animation:
+                hovering() && scrollDist() > 0
+                  ? "expertise-scroll 2s ease-in-out infinite"
+                  : "none",
+              "--scroll-x": `-${scrollDist()}px`,
+            }}
+          >
+            {props.name}
+          </span>
+        </div>
+        <Show when={props.factKey && isFromSave(props.factKey!)}>
+          <span
+            class="w-1.5 h-1.5 rounded-full bg-rare shrink-0"
+            title="Loaded from save file"
+          />
+        </Show>
       </div>
     </td>
   );
@@ -150,6 +159,7 @@ const ExpertiseGrid: Component<Props> = (props) => {
                     name={displayName}
                     colorClass={colorClass}
                     tooltip={getExpertiseTooltip(displayName)}
+                    factKey={atomicFact}
                   />
                   <For each={[1, 2, 3]}>
                     {(tier) => {

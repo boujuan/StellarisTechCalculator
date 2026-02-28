@@ -1,8 +1,9 @@
-import { createSignal, onMount, type Component } from "solid-js";
+import { createSignal, onMount, Show, type Component } from "solid-js";
 import type { ScalarMetadata } from "../../types/facts";
 import { setScalarValue, scalarValues } from "../../state/empireState";
 import { runUpdateCascade } from "../../engine/updateCascade";
 import { debounce } from "../../utils/debounce";
+import { isFromSave } from "../../state/importState";
 
 interface Props {
   displayName: string;
@@ -41,20 +42,28 @@ const SliderRow: Component<Props> = (props) => {
       onMouseLeave={() => setHovering(false)}
     >
       {/* Label row — full width, scroll-on-hover */}
-      <div ref={containerRef} class="overflow-hidden whitespace-nowrap mb-0.5">
-        <span
-          ref={textRef}
-          class="inline-block text-xs text-text-secondary select-none"
-          style={{
-            animation:
-              hovering() && scrollDist() > 0
-                ? "expertise-scroll 2s ease-in-out infinite"
-                : "none",
-            "--scroll-x": `-${scrollDist()}px`,
-          }}
-        >
-          {props.displayName}
-        </span>
+      <div class="flex items-center gap-1 mb-0.5">
+        <div ref={containerRef} class="overflow-hidden whitespace-nowrap flex-1">
+          <span
+            ref={textRef}
+            class="inline-block text-xs text-text-secondary select-none"
+            style={{
+              animation:
+                hovering() && scrollDist() > 0
+                  ? "expertise-scroll 2s ease-in-out infinite"
+                  : "none",
+              "--scroll-x": `-${scrollDist()}px`,
+            }}
+          >
+            {props.displayName}
+          </span>
+        </div>
+        <Show when={isFromSave(props.displayName)}>
+          <span
+            class="w-1.5 h-1.5 rounded-full bg-rare shrink-0"
+            title="Loaded from save file"
+          />
+        </Show>
       </div>
       {/* Slider + number row */}
       <div class="flex items-center gap-2">
@@ -65,7 +74,7 @@ const SliderRow: Component<Props> = (props) => {
           step={props.metadata.step}
           value={value()}
           onInput={(e) => handleChange(Number(e.currentTarget.value))}
-          class="flex-1 accent-physics"
+          class="flex-1 min-w-0 accent-physics"
         />
         <input
           type="number"
@@ -77,7 +86,7 @@ const SliderRow: Component<Props> = (props) => {
             const v = Math.max(props.metadata.min, Math.min(props.metadata.max, Number(e.currentTarget.value)));
             handleChange(v);
           }}
-          class="w-12 bg-transparent border-b border-border/50 text-right text-text-primary text-sm tabular-nums focus:border-physics focus:outline-none transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+          class="w-14 shrink-0 bg-transparent border-b border-border/50 text-right text-text-primary text-sm tabular-nums focus:border-physics focus:outline-none transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
         />
       </div>
     </div>

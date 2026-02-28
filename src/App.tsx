@@ -6,6 +6,7 @@ import TechGrid from "./components/tech/TechGrid";
 import ResearchSummary from "./components/tech/ResearchSummary";
 import SaveLoadDialog from "./components/common/SaveLoadDialog";
 import TutorialOverlay from "./components/common/TutorialOverlay";
+import ImportLogPanel from "./components/common/ImportLogPanel";
 import { initMonteCarloWorker, dispatchHitChances } from "./workers/workerApi";
 import { setHitChanceDispatcher, runUpdateCascade } from "./engine/updateCascade";
 
@@ -94,6 +95,9 @@ const App: Component = () => {
       <Show when={showTutorial()}>
         <TutorialOverlay onClose={() => setShowTutorial(false)} />
       </Show>
+
+      {/* Import log panel (floating, lower-right) */}
+      <ImportLogPanel />
     </div>
   );
 };
