@@ -7,8 +7,8 @@
 - [x] Fix dimming animation on non-available techs — too aggressive visually, replays every time area tab is changed
 - [x] Expertise traits seems to change to levels <0, not visually but affecting the calculations of draw % of the technologies
 - [x] Cannot manually change their level number. field not interactable.
-- [x] Make elements fit comfortably in the sidebar.
-- [ ] Expand and collapse buttons on sidebar dont properly work. Expand should expand all categories and subcategories.
+- [ ] Make elements fit comfortably in the sidebar.
+- [x] Expand and collapse buttons on sidebar dont properly work. Expand should expand all categories and subcategories.
 
 ## UI/UX Improvements
 

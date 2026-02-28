@@ -209,7 +209,7 @@ const Sidebar: Component = () => {
       </div>
 
       {/* Scrollable content */}
-      <AccordionProvider value={() => accordionCmd()}>
+      <AccordionProvider value={accordionCmd}>
         <div
           class="flex-1 overflow-y-auto relative z-10"
           ref={scrollRef}

@@ -1,4 +1,4 @@
-import { createSignal, createEffect, on, type JSX, type Component } from "solid-js";
+import { createSignal, createEffect, type JSX, type Component } from "solid-js";
 import { useAccordionCommand } from "./AccordionContext";
 
 interface Props {
@@ -16,19 +16,25 @@ const SectionAccordion: Component<Props> = (props) => {
   // Effective open state: forceOpen overrides manual toggle
   const effectiveOpen = () => props.forceOpen || open();
 
-  // React to expand/collapse all commands
-  createEffect(
-    on(
-      () => command().expandCount,
-      () => { if (command().expandCount > 0) setOpen(true); },
-    )
-  );
-  createEffect(
-    on(
-      () => command().collapseCount,
-      () => { if (command().collapseCount > 0) setOpen(false); },
-    )
-  );
+  // React to expand/collapse all commands.
+  // Track last-seen counts so that late-mounting instances (e.g. after
+  // search-filter changes) inherit the current expanded/collapsed state.
+  let prevExpand = 0;
+  let prevCollapse = 0;
+
+  createEffect(() => {
+    const { expandCount, collapseCount } = command();
+
+    if (expandCount > prevExpand) {
+      prevExpand = expandCount;
+      setOpen(true);
+    }
+
+    if (collapseCount > prevCollapse) {
+      prevCollapse = collapseCount;
+      setOpen(false);
+    }
+  });
 
   return (
     <div class="border-b border-border">
