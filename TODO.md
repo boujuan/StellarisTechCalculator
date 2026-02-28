@@ -17,7 +17,7 @@
 - [ ] Responsive/flex design adaptations for mobile
 - [x] Change dim-out of unavailable techs to only dim the border
 - [ ] Improve the Expertise traits section in the sidebar to fit the width of it.
-- [ ] Modify sorting order so "drawn last" techs are prioritised abover other unavailable techs (not strictly alphabetical)
+- [ ] Modify sorting order so "drawn last" techs are prioritised abover other unavailable techs (not strictly alphabetical). Also available techs should be above unavailable one when sorting by weight or hit chance % always, even if it's 0.
 
 ## Feature Ideas
 
