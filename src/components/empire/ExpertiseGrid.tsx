@@ -46,24 +46,30 @@ const ExpertiseGrid: Component<Props> = (props) => {
                 <tr class="hover:bg-bg-tertiary">
                   <td class="text-text-secondary py-0.5 pr-2">{displayName}</td>
                   <For each={[1, 2, 3]}>
-                    {(tier) => (
-                      <td class="text-center py-0.5">
-                        <input
-                          type="number"
-                          min="0"
-                          max="6"
-                          value={getValueForExpertise(atomicFact, tier)}
-                          onInput={(e) =>
-                            handleChange(
-                              atomicFact,
-                              tier,
-                              Number(e.currentTarget.value),
-                            )
-                          }
-                          class="w-12 bg-bg-primary border border-border rounded px-1 py-0.5 text-center text-text-primary text-sm"
-                        />
-                      </td>
-                    )}
+                    {(tier) => {
+                      const val = () => getValueForExpertise(atomicFact, tier);
+                      return (
+                        <td class="text-center py-0.5">
+                          <div class="flex items-center justify-center">
+                            <button
+                              class="w-6 h-6 flex items-center justify-center bg-bg-tertiary hover:bg-border rounded-l border border-border text-text-primary text-xs font-bold transition-all duration-150 hover:shadow-[0_0_4px_var(--color-glow-physics)]"
+                              onClick={() => handleChange(atomicFact, tier, Math.max(0, val() - 1))}
+                            >
+                              −
+                            </button>
+                            <span class="w-6 h-6 flex items-center justify-center bg-bg-primary border-y border-border text-center text-text-primary text-xs font-semibold tabular-nums select-none">
+                              {val()}
+                            </span>
+                            <button
+                              class="w-6 h-6 flex items-center justify-center bg-bg-tertiary hover:bg-border rounded-r border border-border text-text-primary text-xs font-bold transition-all duration-150 hover:shadow-[0_0_4px_var(--color-glow-physics)]"
+                              onClick={() => handleChange(atomicFact, tier, Math.min(6, val() + 1))}
+                            >
+                              +
+                            </button>
+                          </div>
+                        </td>
+                      );
+                    }}
                   </For>
                 </tr>
               );

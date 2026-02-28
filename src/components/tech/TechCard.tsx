@@ -46,6 +46,13 @@ const GLOW_MOD: Record<string, string> = {
   dangerous: "0 0 15px 3px var(--color-glow-dangerous)",
 };
 
+// Subtle persistent glow for available techs (dimmer than hover glow)
+const AREA_SUBTLE_GLOW: Record<string, string> = {
+  physics: "0 0 8px 1px var(--color-glow-physics)",
+  society: "0 0 8px 1px var(--color-glow-society)",
+  engineering: "0 0 8px 1px var(--color-glow-engineering)",
+};
+
 const TechCard: Component<Props> = (props) => {
   const tech = () => activeTechnologies[props.techId];
   const state = () => techState[props.techId];
@@ -56,6 +63,7 @@ const TechCard: Component<Props> = (props) => {
   const borderClass = () => BORDER_MOD[bordermod()] ?? AREA_BORDER[area()] ?? AREA_BORDER.physics;
   const textClass = () => AREA_TEXT[area()] ?? AREA_TEXT.physics;
   const hoverGlow = () => GLOW_MOD[bordermod()] ?? AREA_GLOW[area()] ?? AREA_GLOW.physics;
+  const subtleGlow = () => AREA_SUBTLE_GLOW[area()] ?? AREA_SUBTLE_GLOW.physics;
   const barColor = () => AREA_BAR_COLOR[area()] ?? AREA_BAR_COLOR.physics;
 
   // Background: rare/dangerous override the area background
@@ -111,7 +119,6 @@ const TechCard: Component<Props> = (props) => {
       class={`relative overflow-hidden rounded-lg border-2 cursor-pointer select-none transition-all duration-200
         ${borderClass()}
         ${isPermanent() ? "opacity-25" : ""}
-        ${isAvailable() ? "hover:scale-[1.02]" : ""}
       `}
       style={{
         "background-image": `url(${bgUrl()})`,
@@ -120,7 +127,9 @@ const TechCard: Component<Props> = (props) => {
         "animation": animationStyle(),
         // Researched: desaturate + dim smoothly
         "filter": isResearched() ? "grayscale(0.6) brightness(0.5)" : "none",
-        "opacity": isResearched() ? "0.55" : undefined,
+        // Available: full opacity + subtle glow. Unavailable (not researched): dimmed
+        "opacity": isResearched() ? "0.55" : (!isAvailable() && !isPermanent()) ? "0.6" : undefined,
+        "box-shadow": isAvailable() ? subtleGlow() : undefined,
       }}
       onClick={handleClick}
       onContextMenu={handleContextMenu}
@@ -130,7 +139,11 @@ const TechCard: Component<Props> = (props) => {
         }
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "";
+        if (isAvailable()) {
+          e.currentTarget.style.boxShadow = subtleGlow();
+        } else {
+          e.currentTarget.style.boxShadow = "";
+        }
       }}
       title={`${tech().real_name}\nTier ${tech().tier} | Cost: ${tech().cost}\nRight-click to toggle "drawn last"`}
     >
@@ -140,7 +153,7 @@ const TechCard: Component<Props> = (props) => {
       {/* Researched overlay badge */}
       <Show when={isResearched()}>
         <div class="absolute inset-0 z-20 flex items-center justify-center">
-          <span class="text-[10px] font-bold font-display tracking-wider text-text-muted/80 bg-black/50 px-2 py-0.5 rounded-full border border-white/10 uppercase">
+          <span class="text-[11px] font-bold font-display tracking-wider text-dangerous bg-black/60 px-2 py-0.5 rounded-full border border-dangerous/30 uppercase">
             Researched
           </span>
         </div>
@@ -153,11 +166,11 @@ const TechCard: Component<Props> = (props) => {
           <img
             src={iconUrl()}
             alt=""
-            class="w-8 h-8 shrink-0 drop-shadow-lg"
+            class="w-10 h-10 shrink-0 drop-shadow-lg"
             loading="lazy"
           />
           <div class="min-w-0 flex-1">
-            <div class="text-sm font-semibold text-text-primary truncate font-display">
+            <div class="text-[15px] font-semibold text-text-primary truncate font-display">
               {tech().real_name}
             </div>
             <div class="flex items-center gap-1.5">
@@ -168,14 +181,14 @@ const TechCard: Component<Props> = (props) => {
                 loading="lazy"
               />
               {/* Tier pill badge */}
-              <span class={`text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-black/30 ${textClass()}`}>
+              <span class={`text-[11px] font-semibold px-1.5 py-0.5 rounded-full bg-black/30 ${textClass()}`}>
                 T{tech().tier}
               </span>
               <Show when={tech().is_rare}>
-                <span class="text-[10px] font-semibold text-rare">Rare</span>
+                <span class="text-[11px] font-semibold text-rare">Rare</span>
               </Show>
               <Show when={tech().is_dangerous}>
-                <span class="text-[10px] font-bold text-dangerous">!</span>
+                <span class="text-[11px] font-bold text-dangerous">!</span>
               </Show>
             </div>
           </div>

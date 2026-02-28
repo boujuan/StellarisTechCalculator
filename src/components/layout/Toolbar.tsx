@@ -23,11 +23,11 @@ interface Props {
   onAvailableOnlyChange: (value: boolean) => void;
 }
 
-const AREA_FILTERS: { label: string; value: AreaFilter; color: string; glowVar: string; title: string }[] = [
-  { label: "All", value: "all", color: "text-text-primary", glowVar: "", title: "Show all research areas" },
-  { label: "Physics", value: "physics", color: "text-physics", glowVar: "var(--color-glow-physics)", title: "Physics: energy, computing, particles, field manipulation" },
-  { label: "Society", value: "society", color: "text-society", glowVar: "var(--color-glow-society)", title: "Society: biology, military theory, new worlds, statecraft" },
-  { label: "Engineering", value: "engineering", color: "text-engineering", glowVar: "var(--color-glow-engineering)", title: "Engineering: industry, materials, propulsion, voidcraft" },
+const AREA_FILTERS: { label: string; value: AreaFilter; color: string; hoverColor: string; glowVar: string; title: string }[] = [
+  { label: "All", value: "all", color: "text-text-primary", hoverColor: "hover:text-text-primary", glowVar: "", title: "Show all research areas" },
+  { label: "Physics", value: "physics", color: "text-physics", hoverColor: "hover:text-physics", glowVar: "var(--color-glow-physics)", title: "Physics: energy, computing, particles, field manipulation" },
+  { label: "Society", value: "society", color: "text-society", hoverColor: "hover:text-society", glowVar: "var(--color-glow-society)", title: "Society: biology, military theory, new worlds, statecraft" },
+  { label: "Engineering", value: "engineering", color: "text-engineering", hoverColor: "hover:text-engineering", glowVar: "var(--color-glow-engineering)", title: "Engineering: industry, materials, propulsion, voidcraft" },
 ];
 
 const SORT_OPTIONS = [
@@ -59,8 +59,8 @@ const Toolbar: Component<Props> = (props) => {
       }}
     >
       <h1
-        class="text-base font-bold text-text-primary whitespace-nowrap font-display"
-        style={{ "text-shadow": "0 0 12px rgba(59,130,246,0.4)" }}
+        class="text-lg font-bold text-text-primary whitespace-nowrap font-display tracking-wide border-b-2 border-physics/40 pb-0.5"
+        style={{ "text-shadow": "0 0 16px rgba(59,130,246,0.5), 0 0 40px rgba(59,130,246,0.15)" }}
       >
         Stellaris Tech Calculator
       </h1>
@@ -78,7 +78,7 @@ const Toolbar: Component<Props> = (props) => {
               class={`px-3 py-1.5 text-sm rounded transition-all duration-200 ${
                 props.areaFilter === filter.value
                   ? "bg-bg-tertiary " + filter.color + " font-medium"
-                  : "text-text-muted hover:text-text-secondary"
+                  : "text-text-muted " + filter.hoverColor
               }`}
               style={
                 props.areaFilter === filter.value && filter.glowVar

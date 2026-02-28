@@ -36,9 +36,18 @@ const SliderRow: Component<Props> = (props) => {
         onInput={(e) => handleChange(Number(e.currentTarget.value))}
         class="w-24 accent-physics"
       />
-      <span class="text-sm text-text-primary w-10 text-right tabular-nums">
-        {Math.round(value())}
-      </span>
+      <input
+        type="number"
+        min={props.metadata.min}
+        max={props.metadata.max}
+        step={props.metadata.step}
+        value={Math.round(value())}
+        onInput={(e) => {
+          const v = Math.max(props.metadata.min, Math.min(props.metadata.max, Number(e.currentTarget.value)));
+          handleChange(v);
+        }}
+        class="w-12 bg-transparent border-b border-border/50 text-right text-text-primary text-sm tabular-nums focus:border-physics focus:outline-none transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+      />
     </div>
   );
 };
