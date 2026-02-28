@@ -11,6 +11,7 @@ interface Props {
   areaFilter: AreaFilter;
   sortBy: string;
   availableOnly: boolean;
+  zoom: number;
 }
 
 const TechGrid: Component<Props> = (props) => {
@@ -78,7 +79,10 @@ const TechGrid: Component<Props> = (props) => {
   });
 
   return (
-    <div class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-3 items-start">
+    <div
+      class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-3 items-start origin-top-left"
+      style={{ zoom: props.zoom }}
+    >
       <For each={filteredAndSorted()}>
         {(techId, i) => <TechCard techId={techId} index={i()} />}
       </For>

@@ -193,12 +193,12 @@ const Sidebar: Component = () => {
               placeholder="Filter modifiers..."
               value={sidebarSearch()}
               onInput={(e) => setSidebarSearch(e.currentTarget.value)}
-              class="w-full bg-bg-primary/50 border border-border rounded text-xs px-2 py-1.5 pr-6 text-text-primary placeholder:text-text-muted/60 focus:border-physics/50 focus:outline-none transition-colors"
+              class="w-full bg-bg-primary/50 border border-border rounded text-xs px-2 py-1.5 pr-7 text-text-primary placeholder:text-text-muted/60 focus:border-physics/50 focus:outline-none transition-colors"
             />
             <Show when={sidebarSearch()}>
               <button
                 onClick={() => setSidebarSearch("")}
-                class="absolute right-1.5 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-primary text-xs leading-none"
+                class="absolute right-1 top-1/2 -translate-y-1/2 w-4.5 h-4.5 rounded-full border border-border bg-bg-tertiary flex items-center justify-center text-text-muted text-[10px] leading-none transition-all duration-150 hover:text-engineering hover:border-engineering/50 hover:bg-engineering/10 hover:shadow-[0_0_6px_var(--color-glow-engineering)]"
                 title="Clear filter"
               >
                 ×

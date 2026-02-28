@@ -7,7 +7,7 @@
 - [x] Fix dimming animation on non-available techs — too aggressive visually, replays every time area tab is changed
 - [x] Expertise traits seems to change to levels <0, not visually but affecting the calculations of draw % of the technologies
 - [x] Cannot manually change their level number. field not interactable.
-- [ ] Make elements fit comfortably in the sidebar.
+- [x] Make elements fit comfortably in the sidebar.
 - [x] Expand and collapse buttons on sidebar dont properly work. Expand should expand all categories and subcategories.
 
 ## UI/UX Improvements
@@ -17,7 +17,7 @@
 - [ ] Add filter button to show only already-researched techs and "drawn last" techs. Inclusive when "Available only" is enabled, allows to see what was already researched -> Needs UI placement decisions
 - [ ] Rethink the "drawn last" and prioritisation system for better usability
 - [ ] Filters by tech subcategories (e.g., Particles, Field Manipulation, Biology, etc.)
-- [ ] Zoom slider or toggles for card size
+- [x] Zoom slider or toggles for card size
 - [ ] Responsive/flex design adaptations for mobile
 - [x] Change dim-out of unavailable techs to only dim the border
 - [x] Improve the Expertise traits section in the sidebar to fit the width of it.
@@ -26,8 +26,8 @@
 - [x] Make the "RESEARCHED" text not be dimmed out
 - [x] Improve "expertise traits" section, make not fitting names to scroll with animation relatively quickly on hover to show it all.
 - [x] Make sidebar elements be cohesive visually between each other, including number selectors
-- [ ] Increase size of 'x' reset buttons on search bars. Make them more clear and styled to the rest of Stellaris style with glow orange circle style.
-- [ ] Make scrollbars match style of Stellaris, thicker and glow color
+- [x] Increase size of 'x' reset buttons on search bars. Make them more clear and styled to the rest of Stellaris style with glow orange circle style.
+- [x] Make scrollbars match style of Stellaris, thicker and glow color
 - [ ] Add instructions and descriptions what it does and how to use for each section on hover. eg: expertise traits show what increasing each number does (number of leaders in council having such trait?)
 
 ## Feature Ideas
@@ -38,6 +38,7 @@
 - [ ] Optimal research path calculator — compute statistical minimum number of techs to research to reach a target tech, display optimized route
 - [ ] Redesign sidebar of empire selection to emulate in-game empire making, sourcing actual icons, etc
 - [ ] Add Stellaris version tracking text on the lower left corner, with link to patch notes and changelog
-- [ ] Add link with icon to Github repository
+- [x] Add link with icon to Github repository
 - [ ] Add further sorting rules (lookup other app)
 - [ ] Settings page for Monte Carlo engine — tweak max iterations, convergence threshold, epsilon. Consider alternative probability engines (exact combinatorial for small pools, importance sampling) for faster/more precise results
+- [ ] Add localization in different languages. Pull it from the game files

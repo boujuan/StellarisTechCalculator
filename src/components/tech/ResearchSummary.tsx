@@ -10,7 +10,12 @@ const AREAS = [
 
 const TIERS = [0, 1, 2, 3, 4, 5] as const;
 
-const ResearchSummary: Component = () => {
+interface Props {
+  zoom: number;
+  onZoomChange: (delta: number) => void;
+}
+
+const ResearchSummary: Component<Props> = (props) => {
   const totalResearched = () => {
     let total = 0;
     for (let tier = 0; tier < 6; tier++) {
@@ -22,9 +27,11 @@ const ResearchSummary: Component = () => {
   const tierResearched = (tier: number) => researchedCountGlobal[tier] ?? 0;
   const tierTotal = (tier: number) => techsByTier[tier]?.length ?? 0;
 
+  const zoomPct = () => Math.round(props.zoom * 100);
+
   return (
     <div class="bg-linear-to-r from-bg-secondary/60 to-transparent rounded px-2 py-1 space-y-0.5">
-      {/* Row 1: Global + per-area */}
+      {/* Row 1: Global + per-area + zoom controls */}
       <div class="flex items-center gap-4 text-xs">
         <span class="text-text-muted">
           Researched: <span class="text-text-primary font-medium">{totalResearched()}</span>
@@ -52,6 +59,29 @@ const ResearchSummary: Component = () => {
             );
           }}
         </For>
+
+        {/* Zoom controls — pushed right */}
+        <div class="ml-auto flex items-center gap-0">
+          <button
+            onClick={() => props.onZoomChange(-0.1)}
+            disabled={props.zoom <= 0.6}
+            class="w-5 h-5 flex items-center justify-center bg-bg-tertiary hover:bg-border rounded-l border border-border text-text-primary text-xs font-bold leading-none transition-all duration-150 hover:shadow-[0_0_4px_var(--color-glow-physics)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:shadow-none disabled:hover:bg-bg-tertiary"
+            title="Zoom out"
+          >
+            −
+          </button>
+          <span class="h-5 px-1.5 border-y border-border bg-bg-primary text-[10px] text-text-secondary font-semibold tabular-nums flex items-center justify-center min-w-9">
+            {zoomPct()}%
+          </span>
+          <button
+            onClick={() => props.onZoomChange(0.1)}
+            disabled={props.zoom >= 1.4}
+            class="w-5 h-5 flex items-center justify-center bg-bg-tertiary hover:bg-border rounded-r border border-border text-text-primary text-xs font-bold leading-none transition-all duration-150 hover:shadow-[0_0_4px_var(--color-glow-physics)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:shadow-none disabled:hover:bg-bg-tertiary"
+            title="Zoom in"
+          >
+            +
+          </button>
+        </div>
       </div>
       {/* Row 2: Per-tier breakdown */}
       <div class="flex items-center gap-3 text-[10px]">

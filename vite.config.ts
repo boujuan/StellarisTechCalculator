@@ -6,6 +6,9 @@ export default defineConfig(({ command }) => ({
   // For GitHub Pages: set base to repo name. Override with VITE_BASE env var.
   base: process.env.VITE_BASE ?? (command === "build" ? "/StellarisTechCalculator/" : "/"),
   plugins: [solid(), tailwindcss()],
+  define: {
+    __APP_VERSION__: JSON.stringify(process.env.npm_package_version ?? "0.2.0"),
+  },
   worker: {
     format: "es" as const,
   },

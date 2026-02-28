@@ -18,6 +18,18 @@ const App: Component = () => {
   const [showSaveLoad, setShowSaveLoad] = createSignal(false);
   const [availableOnly, setAvailableOnly] = createSignal(false);
 
+  // Zoom level — persisted in localStorage
+  const savedZoom = parseFloat(localStorage.getItem("stellaris_tc_zoom") ?? "1");
+  const [zoomLevel, setZoomLevel] = createSignal(
+    Number.isFinite(savedZoom) ? Math.max(0.6, Math.min(1.4, savedZoom)) : 1
+  );
+  const changeZoom = (delta: number) => {
+    const next = Math.round((zoomLevel() + delta) * 10) / 10;
+    const clamped = Math.max(0.6, Math.min(1.4, next));
+    setZoomLevel(clamped);
+    localStorage.setItem("stellaris_tc_zoom", String(clamped));
+  };
+
   onMount(() => {
     // Initialize Web Worker
     initMonteCarloWorker();
@@ -32,7 +44,7 @@ const App: Component = () => {
   });
 
   return (
-    <div class="flex h-screen overflow-hidden">
+    <div class="flex h-screen overflow-hidden" data-area={areaFilter()}>
       <Sidebar />
 
       <main class="flex-1 flex flex-col overflow-hidden">
@@ -50,7 +62,10 @@ const App: Component = () => {
 
         {/* Summary bar */}
         <div class="px-4 py-2 bg-bg-secondary/50 border-b border-border">
-          <ResearchSummary />
+          <ResearchSummary
+            zoom={zoomLevel()}
+            onZoomChange={changeZoom}
+          />
         </div>
 
         {/* Tech grid */}
@@ -60,6 +75,7 @@ const App: Component = () => {
             areaFilter={areaFilter()}
             sortBy={sortBy()}
             availableOnly={availableOnly()}
+            zoom={zoomLevel()}
           />
         </div>
       </main>
