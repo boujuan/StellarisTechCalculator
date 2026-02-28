@@ -24,7 +24,7 @@ const TutorialOverlay: Component = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div class="flex justify-between items-center mb-4">
-              <h2 class="text-lg font-bold text-text-primary">
+              <h2 class="text-lg font-bold text-text-primary font-display" style={{ "text-shadow": "0 0 10px rgba(59,130,246,0.3)" }}>
                 How to Use the Stellaris Tech Calculator
               </h2>
               <button

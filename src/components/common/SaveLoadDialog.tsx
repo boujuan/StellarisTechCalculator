@@ -190,7 +190,7 @@ const SaveLoadDialog: Component<{ onClose: () => void }> = (props) => {
     <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={props.onClose}>
       <div class="bg-bg-secondary border border-border rounded-lg p-4 w-96 max-h-[80vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
         <div class="flex justify-between items-center mb-4">
-          <h3 class="text-base font-semibold">Save / Load</h3>
+          <h3 class="text-base font-semibold font-display" style={{ "text-shadow": "0 0 8px rgba(59,130,246,0.3)" }}>Save / Load</h3>
           <button onClick={props.onClose} class="text-text-muted hover:text-text-primary text-lg">&times;</button>
         </div>
 

@@ -17,7 +17,7 @@ const ResearchSummary: Component = () => {
   };
 
   return (
-    <div class="flex items-center gap-4 text-xs">
+    <div class="flex items-center gap-4 text-xs bg-linear-to-r from-bg-secondary/60 to-transparent rounded px-2 py-0.5">
       <span class="text-text-muted">
         Researched: <span class="text-text-primary font-medium">{totalResearched()}</span>
       </span>

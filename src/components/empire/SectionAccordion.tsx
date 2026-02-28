@@ -29,7 +29,7 @@ const SectionAccordion: Component<Props> = (props) => {
   return (
     <div class="border-b border-border">
       <button
-        class="w-full text-left px-3 py-2 hover:bg-bg-tertiary transition-colors flex items-center justify-between"
+        class="w-full text-left px-3 py-2 hover:bg-bg-tertiary transition-colors flex items-center justify-between group"
         onClick={() => setOpen(!open())}
       >
         <span
@@ -38,13 +38,24 @@ const SectionAccordion: Component<Props> = (props) => {
         >
           {props.title}
         </span>
-        <span class="text-text-muted text-xs">{open() ? "▼" : "▶"}</span>
+        <span
+          class="text-text-muted text-xs transition-transform duration-200"
+          style={{ transform: open() ? "rotate(90deg)" : "rotate(0deg)" }}
+        >
+          ▶
+        </span>
       </button>
+      {/* Smooth height animation via CSS grid trick */}
       <div
-        class="overflow-hidden transition-all"
-        style={{ display: open() ? "block" : "none" }}
+        style={{
+          display: "grid",
+          "grid-template-rows": open() ? "1fr" : "0fr",
+          transition: "grid-template-rows 0.25s ease-out",
+        }}
       >
-        <div class="px-3 pb-2">{props.children}</div>
+        <div style={{ overflow: "hidden" }}>
+          <div class="px-3 pb-2">{props.children}</div>
+        </div>
       </div>
     </div>
   );

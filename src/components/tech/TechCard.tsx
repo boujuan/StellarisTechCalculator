@@ -1,4 +1,4 @@
-import { Show, type Component } from "solid-js";
+import { Show, createSignal, onMount, type Component } from "solid-js";
 import { techState } from "../../state/techState";
 import { activeTechnologies } from "../../state/techState";
 import { toggleResearched, toggleDrawnLast } from "../../state/techState";
@@ -7,32 +7,87 @@ import { formatPercent, formatWeight, formatDelta } from "../../utils/formatters
 
 interface Props {
   techId: string;
+  index: number;
 }
 
-const AREA_COLORS: Record<string, { bg: string; border: string; text: string }> = {
-  physics: { bg: "bg-physics-dark", border: "border-physics/60", text: "text-physics" },
-  society: { bg: "bg-society-dark", border: "border-society/60", text: "text-society" },
-  engineering: { bg: "bg-engineering-dark", border: "border-engineering/60", text: "text-engineering" },
+const base = import.meta.env.BASE_URL;
+
+const AREA_BORDER: Record<string, string> = {
+  physics: "border-physics/60",
+  society: "border-society/60",
+  engineering: "border-engineering/60",
 };
 
-const BORDER_MOD_COLORS: Record<string, string> = {
+const AREA_TEXT: Record<string, string> = {
+  physics: "text-physics",
+  society: "text-society",
+  engineering: "text-engineering",
+};
+
+const AREA_GLOW: Record<string, string> = {
+  physics: "0 0 15px 3px var(--color-glow-physics)",
+  society: "0 0 15px 3px var(--color-glow-society)",
+  engineering: "0 0 15px 3px var(--color-glow-engineering)",
+};
+
+const AREA_BAR_COLOR: Record<string, string> = {
+  physics: "var(--color-physics)",
+  society: "var(--color-society)",
+  engineering: "var(--color-engineering)",
+};
+
+const BORDER_MOD: Record<string, string> = {
   rare: "border-rare/80",
   dangerous: "border-dangerous/80",
+};
+
+const GLOW_MOD: Record<string, string> = {
+  rare: "0 0 15px 3px var(--color-glow-rare)",
+  dangerous: "0 0 15px 3px var(--color-glow-dangerous)",
 };
 
 const TechCard: Component<Props> = (props) => {
   const tech = () => activeTechnologies[props.techId];
   const state = () => techState[props.techId];
 
-  const areaStyle = () => AREA_COLORS[tech().area] ?? AREA_COLORS.physics;
-  const borderStyle = () =>
-    BORDER_MOD_COLORS[tech().bordermod] ?? areaStyle().border;
+  const area = () => tech().area;
+  const bordermod = () => tech().bordermod;
+
+  const borderClass = () => BORDER_MOD[bordermod()] ?? AREA_BORDER[area()] ?? AREA_BORDER.physics;
+  const textClass = () => AREA_TEXT[area()] ?? AREA_TEXT.physics;
+  const hoverGlow = () => GLOW_MOD[bordermod()] ?? AREA_GLOW[area()] ?? AREA_GLOW.physics;
+  const barColor = () => AREA_BAR_COLOR[area()] ?? AREA_BAR_COLOR.physics;
+
+  // Background: rare/dangerous override the area background
+  const bgArea = () => {
+    if (bordermod() === "rare") return "rare";
+    if (bordermod() === "dangerous") return "dangerous";
+    return area();
+  };
+  const bgUrl = () => `${base}media/backgrounds/tech_bg_${bgArea()}.avif`;
 
   const isResearched = () => state().researched === 1;
   const isPermanent = () => state().permanent === 1;
   const isAvailable = () =>
     state().prereqs_met === 1 && !isResearched() && !isPermanent();
   const isDrawnLast = () => state().drawn_last === 1;
+
+  const hitChance = () => state().hit_chance;
+
+  // Track entrance animation — only plays once on mount, never re-triggers
+  const [hasEntered, setHasEntered] = createSignal(false);
+  const delay = () => Math.min(props.index, 20) * 20;
+
+  onMount(() => {
+    setTimeout(() => setHasEntered(true), delay() + 350);
+  });
+
+  // Animation: entrance once → drawn-last pulse → none
+  const animationStyle = () => {
+    if (isDrawnLast()) return "subtle-pulse 2s ease-in-out infinite";
+    if (!hasEntered()) return `fade-in-up 0.3s ease-out ${delay()}ms both`;
+    return "none";
+  };
 
   const handleClick = () => {
     if (isPermanent()) return;
@@ -47,81 +102,122 @@ const TechCard: Component<Props> = (props) => {
     runUpdateCascade();
   };
 
-  const base = import.meta.env.BASE_URL;
   const iconUrl = () => `${base}media/tech_icons/${tech().icon}.avif`;
   const categoryIconUrl = () =>
     `${base}media/category_icons/category_${tech().category}.avif`;
 
   return (
     <div
-      class={`rounded-lg border-2 p-3 cursor-pointer transition-all select-none
-        ${borderStyle()}
-        ${isResearched() ? "opacity-40" : ""}
+      class={`relative overflow-hidden rounded-lg border-2 cursor-pointer select-none transition-all duration-200
+        ${borderClass()}
         ${isPermanent() ? "opacity-25" : ""}
-        ${isDrawnLast() ? "ring-2 ring-dangerous/60" : ""}
-        ${isAvailable() ? "hover:brightness-110" : ""}
-        ${areaStyle().bg}
+        ${isAvailable() ? "hover:scale-[1.02]" : ""}
       `}
+      style={{
+        "background-image": `url(${bgUrl()})`,
+        "background-size": "cover",
+        "background-position": "center",
+        "animation": animationStyle(),
+        // Researched: desaturate + dim smoothly
+        "filter": isResearched() ? "grayscale(0.6) brightness(0.5)" : "none",
+        "opacity": isResearched() ? "0.55" : undefined,
+      }}
       onClick={handleClick}
       onContextMenu={handleContextMenu}
+      onMouseEnter={(e) => {
+        if (isAvailable()) {
+          e.currentTarget.style.boxShadow = hoverGlow();
+        }
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.boxShadow = "";
+      }}
       title={`${tech().real_name}\nTier ${tech().tier} | Cost: ${tech().cost}\nRight-click to toggle "drawn last"`}
     >
-      {/* Header row: icon + name */}
-      <div class="flex items-center gap-2 mb-1">
-        <img
-          src={iconUrl()}
-          alt=""
-          class="w-8 h-8 shrink-0"
-          loading="lazy"
-        />
-        <div class="min-w-0 flex-1">
-          <div class="text-sm font-semibold text-text-primary truncate">
-            {tech().real_name}
-          </div>
-          <div class="flex items-center gap-1">
-            <img
-              src={categoryIconUrl()}
-              alt=""
-              class="w-3.5 h-3.5"
-              loading="lazy"
-            />
-            <span class={`text-[10px] ${areaStyle().text}`}>
-              T{tech().tier}
-            </span>
-            <Show when={tech().is_rare}>
-              <span class="text-[10px] text-rare">Rare</span>
-            </Show>
-            <Show when={tech().is_dangerous}>
-              <span class="text-[10px] text-dangerous">!</span>
-            </Show>
+      {/* Dark overlay for text readability */}
+      <div class="absolute inset-0 bg-black/45" />
+
+      {/* Researched overlay badge */}
+      <Show when={isResearched()}>
+        <div class="absolute inset-0 z-20 flex items-center justify-center">
+          <span class="text-[10px] font-bold font-display tracking-wider text-text-muted/80 bg-black/50 px-2 py-0.5 rounded-full border border-white/10 uppercase">
+            Researched
+          </span>
+        </div>
+      </Show>
+
+      {/* Card content */}
+      <div class="relative z-10 p-3">
+        {/* Header row: icon + name */}
+        <div class="flex items-center gap-2 mb-1">
+          <img
+            src={iconUrl()}
+            alt=""
+            class="w-8 h-8 shrink-0 drop-shadow-lg"
+            loading="lazy"
+          />
+          <div class="min-w-0 flex-1">
+            <div class="text-sm font-semibold text-text-primary truncate font-display">
+              {tech().real_name}
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img
+                src={categoryIconUrl()}
+                alt=""
+                class="w-5 h-5"
+                loading="lazy"
+              />
+              {/* Tier pill badge */}
+              <span class={`text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-black/30 ${textClass()}`}>
+                T{tech().tier}
+              </span>
+              <Show when={tech().is_rare}>
+                <span class="text-[10px] font-semibold text-rare">Rare</span>
+              </Show>
+              <Show when={tech().is_dangerous}>
+                <span class="text-[10px] font-bold text-dangerous">!</span>
+              </Show>
+            </div>
           </div>
         </div>
+
+        {/* Stats row */}
+        <Show when={isAvailable()}>
+          <div class="flex justify-between text-xs mt-1 pt-1 border-t border-white/10">
+            <span class="text-text-muted" title="Base weight — determines how likely this tech is to appear relative to others">
+              W: <span class="text-text-primary">{formatWeight(state().current_weight)}</span>
+            </span>
+            <span class="text-text-muted" title="Hit chance — Monte Carlo probability (%) this tech appears in your next research offer">
+              <span class="text-text-primary font-semibold">
+                {formatPercent(state().hit_chance)}
+              </span>
+            </span>
+            <Show when={state().delta_weight !== 0}>
+              <span
+                class={
+                  state().delta_weight > 0
+                    ? "text-society"
+                    : "text-dangerous"
+                }
+                title="Delta — net weight change if you research this tech first (positive = unlocks valuable techs)"
+              >
+                {formatDelta(state().delta_weight)}
+              </span>
+            </Show>
+          </div>
+        </Show>
       </div>
 
-      {/* Stats row */}
-      <Show when={isAvailable()}>
-        <div class="flex justify-between text-xs mt-1 pt-1 border-t border-white/10">
-          <span class="text-text-muted" title="Base weight — determines how likely this tech is to appear relative to others">
-            W: <span class="text-text-primary">{formatWeight(state().current_weight)}</span>
-          </span>
-          <span class="text-text-muted" title="Hit chance — Monte Carlo probability (%) this tech appears in your next research offer">
-            <span class="text-text-primary font-semibold">
-              {formatPercent(state().hit_chance)}
-            </span>
-          </span>
-          <Show when={state().delta_weight !== 0}>
-            <span
-              class={
-                state().delta_weight > 0
-                  ? "text-society"
-                  : "text-dangerous"
-              }
-              title="Delta — net weight change if you research this tech first (positive = unlocks valuable techs)"
-            >
-              {formatDelta(state().delta_weight)}
-            </span>
-          </Show>
-        </div>
+      {/* Hit chance bar at bottom */}
+      <Show when={isAvailable() && hitChance() > 0}>
+        <div
+          class="absolute bottom-0 left-0 h-[3px] transition-all duration-500 ease-out"
+          style={{
+            width: `${Math.min(hitChance(), 100)}%`,
+            "background-color": barColor(),
+            "box-shadow": `0 0 6px ${barColor()}`,
+          }}
+        />
       </Show>
     </div>
   );

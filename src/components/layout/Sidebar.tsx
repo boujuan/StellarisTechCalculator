@@ -107,25 +107,43 @@ const Sidebar: Component = () => {
 
   const ethicsPoints = createMemo(() => currentEthicsPoints());
 
+  const bgUrl = `${import.meta.env.BASE_URL}media/ui/extradimensional_blue_room.avif`;
+
   return (
-    <aside class="w-80 bg-bg-secondary border-r border-border overflow-hidden shrink-0 flex flex-col relative">
+    <aside
+      class="w-80 border-r border-border overflow-hidden shrink-0 flex flex-col relative"
+      style={{
+        "background-color": "var(--color-bg-secondary)",
+        "background-image": `url(${bgUrl})`,
+        "background-size": "cover",
+        "background-position": "center top",
+        "background-blend-mode": "overlay",
+        "background-repeat": "no-repeat",
+      }}
+    >
+      {/* Semi-transparent overlay to dim the background */}
+      <div class="absolute inset-0 bg-bg-secondary/92 z-0" />
+
       {/* Header with expand/collapse buttons */}
-      <div class="p-3 border-b border-border">
+      <div class="p-3 border-b border-border relative z-10">
         <div class="flex items-center justify-between">
-          <h2 class="text-base font-semibold text-text-primary">
+          <h2
+            class="text-base font-bold text-text-primary font-display"
+            style={{ "text-shadow": "0 0 10px rgba(59,130,246,0.3)" }}
+          >
             Empire Modifiers
           </h2>
           <div class="flex gap-1">
             <button
               onClick={expandAll}
-              class="text-xs text-text-muted hover:text-text-primary px-1.5 py-0.5 border border-border rounded transition-colors"
+              class="text-xs text-text-muted hover:text-physics px-1.5 py-0.5 border border-border rounded transition-all duration-150 hover:border-physics/40 hover:shadow-[0_0_4px_var(--color-glow-physics)]"
               title="Expand all sections"
             >
               Expand
             </button>
             <button
               onClick={collapseAll}
-              class="text-xs text-text-muted hover:text-text-primary px-1.5 py-0.5 border border-border rounded transition-colors"
+              class="text-xs text-text-muted hover:text-physics px-1.5 py-0.5 border border-border rounded transition-all duration-150 hover:border-physics/40 hover:shadow-[0_0_4px_var(--color-glow-physics)]"
               title="Collapse all sections"
             >
               Collapse
@@ -137,7 +155,7 @@ const Sidebar: Component = () => {
       {/* Scrollable content */}
       <AccordionProvider value={accordionCmd}>
         <div
-          class="flex-1 overflow-y-auto"
+          class="flex-1 overflow-y-auto relative z-10"
           ref={scrollRef}
           onScroll={(e) => setShowScrollTop(e.currentTarget.scrollTop > 200)}
         >
@@ -185,16 +203,19 @@ const Sidebar: Component = () => {
         </div>
       </AccordionProvider>
 
-      {/* Scroll to top button */}
-      <Show when={showScrollTop()}>
-        <button
-          onClick={() => scrollRef?.scrollTo({ top: 0, behavior: "smooth" })}
-          class="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-bg-tertiary border border-border text-text-muted hover:text-text-primary flex items-center justify-center shadow-lg transition-colors z-10"
-          title="Scroll to top"
-        >
-          ↑
-        </button>
-      </Show>
+      {/* Scroll to top button — always rendered, visibility toggled via opacity */}
+      <button
+        onClick={() => scrollRef?.scrollTo({ top: 0, behavior: "smooth" })}
+        class="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-bg-tertiary border border-border text-text-muted hover:text-physics flex items-center justify-center shadow-lg transition-all duration-300 z-20 hover:shadow-[0_0_8px_var(--color-glow-physics)]"
+        style={{
+          opacity: showScrollTop() ? "1" : "0",
+          transform: showScrollTop() ? "translateY(0)" : "translateY(8px)",
+          "pointer-events": showScrollTop() ? "auto" : "none",
+        }}
+        title="Scroll to top"
+      >
+        ↑
+      </button>
     </aside>
   );
 };

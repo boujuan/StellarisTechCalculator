@@ -70,7 +70,7 @@ const TechGrid: Component<Props> = (props) => {
   return (
     <div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-3">
       <For each={filteredAndSorted()}>
-        {(techId) => <TechCard techId={techId} />}
+        {(techId, i) => <TechCard techId={techId} index={i()} />}
       </For>
     </div>
   );
