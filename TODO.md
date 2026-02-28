@@ -15,6 +15,7 @@
 - [ ] Filters by tech subcategories (e.g., Particles, Field Manipulation, Biology, etc.)
 - [ ] Zoom slider or toggles for card size
 - [ ] Responsive/flex design adaptations for mobile
+- [ ] Change dim-out of unavailable techs to only dim the border
 
 ## Feature Ideas
 
