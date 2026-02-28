@@ -8,6 +8,7 @@
 - [x] Expertise traits seems to change to levels <0, not visually but affecting the calculations of draw % of the technologies
 - [x] Cannot manually change their level number. field not interactable.
 - [x] Make elements fit comfortably in the sidebar.
+- [ ] Expand and collapse buttons on sidebar dont properly work. Expand should expand all categories and subcategories.
 
 ## UI/UX Improvements
 
@@ -27,7 +28,6 @@
 - [x] Make sidebar elements be cohesive visually between each other, including number selectors
 - [ ] Increase size of 'x' reset buttons on search bars. Make them more clear and styled to the rest of Stellaris style with glow orange circle style.
 - [ ] Make scrollbars match style of Stellaris, thicker and glow color
-- [ ] Expand and collapse buttons on sidebar dont properly work. Expand should expand all categories and subcategories.
 
 ## Feature Ideas
 
