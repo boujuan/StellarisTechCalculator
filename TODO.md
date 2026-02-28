@@ -24,10 +24,11 @@
 - [x] Modify sorting order so "drawn last" techs are prioritised abover other unavailable techs (not strictly alphabetical). Also available techs should be above unavailable one when sorting by weight or hit chance % always, even if it's 0. Techs with negative delta should be above unavailable techs when sorting by Delta too.
 - [x] Add small x button to clear both search bars
 - [x] Make the "RESEARCHED" text not be dimmed out
-- [ ] Improve "expertise traits" section, make not fitting names to scroll with animation relatively quickly on hover to show it all.
+- [x] Improve "expertise traits" section, make not fitting names to scroll with animation relatively quickly on hover to show it all.
 - [x] Make sidebar elements be cohesive visually between each other, including number selectors
 - [ ] Increase size of 'x' reset buttons on search bars. Make them more clear and styled to the rest of Stellaris style with glow orange circle style.
 - [ ] Make scrollbars match style of Stellaris, thicker and glow color
+- [ ] Add instructions and descriptions what it does and how to use for each section on hover. eg: expertise traits show what increasing each number does (number of leaders in council having such trait?)
 
 ## Feature Ideas
 

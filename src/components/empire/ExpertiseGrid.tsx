@@ -1,10 +1,98 @@
-import { For, type Component } from "solid-js";
+import { For, createSignal, onMount, type Component } from "solid-js";
 import {
   councilExpertise,
   setCouncilExpertiseTier,
   recomputeExpertiseBonus,
 } from "../../state/empireState";
 import { runUpdateCascade } from "../../engine/updateCascade";
+
+// ── Expertise → area mapping + tooltip data ──────────────────────────
+
+interface ExpertiseInfo {
+  area: "physics" | "society" | "engineering";
+  areaLabel: string;
+  tierWeights: string; // human-readable per-councillor multipliers
+}
+
+const EXPERTISE_INFO: Record<string, ExpertiseInfo> = {
+  "Computing":          { area: "physics",      areaLabel: "Physics",      tierWeights: "+25% / +35% / +75%" },
+  "Field Manipulation": { area: "physics",      areaLabel: "Physics",      tierWeights: "+25% / +35% / +75%" },
+  "Particles":          { area: "physics",      areaLabel: "Physics",      tierWeights: "+25% / +35% / +75%" },
+  "Archaeostudies":     { area: "society",      areaLabel: "Society",      tierWeights: "+15% / +20% / +35%" },
+  "Biology":            { area: "society",      areaLabel: "Society",      tierWeights: "+25% / +35% / +75%" },
+  "Military Theory":    { area: "society",      areaLabel: "Society",      tierWeights: "+25% / +35% / +75%" },
+  "New Worlds":         { area: "society",      areaLabel: "Society",      tierWeights: "+25% / +35% / +75%" },
+  "Psionics":           { area: "society",      areaLabel: "Society",      tierWeights: "+50% / +100% / +200%" },
+  "Statecraft":         { area: "society",      areaLabel: "Society",      tierWeights: "+25% / +35% / +75%" },
+  "Industry":           { area: "engineering",  areaLabel: "Engineering",  tierWeights: "+25% / +35% / +75%" },
+  "Materials":          { area: "engineering",  areaLabel: "Engineering",  tierWeights: "+25% / +35% / +75%" },
+  "Propulsion":         { area: "engineering",  areaLabel: "Engineering",  tierWeights: "+25% / +35% / +75%" },
+  "Voidcraft":          { area: "engineering",  areaLabel: "Engineering",  tierWeights: "+25% / +35% / +75%" },
+};
+
+const AREA_TEXT_CLASS: Record<string, string> = {
+  physics: "text-physics",
+  society: "text-society",
+  engineering: "text-engineering",
+};
+
+function getExpertiseTooltip(name: string): string {
+  const info = EXPERTISE_INFO[name];
+  if (!info) return name;
+  return (
+    `Boosts ${info.areaLabel} → ${name} tech draw weight.\n` +
+    `Weight per councillor at tier 1 / 2 / 3: ${info.tierWeights}`
+  );
+}
+
+const TIER_TOOLTIPS: Record<number, string> = {
+  1: "Tier 1 — number of councillors with basic expertise\nDefault: +25%, Psionics: +50%, Archaeostudies: +15%",
+  2: "Tier 2 — number of councillors with intermediate expertise\nDefault: +35%, Psionics: +100%, Archaeostudies: +20%",
+  3: "Tier 3 — number of councillors with advanced expertise\nDefault: +75%, Psionics: +200%, Archaeostudies: +35%",
+};
+
+// ── Scrolling name sub-component ─────────────────────────────────────
+
+const ScrollName: Component<{ name: string; colorClass: string; tooltip: string }> = (props) => {
+  let containerRef: HTMLDivElement | undefined;
+  let textRef: HTMLSpanElement | undefined;
+  const [scrollDist, setScrollDist] = createSignal(0);
+  const [hovering, setHovering] = createSignal(false);
+
+  onMount(() => {
+    if (textRef && containerRef) {
+      const overflow = textRef.scrollWidth - containerRef.clientWidth;
+      if (overflow > 0) setScrollDist(overflow + 8);
+    }
+  });
+
+  return (
+    <td
+      class={`py-0.5 pr-2 max-w-28 ${props.colorClass}`}
+      title={props.tooltip}
+      onMouseEnter={() => setHovering(true)}
+      onMouseLeave={() => setHovering(false)}
+    >
+      <div ref={containerRef} class="overflow-hidden whitespace-nowrap">
+        <span
+          ref={textRef}
+          class="inline-block text-sm"
+          style={{
+            animation:
+              hovering() && scrollDist() > 0
+                ? "expertise-scroll 2s ease-in-out infinite"
+                : "none",
+            "--scroll-x": `-${scrollDist()}px`,
+          }}
+        >
+          {props.name}
+        </span>
+      </div>
+    </td>
+  );
+};
+
+// ── Main grid ────────────────────────────────────────────────────────
 
 interface Props {
   /** Map of display_name → [atomic_fact_id] */
@@ -31,10 +119,20 @@ const ExpertiseGrid: Component<Props> = (props) => {
       <table class="w-full text-sm">
         <thead>
           <tr class="text-text-muted">
-            <th class="text-left font-normal py-1">Expertise</th>
+            <th
+              class="text-left font-normal py-1"
+              title="Number of councillors with each expertise trait. Boosts draw weight of techs in the matching category."
+            >
+              Expertise
+            </th>
             <For each={[1, 2, 3]}>
               {(level) => (
-                <th class="text-center font-normal py-1 w-12">{level}</th>
+                <th
+                  class="text-center font-normal py-1 w-12"
+                  title={TIER_TOOLTIPS[level]}
+                >
+                  {level}
+                </th>
               )}
             </For>
           </tr>
@@ -43,9 +141,16 @@ const ExpertiseGrid: Component<Props> = (props) => {
           <For each={entries()}>
             {([displayName, factList]) => {
               const atomicFact = factList[0];
+              const info = EXPERTISE_INFO[displayName];
+              const colorClass = AREA_TEXT_CLASS[info?.area ?? ""] ?? "text-text-secondary";
+
               return (
                 <tr class="hover:bg-bg-tertiary">
-                  <td class="text-text-secondary py-0.5 pr-2 truncate max-w-28" title={displayName}>{displayName}</td>
+                  <ScrollName
+                    name={displayName}
+                    colorClass={colorClass}
+                    tooltip={getExpertiseTooltip(displayName)}
+                  />
                   <For each={[1, 2, 3]}>
                     {(tier) => {
                       const val = () => getValueForExpertise(atomicFact, tier);

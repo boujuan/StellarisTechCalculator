@@ -78,6 +78,12 @@ body {
   }
 }
 
+@keyframes expertise-scroll {
+  0%, 20% { transform: translateX(0); }
+  45%, 55% { transform: translateX(var(--scroll-x)); }
+  80%, 100% { transform: translateX(0); }
+}
+
 /* ── Scrollbar styling ── */
 
 ::-webkit-scrollbar {
