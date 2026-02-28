@@ -33,7 +33,7 @@ const ExpertiseGrid: Component<Props> = (props) => {
             <th class="text-left font-normal py-1">Expertise</th>
             <For each={[1, 2, 3]}>
               {(level) => (
-                <th class="text-center font-normal py-1 w-14">Lv {level}</th>
+                <th class="text-center font-normal py-1 w-12">{level}</th>
               )}
             </For>
           </tr>
@@ -57,9 +57,17 @@ const ExpertiseGrid: Component<Props> = (props) => {
                             >
                               −
                             </button>
-                            <span class="w-5 h-5 flex items-center justify-center bg-bg-primary border-y border-border text-center text-text-primary text-xs font-semibold tabular-nums select-none">
-                              {val()}
-                            </span>
+                            <input
+                              type="number"
+                              min={0}
+                              max={6}
+                              value={val()}
+                              onInput={(e) => {
+                                const v = Math.max(0, Math.min(6, Number(e.currentTarget.value)));
+                                handleChange(atomicFact, tier, v);
+                              }}
+                              class="w-5 h-5 bg-bg-primary border-y border-border text-center text-text-primary text-xs font-semibold tabular-nums [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                            />
                             <button
                               class="w-5 h-5 flex items-center justify-center bg-bg-tertiary hover:bg-border rounded-r border border-border text-text-primary text-xs font-bold transition-all duration-150 hover:shadow-[0_0_4px_var(--color-glow-physics)]"
                               onClick={() => handleChange(atomicFact, tier, Math.min(6, val() + 1))}

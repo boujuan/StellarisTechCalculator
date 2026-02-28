@@ -3,7 +3,7 @@
  * Ported from GameState.gd
  */
 import { createSignal, batch } from "solid-js";
-import { createStore } from "solid-js/store";
+import { createStore, reconcile } from "solid-js/store";
 import type {
   AtomicFacts,
   CouncilExpertise,
@@ -115,7 +115,7 @@ export function setCouncilExpertiseTier(
   if (!councilExpertise[category]) {
     setCouncilExpertise(category, { 1: 0, 2: 0, 3: 0 });
   }
-  setCouncilExpertise(category, tier, count);
+  setCouncilExpertise(category, tier, Math.max(0, count));
 
   // Update atomic fact: true if any tier has count > 0
   const tierMap = councilExpertise[category] as ExpertiseTierMap;
@@ -152,7 +152,7 @@ export function recomputeExpertiseBonus(): void {
     newBonus["psionics"] = (newBonus["psionics"] ?? 0) + shroudBonus;
   }
 
-  setExpertiseBonus(newBonus);
+  setExpertiseBonus(reconcile(newBonus));
 }
 
 export function getExpertiseBonusForCategory(category: string): number {
