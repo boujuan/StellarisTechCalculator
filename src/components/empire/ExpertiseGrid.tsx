@@ -15,6 +15,7 @@ const ExpertiseGrid: Component<Props> = (props) => {
   const entries = () => Object.entries(props.facts);
 
   const handleChange = (atomicFact: string, tier: number, value: number) => {
+    if (getValueForExpertise(atomicFact, tier) === value) return;
     setCouncilExpertiseTier(atomicFact, tier, value);
     recomputeExpertiseBonus();
     runUpdateCascade();

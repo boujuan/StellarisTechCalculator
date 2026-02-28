@@ -39,3 +39,4 @@
 - [ ] Add Stellaris version tracking text on the lower left corner, with link to patch notes and changelog
 - [ ] Add link with icon to Github repository
 - [ ] Add further sorting rules (lookup other app)
+- [ ] Settings page for Monte Carlo engine — tweak max iterations, convergence threshold, epsilon. Consider alternative probability engines (exact combinatorial for small pools, importance sampling) for faster/more precise results

@@ -71,6 +71,12 @@ const TutorialOverlay: Component = () => {
                 Set your empire's number of research alternatives (default 3). More
                 alternatives means higher hit chances for each individual tech.
               </p>
+              <p>
+                <strong class="text-text-primary">Precision:</strong>{" "}
+                Hit chances are estimated via Monte Carlo simulation (up to 20,000
+                iterations). Values may fluctuate by approximately ±1% between
+                recalculations — this is expected statistical variance, not a bug.
+              </p>
             </div>
 
             <button

@@ -14,6 +14,7 @@ const COUNCILLOR_MAP: { displayName: string; id: keyof CouncillorLevels }[] = [
 
 const CouncilPositions: Component = () => {
   const handleChange = (id: keyof CouncillorLevels, value: number) => {
+    if (councillorLevels[id] === value) return;
     setCouncillorLevel(id, value);
     recomputeExpertiseBonus();
     runUpdateCascade();
