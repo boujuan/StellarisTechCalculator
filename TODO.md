@@ -14,7 +14,7 @@
 
 - [ ] Improve caching and performance across the app. Do not make it reload all textures and logic with every tab change or settings tweak.-> Needs profiling first
 - [ ] Improve Reset confirmation dialog — better layout and descriptive text -> Needs custom dialog component design
-- [ ] Add filter button to show only already-researched techs and "drawn last" techs. Inclusive when "Available only" is enabled, allows to see what was already researched -> Needs UI placement decisions
+- [x] Add filter button to show only already-researched techs and "drawn last" techs. Inclusive when "Available only" is enabled, allows to see what was already researched -> Needs UI placement decisions
 - [ ] Rethink the "drawn last" and prioritisation system for better usability
 - [ ] Filters by tech subcategories (e.g., Particles, Field Manipulation, Biology, etc.)
 - [x] Zoom slider or toggles for card size
@@ -29,7 +29,7 @@
 - [x] Increase size of 'x' reset buttons on search bars. Make them more clear and styled to the rest of Stellaris style with glow orange circle style.
 - [x] Make scrollbars match style of Stellaris, thicker and glow color
 - [ ] Add instructions and descriptions what it does and how to use for each section on hover. eg: expertise traits show what increasing each number does (number of leaders in council having such trait?)
-- [ ] Make all DLCs checked the default
+- [x] Make all DLCs checked the default
 
 ## Feature Ideas
 
@@ -38,9 +38,9 @@
 - [ ] Pin techs — always show pinned techs at the top regardless of filters/sorting
 - [ ] Optimal research path calculator — compute statistical minimum number of techs to research to reach a target tech, display optimized route
 - [ ] Redesign sidebar of empire selection to emulate in-game empire making, sourcing actual icons, etc
-- [ ] Add Stellaris version tracking text on the lower left corner, with link to patch notes and changelog
+- [x] Add Stellaris version tracking text on the lower left corner, with link to patch notes and changelog
 - [x] Add link with icon to Github repository
-- [ ] Add further sorting rules (lookup other app)
+- [x] Add further sorting rules (lookup other app)
 - [ ] Settings page for Monte Carlo engine — tweak max iterations, convergence threshold, epsilon. Consider alternative probability engines (exact combinatorial for small pools, importance sampling) for faster/more precise results
 - [ ] Add localization in different languages. Pull it from the game files
-- [ ] Version number should include the Stellaris version it is compatible with (now 4.3.x)
+- [x] Version number should include the Stellaris version it is compatible with (now 4.3.x)

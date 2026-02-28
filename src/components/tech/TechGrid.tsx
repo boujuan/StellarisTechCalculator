@@ -10,7 +10,7 @@ interface Props {
   search: string;
   areaFilter: AreaFilter;
   sortBy: string;
-  availableOnly: boolean;
+  techViewFilters: Set<string>;
   zoom: number;
 }
 
@@ -18,6 +18,7 @@ const TechGrid: Component<Props> = (props) => {
   const filteredAndSorted = createMemo(() => {
     const searchLower = props.search.toLowerCase();
     const area = props.areaFilter;
+    const filters = props.techViewFilters;
 
     // Filter
     let ids = allTechIds.filter((id) => {
@@ -32,14 +33,23 @@ const TechGrid: Component<Props> = (props) => {
         return false;
       }
 
-      // Hide permanent techs by default (they're never in the pool)
-      if (ts.permanent === 1) return false;
-
-      // Available-only filter: only show techs that can appear in research pool
-      if (props.availableOnly) {
-        if (!(ts.prereqs_met === 1 && ts.researched === 0 && ts.current_weight > 0)) {
-          return false;
+      // Tech View filters (inclusive OR)
+      if (!filters.has("all")) {
+        let passes = false;
+        if (filters.has("current")) {
+          if (
+            (ts.prereqs_met === 1 && ts.researched === 0 && ts.current_weight > 0) ||
+            ts.drawn_last === 1 ||
+            (ts.permanent === 1 && ts.researched === 0)
+          ) passes = true;
         }
+        if (filters.has("potential") && ts.potential === 1) passes = true;
+        if (filters.has("researched") && ts.researched === 1) passes = true;
+        if (filters.has("previous") && ts.drawn_last === 1) passes = true;
+        if (filters.has("permanent") && ts.permanent === 1) passes = true;
+        if (filters.has("zero_weight") && tech.weight === 0) passes = true;
+        if (filters.has("not_possible") && ts.potential === 0) passes = true;
+        if (!passes) return false;
       }
 
       return true;
@@ -67,6 +77,18 @@ const TechGrid: Component<Props> = (props) => {
             activeTechnologies[a].real_name.localeCompare(activeTechnologies[b].real_name);
         case "delta":
           return techState[b].delta_weight - techState[a].delta_weight;
+        case "base_weight":
+          return (activeTechnologies[b].weight ?? 0) - (activeTechnologies[a].weight ?? 0);
+        case "category":
+          return (activeTechnologies[a].category ?? "").localeCompare(
+            activeTechnologies[b].category ?? "",
+          ) || activeTechnologies[a].real_name.localeCompare(activeTechnologies[b].real_name);
+        case "area": {
+          const areaOrder: Record<string, number> = { physics: 0, society: 1, engineering: 2 };
+          return (areaOrder[activeTechnologies[a].area] ?? 0) -
+            (areaOrder[activeTechnologies[b].area] ?? 0) ||
+            activeTechnologies[a].real_name.localeCompare(activeTechnologies[b].real_name);
+        }
         case "name":
         default:
           return activeTechnologies[a].real_name.localeCompare(

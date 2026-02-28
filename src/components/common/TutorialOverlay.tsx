@@ -57,14 +57,16 @@ const TutorialOverlay: Component = () => {
                 picked, setting their weight to 0.
               </p>
               <p>
-                <strong class="text-text-primary">Sorting:</strong>{" "}
-                Use the dropdown to sort by name, weight, hit %, tier, or delta
-                (opportunity value of researching this tech).
+                <strong class="text-text-primary">Order:</strong>{" "}
+                Use the Order dropdown to sort by name, weight, hit %, tier, delta,
+                base weight, category, or area.
               </p>
               <p>
-                <strong class="text-text-primary">Available Only:</strong>{" "}
-                Toggle to show only techs currently in your research pool
-                (prerequisites met, not researched, positive weight).
+                <strong class="text-text-primary">Tech View:</strong>{" "}
+                Use the Tech View dropdown to filter visible technologies.
+                Select multiple filters at once (OR logic). Options include:
+                Current (available pool), Potential, Researched, Previous Options,
+                Permanent, Zero Weight, Not Possible, and All.
               </p>
               <p>
                 <strong class="text-text-primary">Research Alternatives:</strong>{" "}
@@ -113,7 +115,26 @@ const TutorialOverlay: Component = () => {
             </svg>
           </a>
           <span class="text-[10px] text-text-muted/60 leading-tight select-none">
-            v{__APP_VERSION__}<br />
+            <a
+              href="https://github.com/boujuan/StellarisTechCalculator/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-physics transition-colors"
+              title="View changelog on GitHub"
+            >
+              v{__APP_VERSION__}
+            </a>
+            {" | "}
+            <a
+              href="https://stellaris.paradoxwikis.com/Patch_4.3.X"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-physics transition-colors"
+              title="View Stellaris patch notes"
+            >
+              Stellaris {__STELLARIS_VERSION__}
+            </a>
+            <br />
             <span class="text-text-muted/40">boujuan</span>
           </span>
         </div>

@@ -13,6 +13,7 @@ import type {
 import {
   defaultAtomicFacts,
   scalarMetadata,
+  metadata,
   DEFAULT_SCALARS,
   TRUE_BACKEND_FACTS,
 } from "./dataStore";
@@ -30,6 +31,16 @@ function buildInitialFacts(): AtomicFacts {
       }
     }
   }
+  // Default all DLCs to enabled
+  const dlcSection = metadata["DLC"] as { facts?: Record<string, string[]> } | undefined;
+  if (dlcSection?.facts) {
+    for (const factIds of Object.values(dlcSection.facts)) {
+      for (const factId of factIds) {
+        facts[factId] = true;
+      }
+    }
+  }
+
   return facts;
 }
 

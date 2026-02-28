@@ -16,7 +16,7 @@ const App: Component = () => {
   const [areaFilter, setAreaFilter] = createSignal<AreaFilter>("all");
   const [sortBy, setSortBy] = createSignal("hit_chance");
   const [showSaveLoad, setShowSaveLoad] = createSignal(false);
-  const [availableOnly, setAvailableOnly] = createSignal(false);
+  const [techViewFilters, setTechViewFilters] = createSignal<Set<string>>(new Set(["current"]));
 
   // Zoom level — persisted in localStorage
   const savedZoom = parseFloat(localStorage.getItem("stellaris_tc_zoom") ?? "1");
@@ -56,8 +56,8 @@ const App: Component = () => {
           sortBy={sortBy()}
           onSortChange={setSortBy}
           onSaveLoad={() => setShowSaveLoad(true)}
-          availableOnly={availableOnly()}
-          onAvailableOnlyChange={setAvailableOnly}
+          techViewFilters={techViewFilters()}
+          onTechViewChange={setTechViewFilters}
         />
 
         {/* Summary bar */}
@@ -74,7 +74,7 @@ const App: Component = () => {
             search={search()}
             areaFilter={areaFilter()}
             sortBy={sortBy()}
-            availableOnly={availableOnly()}
+            techViewFilters={techViewFilters()}
             zoom={zoomLevel()}
           />
         </div>

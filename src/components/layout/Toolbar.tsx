@@ -1,4 +1,4 @@
-import { batch, For, type Component } from "solid-js";
+import { batch, createSignal, For, Show, onCleanup, type Component } from "solid-js";
 import type { Area } from "../../types/tech";
 import {
   researchAlternatives,
@@ -19,8 +19,8 @@ interface Props {
   sortBy: string;
   onSortChange: (sort: string) => void;
   onSaveLoad: () => void;
-  availableOnly: boolean;
-  onAvailableOnlyChange: (value: boolean) => void;
+  techViewFilters: Set<string>;
+  onTechViewChange: (filters: Set<string>) => void;
 }
 
 const AREA_FILTERS: { label: string; value: AreaFilter; color: string; hoverColor: string; glowVar: string; title: string }[] = [
@@ -32,13 +32,64 @@ const AREA_FILTERS: { label: string; value: AreaFilter; color: string; hoverColo
 
 const SORT_OPTIONS = [
   { label: "Name", value: "name", title: "Sort alphabetically by technology name" },
-  { label: "Weight", value: "weight", title: "Sort by base weight (higher = more likely to appear)" },
+  { label: "Weight", value: "weight", title: "Sort by current computed weight (after modifiers)" },
   { label: "Hit %", value: "hit_chance", title: "Sort by hit chance — probability of being offered" },
   { label: "Tier", value: "tier", title: "Sort by technology tier (T0–T5)" },
   { label: "Delta", value: "delta", title: "Sort by opportunity value — weight of techs this unlocks" },
+  { label: "Base Weight", value: "base_weight", title: "Sort by the tech's static base weight from game data (before modifiers)" },
+  { label: "Category", value: "category", title: "Sort by tech subcategory (e.g., particles, biology, voidcraft)" },
+  { label: "Area", value: "area", title: "Group by research area: physics, society, engineering" },
 ];
 
+const TECH_VIEW_FILTERS: { key: string; label: string; desc: string; colorClass: string }[] = [
+  { key: "current", label: "Current", desc: "Available pool + drawn last + permanent unresearched", colorClass: "text-physics" },
+  { key: "potential", label: "Potential", desc: "All techs passing the potential check", colorClass: "text-society" },
+  { key: "researched", label: "Researched", desc: "Already researched technologies", colorClass: "text-engineering" },
+  { key: "previous", label: "Previous Options", desc: "Techs marked as drawn last", colorClass: "text-rare" },
+  { key: "permanent", label: "Permanent Options", desc: "Always-available repeatable techs", colorClass: "text-text-secondary" },
+  { key: "zero_weight", label: "Zero Weight", desc: "Techs with zero base weight", colorClass: "text-text-muted" },
+  { key: "not_possible", label: "Not Possible", desc: "Techs failing the potential check", colorClass: "text-dangerous" },
+  { key: "all", label: "All", desc: "Show every tech (overrides other filters)", colorClass: "text-text-primary" },
+];
+
+const base = import.meta.env.BASE_URL;
+const cbNormal = `${base}media/sprites/checkbox_normal.avif`;
+const cbHover = `${base}media/sprites/checkbox_hover.avif`;
+const cbPressed = `${base}media/sprites/checkbox_pressed.avif`;
+
 const Toolbar: Component<Props> = (props) => {
+  const [sortOpen, setSortOpen] = createSignal(false);
+  const [viewOpen, setViewOpen] = createSignal(false);
+  let sortRef: HTMLDivElement | undefined;
+  let viewRef: HTMLDivElement | undefined;
+
+  // Close dropdowns on outside click
+  const handleOutsideClick = (e: MouseEvent) => {
+    if (sortOpen() && sortRef && !sortRef.contains(e.target as Node)) {
+      setSortOpen(false);
+    }
+    if (viewOpen() && viewRef && !viewRef.contains(e.target as Node)) {
+      setViewOpen(false);
+    }
+  };
+
+  // Close on Escape
+  const handleEscape = (e: KeyboardEvent) => {
+    if (e.key === "Escape") {
+      setSortOpen(false);
+      setViewOpen(false);
+    }
+  };
+
+  if (typeof document !== "undefined") {
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("keydown", handleEscape);
+    onCleanup(() => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("keydown", handleEscape);
+    });
+  }
+
   const handleReset = () => {
     if (confirm("Reset all settings to defaults?")) {
       batch(() => {
@@ -47,6 +98,32 @@ const Toolbar: Component<Props> = (props) => {
       });
       runUpdateCascade();
     }
+  };
+
+  const currentSortLabel = () =>
+    SORT_OPTIONS.find((o) => o.value === props.sortBy)?.label ?? "Sort";
+
+  const toggleFilter = (key: string) => {
+    if (key === "all") {
+      props.onTechViewChange(new Set(["all"]));
+      return;
+    }
+    const next = new Set(props.techViewFilters);
+    next.delete("all");
+    // Mutual exclusivity
+    if (key === "potential") next.delete("not_possible");
+    if (key === "not_possible") next.delete("potential");
+    // Toggle
+    if (next.has(key)) next.delete(key);
+    else next.add(key);
+    // If empty, default to "all"
+    if (next.size === 0) next.add("all");
+    props.onTechViewChange(next);
+  };
+
+  const activeFilterCount = () => {
+    if (props.techViewFilters.has("all")) return 0;
+    return props.techViewFilters.size;
   };
 
   return (
@@ -97,36 +174,128 @@ const Toolbar: Component<Props> = (props) => {
         </For>
       </div>
 
-      {/* Available Only toggle */}
-      <button
-        class={`px-3 py-1.5 text-sm rounded border transition-all duration-200 ${
-          props.availableOnly
-            ? "bg-physics/20 text-physics border-physics/50 font-medium"
-            : "text-text-muted border-border hover:text-text-secondary"
-        }`}
-        style={
-          props.availableOnly
-            ? { "box-shadow": "0 0 8px var(--color-glow-physics)" }
-            : {}
-        }
-        onClick={() => props.onAvailableOnlyChange(!props.availableOnly)}
-        title="Show only techs available in the research pool (prerequisites met, not researched, weight > 0)"
-      >
-        Available Only
-      </button>
-
-      {/* Sort */}
-      <div class="border-r border-border/40 pr-4">
-        <select
-          value={props.sortBy}
-          onChange={(e) => props.onSortChange(e.currentTarget.value)}
-          class="bg-bg-primary border border-border rounded px-3 py-1.5 text-sm text-text-primary"
+      {/* Sort dropdown — styled */}
+      <div ref={sortRef} class="relative border-r border-border/40 pr-4">
+        <button
+          class="flex items-center gap-1.5 px-3 py-1.5 text-sm rounded border border-border bg-bg-primary text-text-primary hover:border-physics/50 hover:shadow-[0_0_6px_var(--color-glow-physics)] transition-all duration-200"
+          onClick={() => { setSortOpen(!sortOpen()); setViewOpen(false); }}
           title="Sort technologies by..."
         >
-          <For each={SORT_OPTIONS}>
-            {(opt) => <option value={opt.value} title={opt.title}>{opt.label}</option>}
-          </For>
-        </select>
+          <span class="text-text-muted text-xs">Order:</span>
+          <span class="font-medium">{currentSortLabel()}</span>
+          <svg class={`w-3 h-3 text-text-muted transition-transform ${sortOpen() ? "rotate-180" : ""}`} viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 4.5L6 7.5L9 4.5" />
+          </svg>
+        </button>
+        <Show when={sortOpen()}>
+          <div class="absolute top-full left-0 mt-1 z-50 min-w-48 bg-bg-secondary border border-border rounded-lg shadow-2xl overflow-hidden"
+            style={{ "box-shadow": "0 4px 24px rgba(0,0,0,0.5), 0 0 8px var(--color-glow-physics)" }}
+          >
+            <For each={SORT_OPTIONS}>
+              {(opt) => (
+                <button
+                  class={`w-full text-left px-3 py-2 text-sm transition-colors ${
+                    props.sortBy === opt.value
+                      ? "bg-physics/15 text-physics font-medium"
+                      : "text-text-secondary hover:bg-bg-tertiary hover:text-text-primary"
+                  }`}
+                  onClick={() => { props.onSortChange(opt.value); setSortOpen(false); }}
+                  title={opt.title}
+                >
+                  {opt.label}
+                </button>
+              )}
+            </For>
+          </div>
+        </Show>
+      </div>
+
+      {/* Tech View — multi-select filter dropdown */}
+      <div ref={viewRef} class="relative">
+        <button
+          class={`flex items-center gap-1.5 px-3 py-1.5 text-sm rounded border transition-all duration-200 ${
+            activeFilterCount() > 0
+              ? "border-engineering/50 bg-engineering/10 text-engineering hover:shadow-[0_0_8px_var(--color-glow-engineering)]"
+              : "border-border bg-bg-primary text-text-primary hover:border-engineering/50 hover:shadow-[0_0_6px_var(--color-glow-engineering)]"
+          }`}
+          onClick={() => { setViewOpen(!viewOpen()); setSortOpen(false); }}
+          title="Filter which technologies are visible"
+        >
+          <span class="text-text-muted text-xs">View:</span>
+          <span class="font-medium">
+            {props.techViewFilters.has("all")
+              ? "All"
+              : activeFilterCount() === 1
+                ? TECH_VIEW_FILTERS.find((f) => props.techViewFilters.has(f.key))?.label ?? "Filter"
+                : `${activeFilterCount()} active`}
+          </span>
+          <Show when={activeFilterCount() > 1}>
+            <span class="ml-0.5 w-4 h-4 rounded-full bg-engineering/30 text-engineering text-[10px] font-bold flex items-center justify-center">
+              {activeFilterCount()}
+            </span>
+          </Show>
+          <svg class={`w-3 h-3 text-text-muted transition-transform ${viewOpen() ? "rotate-180" : ""}`} viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 4.5L6 7.5L9 4.5" />
+          </svg>
+        </button>
+        <Show when={viewOpen()}>
+          <div class="absolute top-full left-0 mt-1 z-50 min-w-64 bg-bg-secondary border border-border rounded-lg shadow-2xl overflow-hidden"
+            style={{ "box-shadow": "0 4px 24px rgba(0,0,0,0.5), 0 0 8px var(--color-glow-engineering)" }}
+          >
+            <div class="px-3 py-1.5 border-b border-border/50">
+              <span class="text-[10px] text-text-muted uppercase tracking-wider font-medium">Tech View Filters</span>
+            </div>
+            <For each={TECH_VIEW_FILTERS}>
+              {(filter) => {
+                const isChecked = () => props.techViewFilters.has(filter.key);
+                const isDisabled = () => {
+                  // Disable "Potential" when "Not Possible" is active and vice versa (shown as dimmed)
+                  if (filter.key === "potential" && props.techViewFilters.has("not_possible")) return true;
+                  if (filter.key === "not_possible" && props.techViewFilters.has("potential")) return true;
+                  return false;
+                };
+                const checkboxImg = () => isChecked() ? cbPressed : cbNormal;
+
+                return (
+                  <button
+                    class={`w-full flex items-center gap-2.5 px-3 py-1.5 text-left transition-colors ${
+                      isDisabled()
+                        ? "opacity-30 cursor-not-allowed"
+                        : isChecked()
+                          ? "bg-bg-tertiary/50"
+                          : "hover:bg-bg-tertiary"
+                    }`}
+                    onClick={() => { if (!isDisabled()) toggleFilter(filter.key); }}
+                    title={filter.desc}
+                  >
+                    <span
+                      class={`stellaris-check shrink-0 ${isChecked() ? "is-checked" : ""} ${isDisabled() ? "is-disabled" : ""}`}
+                      style={{
+                        "background-image": `url(${checkboxImg()})`,
+                        width: "18px",
+                        height: "18px",
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!isDisabled() && !isChecked()) {
+                          e.currentTarget.style.backgroundImage = `url(${cbHover})`;
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundImage = `url(${checkboxImg()})`;
+                      }}
+                    />
+                    <div class="flex flex-col min-w-0">
+                      <span class={`text-sm font-medium ${isChecked() ? filter.colorClass : "text-text-secondary"}`}>
+                        {filter.label}
+                      </span>
+                      <span class="text-[10px] text-text-muted leading-tight">{filter.desc}</span>
+                    </div>
+                  </button>
+                );
+              }}
+            </For>
+          </div>
+        </Show>
       </div>
 
       {/* Save/Load */}
