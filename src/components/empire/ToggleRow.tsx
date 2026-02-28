@@ -1,4 +1,4 @@
-import type { Component } from "solid-js";
+import { createSignal, onMount, type Component } from "solid-js";
 import { atomicFacts, setAtomicValue } from "../../state/empireState";
 import { runUpdateCascade } from "../../engine/updateCascade";
 
@@ -15,6 +15,18 @@ const cbHover = `${base}media/sprites/checkbox_hover.avif`;
 const cbPressed = `${base}media/sprites/checkbox_pressed.avif`;
 
 const ToggleRow: Component<Props> = (props) => {
+  let containerRef: HTMLDivElement | undefined;
+  let textRef: HTMLSpanElement | undefined;
+  const [scrollDist, setScrollDist] = createSignal(0);
+  const [hovering, setHovering] = createSignal(false);
+
+  onMount(() => {
+    if (textRef && containerRef) {
+      const overflow = textRef.scrollWidth - containerRef.clientWidth;
+      if (overflow > 0) setScrollDist(overflow + 8);
+    }
+  });
+
   const isChecked = () => {
     for (const fact of props.facts) {
       if (atomicFacts[fact]) return true;
@@ -41,12 +53,14 @@ const ToggleRow: Component<Props> = (props) => {
 
   return (
     <label
-      class={`flex items-center gap-2 py-0.5 rounded px-1 -mx-1 group ${
+      class={`flex items-center gap-1.5 py-0.5 rounded px-1 -mx-1 group ${
         isDisabledForOn()
           ? "opacity-40 cursor-not-allowed"
           : "cursor-pointer hover:bg-bg-tertiary"
       }`}
       title={props.displayName}
+      onMouseEnter={() => setHovering(true)}
+      onMouseLeave={() => setHovering(false)}
     >
       {/* Hidden native checkbox for accessibility */}
       <input
@@ -58,7 +72,7 @@ const ToggleRow: Component<Props> = (props) => {
       />
       {/* Stellaris sprite checkbox */}
       <span
-        class={`stellaris-check ${isChecked() ? "is-checked" : ""} ${isDisabledForOn() ? "is-disabled" : ""}`}
+        class={`stellaris-check shrink-0 ${isChecked() ? "is-checked" : ""} ${isDisabledForOn() ? "is-disabled" : ""}`}
         style={{ "background-image": `url(${checkboxImg()})` }}
         onMouseEnter={(e) => {
           if (!isDisabledForOn() && !isChecked()) {
@@ -69,9 +83,21 @@ const ToggleRow: Component<Props> = (props) => {
           e.currentTarget.style.backgroundImage = `url(${checkboxImg()})`;
         }}
       />
-      <span class="text-sm text-text-secondary select-none">
-        {props.displayName}
-      </span>
+      <div ref={containerRef} class="overflow-hidden whitespace-nowrap min-w-0">
+        <span
+          ref={textRef}
+          class="inline-block text-xs text-text-secondary select-none"
+          style={{
+            animation:
+              hovering() && scrollDist() > 0
+                ? "expertise-scroll 2s ease-in-out infinite"
+                : "none",
+            "--scroll-x": `-${scrollDist()}px`,
+          }}
+        >
+          {props.displayName}
+        </span>
+      </div>
     </label>
   );
 };

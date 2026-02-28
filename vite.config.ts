@@ -7,7 +7,7 @@ export default defineConfig(({ command }) => ({
   base: process.env.VITE_BASE ?? (command === "build" ? "/StellarisTechCalculator/" : "/"),
   plugins: [solid(), tailwindcss()],
   define: {
-    __APP_VERSION__: JSON.stringify(process.env.npm_package_version ?? "0.3.0"),
+    __APP_VERSION__: JSON.stringify(process.env.npm_package_version ?? "0.3.1"),
     __STELLARIS_VERSION__: JSON.stringify("4.3.x"),
   },
   worker: {

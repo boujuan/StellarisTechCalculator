@@ -44,7 +44,7 @@ const SectionAccordion: Component<Props> = (props) => {
       >
         <span
           class="font-semibold text-text-primary"
-          style={{ "font-size": props.fontSize ?? "14px" }}
+          style={{ "font-size": props.fontSize ?? "12px" }}
         >
           {props.title}
         </span>

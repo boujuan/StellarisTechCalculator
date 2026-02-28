@@ -128,7 +128,7 @@ const Toolbar: Component<Props> = (props) => {
 
   return (
     <header
-      class="h-16 border-b-2 border-border flex items-center px-6 gap-5 shrink-0"
+      class="h-16 border-b-2 border-border flex items-center px-6 gap-5 shrink-0 relative z-50"
       style={{
         "background-color": "rgba(26, 29, 35, 0.8)",
         "backdrop-filter": "blur(10px)",
@@ -177,7 +177,7 @@ const Toolbar: Component<Props> = (props) => {
       {/* Sort dropdown — styled */}
       <div ref={sortRef} class="relative border-r border-border/40 pr-4">
         <button
-          class="flex items-center gap-1.5 px-3 py-1.5 text-sm rounded border border-border bg-bg-primary text-text-primary hover:border-physics/50 hover:shadow-[0_0_6px_var(--color-glow-physics)] transition-all duration-200"
+          class="flex items-center gap-1.5 px-3 py-1.5 text-sm rounded border border-border bg-bg-primary text-text-primary hover:border-physics/50 hover:shadow-[0_0_6px_var(--color-glow-physics)] transition-all duration-200 whitespace-nowrap"
           onClick={() => { setSortOpen(!sortOpen()); setViewOpen(false); }}
           title="Sort technologies by..."
         >
@@ -213,7 +213,7 @@ const Toolbar: Component<Props> = (props) => {
       {/* Tech View — multi-select filter dropdown */}
       <div ref={viewRef} class="relative">
         <button
-          class={`flex items-center gap-1.5 px-3 py-1.5 text-sm rounded border transition-all duration-200 ${
+          class={`flex items-center gap-1.5 px-3 py-1.5 text-sm rounded border transition-all duration-200 whitespace-nowrap ${
             activeFilterCount() > 0
               ? "border-engineering/50 bg-engineering/10 text-engineering hover:shadow-[0_0_8px_var(--color-glow-engineering)]"
               : "border-border bg-bg-primary text-text-primary hover:border-engineering/50 hover:shadow-[0_0_6px_var(--color-glow-engineering)]"

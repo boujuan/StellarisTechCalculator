@@ -144,7 +144,7 @@ const Sidebar: Component = () => {
 
   return (
     <aside
-      class="w-80 border-r border-border overflow-hidden shrink-0 flex flex-col relative"
+      class="w-64 border-r border-border overflow-hidden shrink-0 flex flex-col relative"
       style={{
         "background-color": "var(--color-bg-secondary)",
         "background-image": `url(${bgUrl})`,
@@ -334,7 +334,7 @@ const DefaultSection: Component<DefaultSectionProps> = (props) => {
                     key === "Ethics" ? `${key} (${props.ethicsPoints()}/3)` :
                     key
                   }
-                  fontSize="13px"
+                  fontSize="11px"
                   forceOpen={!!props.searchFilter}
                 >
                   <div class="space-y-0.5">
@@ -449,7 +449,7 @@ const CouncilSection: Component<{ sectionData: unknown; searchFilter: string }> 
 
           return (
             <Show when={shouldShow()}>
-              <SectionAccordion title={name} fontSize="13px" forceOpen={!!props.searchFilter}>
+              <SectionAccordion title={name} fontSize="11px" forceOpen={!!props.searchFilter}>
                 <Show
                   when={name === "Expertise Traits"}
                   fallback={
