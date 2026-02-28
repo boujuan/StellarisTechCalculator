@@ -33,7 +33,7 @@ const ExpertiseGrid: Component<Props> = (props) => {
             <th class="text-left font-normal py-1">Expertise</th>
             <For each={[1, 2, 3]}>
               {(level) => (
-                <th class="text-center font-normal py-1 w-16">Lv {level}</th>
+                <th class="text-center font-normal py-1 w-14">Lv {level}</th>
               )}
             </For>
           </tr>
@@ -44,7 +44,7 @@ const ExpertiseGrid: Component<Props> = (props) => {
               const atomicFact = factList[0];
               return (
                 <tr class="hover:bg-bg-tertiary">
-                  <td class="text-text-secondary py-0.5 pr-2">{displayName}</td>
+                  <td class="text-text-secondary py-0.5 pr-2 truncate max-w-28" title={displayName}>{displayName}</td>
                   <For each={[1, 2, 3]}>
                     {(tier) => {
                       const val = () => getValueForExpertise(atomicFact, tier);
@@ -52,16 +52,16 @@ const ExpertiseGrid: Component<Props> = (props) => {
                         <td class="text-center py-0.5">
                           <div class="flex items-center justify-center">
                             <button
-                              class="w-6 h-6 flex items-center justify-center bg-bg-tertiary hover:bg-border rounded-l border border-border text-text-primary text-xs font-bold transition-all duration-150 hover:shadow-[0_0_4px_var(--color-glow-physics)]"
+                              class="w-5 h-5 flex items-center justify-center bg-bg-tertiary hover:bg-border rounded-l border border-border text-text-primary text-xs font-bold transition-all duration-150 hover:shadow-[0_0_4px_var(--color-glow-physics)]"
                               onClick={() => handleChange(atomicFact, tier, Math.max(0, val() - 1))}
                             >
                               −
                             </button>
-                            <span class="w-6 h-6 flex items-center justify-center bg-bg-primary border-y border-border text-center text-text-primary text-xs font-semibold tabular-nums select-none">
+                            <span class="w-5 h-5 flex items-center justify-center bg-bg-primary border-y border-border text-center text-text-primary text-xs font-semibold tabular-nums select-none">
                               {val()}
                             </span>
                             <button
-                              class="w-6 h-6 flex items-center justify-center bg-bg-tertiary hover:bg-border rounded-r border border-border text-text-primary text-xs font-bold transition-all duration-150 hover:shadow-[0_0_4px_var(--color-glow-physics)]"
+                              class="w-5 h-5 flex items-center justify-center bg-bg-tertiary hover:bg-border rounded-r border border-border text-text-primary text-xs font-bold transition-all duration-150 hover:shadow-[0_0_4px_var(--color-glow-physics)]"
                               onClick={() => handleChange(atomicFact, tier, Math.min(6, val() + 1))}
                             >
                               +

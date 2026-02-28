@@ -8,18 +8,18 @@
 
 ## UI/UX Improvements
 
-- [ ] Improve caching and performance across the app. Do not make it reload all textures and logic with every tab change or settings tweak.
-- [ ] Improve Reset confirmation dialog — better layout and descriptive text
-- [ ] Add filter button to show only already-researched techs and "drawn last" techs
+- [ ] Improve caching and performance across the app. Do not make it reload all textures and logic with every tab change or settings tweak.-> Needs profiling first
+- [ ] Improve Reset confirmation dialog — better layout and descriptive text -> Needs custom dialog component design
+- [ ] Add filter button to show only already-researched techs and "drawn last" techs -> Needs UI placement decisions
 - [ ] Rethink the "drawn last" and prioritisation system for better usability
 - [ ] Filters by tech subcategories (e.g., Particles, Field Manipulation, Biology, etc.)
 - [ ] Zoom slider or toggles for card size
 - [ ] Responsive/flex design adaptations for mobile
 - [x] Change dim-out of unavailable techs to only dim the border
-- [ ] Improve the Expertise traits section in the sidebar to fit the width of it.
-- [ ] Modify sorting order so "drawn last" techs are prioritised abover other unavailable techs (not strictly alphabetical). Also available techs should be above unavailable one when sorting by weight or hit chance % always, even if it's 0. Techs with negative delta should be above unavailable techs when sorting by Delta too.
-- [ ] Add small x button to clear both search bars
-- [ ] Make the "RESEARCHED" text not be dimmed out
+- [x] Improve the Expertise traits section in the sidebar to fit the width of it.
+- [x] Modify sorting order so "drawn last" techs are prioritised abover other unavailable techs (not strictly alphabetical). Also available techs should be above unavailable one when sorting by weight or hit chance % always, even if it's 0. Techs with negative delta should be above unavailable techs when sorting by Delta too.
+- [x] Add small x button to clear both search bars
+- [x] Make the "RESEARCHED" text not be dimmed out
 
 ## Feature Ideas
 
@@ -28,3 +28,5 @@
 - [ ] Pin techs — always show pinned techs at the top regardless of filters/sorting
 - [ ] Optimal research path calculator — compute statistical minimum number of techs to research to reach a target tech, display optimized route
 - [ ] Redesign sidebar of empire selection to emulate in-game empire making, sourcing actual icons, etc
+- [ ] Add Stellaris version tracking text on the lower left corner, with link to patch notes and changelog
+- [ ] Add link with icon to Github repository

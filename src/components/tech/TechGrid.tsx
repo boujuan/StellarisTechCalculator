@@ -44,8 +44,18 @@ const TechGrid: Component<Props> = (props) => {
       return true;
     });
 
-    // Sort
+    // Sort priority: available (0) > drawn-last (1) > unavailable (2)
+    const sortPriority = (id: string): number => {
+      const ts = techState[id];
+      if (ts.prereqs_met === 1 && ts.researched === 0) return 0;
+      if (ts.drawn_last === 1) return 1;
+      return 2;
+    };
+
+    // Sort — priority group first, then by selected metric within each group
     ids = [...ids].sort((a, b) => {
+      const p = sortPriority(a) - sortPriority(b);
+      if (p !== 0) return p;
       switch (props.sortBy) {
         case "weight":
           return techState[b].current_weight - techState[a].current_weight;

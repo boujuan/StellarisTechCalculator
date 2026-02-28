@@ -138,14 +138,8 @@ const TechCard: Component<Props> = (props) => {
         ${isPermanent() ? "opacity-25" : ""}
       `}
       style={{
-        "background-image": `url(${bgUrl()})`,
-        "background-size": "cover",
-        "background-position": "center",
         // Drawn-last pulse animation (reactive); entrance animation is ref-based
         "animation": isDrawnLast() ? "subtle-pulse 2s ease-in-out infinite" : "none",
-        // Researched: desaturate + dim
-        "filter": isResearched() ? "grayscale(0.6) brightness(0.5)" : "none",
-        "opacity": isResearched() ? "0.55" : undefined,
         "box-shadow": isAvailable() ? subtleGlow() : undefined,
       }}
       onClick={handleClick}
@@ -164,90 +158,101 @@ const TechCard: Component<Props> = (props) => {
       }}
       title={`${tech().real_name}\nTier ${tech().tier} | Cost: ${tech().cost}\nRight-click to toggle "drawn last"`}
     >
-      {/* Dark overlay for text readability */}
-      <div class="absolute inset-0 bg-black/45" />
+      {/* Inner wrapper — filtered for researched cards, badge stays outside */}
+      <div
+        style={{
+          "background-image": `url(${bgUrl()})`,
+          "background-size": "cover",
+          "background-position": "center",
+          "filter": isResearched() ? "grayscale(0.6) brightness(0.5)" : "none",
+          "opacity": isResearched() ? "0.55" : undefined,
+        }}
+      >
+        {/* Dark overlay for text readability */}
+        <div class="absolute inset-0 bg-black/45" />
 
-      {/* Researched overlay badge */}
+        {/* Card content */}
+        <div class="relative z-10 p-3">
+          {/* Header row: icon + name */}
+          <div class="flex items-center gap-2 mb-1">
+            <img
+              src={iconUrl()}
+              alt=""
+              class="w-10 h-10 shrink-0 drop-shadow-lg"
+              loading="lazy"
+            />
+            <div class="min-w-0 flex-1">
+              <div class="text-[15px] font-semibold text-text-primary truncate font-display">
+                {tech().real_name}
+              </div>
+              <div class="flex items-center gap-1.5">
+                <img
+                  src={categoryIconUrl()}
+                  alt=""
+                  class="w-5 h-5"
+                  loading="lazy"
+                />
+                {/* Tier pill badge */}
+                <span class={`text-[11px] font-semibold px-1.5 py-0.5 rounded-full bg-black/30 ${textClass()}`}>
+                  T{tech().tier}
+                </span>
+                <Show when={tech().is_rare}>
+                  <span class="text-[11px] font-semibold text-rare">Rare</span>
+                </Show>
+                <Show when={tech().is_dangerous}>
+                  <span class="text-[11px] font-bold text-dangerous">!</span>
+                </Show>
+              </div>
+            </div>
+          </div>
+
+          {/* Stats row */}
+          <Show when={isAvailable()}>
+            <div class="flex justify-between text-xs mt-1 pt-1 border-t border-white/10">
+              <span class="text-text-muted" title="Base weight — determines how likely this tech is to appear relative to others">
+                W: <span class="text-text-primary">{formatWeight(state().current_weight)}</span>
+              </span>
+              <span class="text-text-muted" title="Hit chance — Monte Carlo probability (%) this tech appears in your next research offer">
+                <span class="text-text-primary font-semibold">
+                  {formatPercent(state().hit_chance)}
+                </span>
+              </span>
+              <Show when={state().delta_weight !== 0}>
+                <span
+                  class={
+                    state().delta_weight > 0
+                      ? "text-society"
+                      : "text-dangerous"
+                  }
+                  title="Delta — net weight change if you research this tech first (positive = unlocks valuable techs)"
+                >
+                  {formatDelta(state().delta_weight)}
+                </span>
+              </Show>
+            </div>
+          </Show>
+        </div>
+
+        {/* Hit chance bar at bottom */}
+        <Show when={isAvailable() && hitChance() > 0}>
+          <div
+            class="absolute bottom-0 left-0 h-[3px] transition-all duration-500 ease-out"
+            style={{
+              width: `${Math.min(hitChance(), 100)}%`,
+              "background-color": barColor(),
+              "box-shadow": `0 0 6px ${barColor()}`,
+            }}
+          />
+        </Show>
+      </div>
+
+      {/* Researched overlay badge — outside filtered wrapper, stays bright */}
       <Show when={isResearched()}>
         <div class="absolute inset-0 z-20 flex items-center justify-center">
           <span class="text-[11px] font-bold font-display tracking-wider text-dangerous bg-black/60 px-2 py-0.5 rounded-full border border-dangerous/30 uppercase">
             Researched
           </span>
         </div>
-      </Show>
-
-      {/* Card content */}
-      <div class="relative z-10 p-3">
-        {/* Header row: icon + name */}
-        <div class="flex items-center gap-2 mb-1">
-          <img
-            src={iconUrl()}
-            alt=""
-            class="w-10 h-10 shrink-0 drop-shadow-lg"
-            loading="lazy"
-          />
-          <div class="min-w-0 flex-1">
-            <div class="text-[15px] font-semibold text-text-primary truncate font-display">
-              {tech().real_name}
-            </div>
-            <div class="flex items-center gap-1.5">
-              <img
-                src={categoryIconUrl()}
-                alt=""
-                class="w-5 h-5"
-                loading="lazy"
-              />
-              {/* Tier pill badge */}
-              <span class={`text-[11px] font-semibold px-1.5 py-0.5 rounded-full bg-black/30 ${textClass()}`}>
-                T{tech().tier}
-              </span>
-              <Show when={tech().is_rare}>
-                <span class="text-[11px] font-semibold text-rare">Rare</span>
-              </Show>
-              <Show when={tech().is_dangerous}>
-                <span class="text-[11px] font-bold text-dangerous">!</span>
-              </Show>
-            </div>
-          </div>
-        </div>
-
-        {/* Stats row */}
-        <Show when={isAvailable()}>
-          <div class="flex justify-between text-xs mt-1 pt-1 border-t border-white/10">
-            <span class="text-text-muted" title="Base weight — determines how likely this tech is to appear relative to others">
-              W: <span class="text-text-primary">{formatWeight(state().current_weight)}</span>
-            </span>
-            <span class="text-text-muted" title="Hit chance — Monte Carlo probability (%) this tech appears in your next research offer">
-              <span class="text-text-primary font-semibold">
-                {formatPercent(state().hit_chance)}
-              </span>
-            </span>
-            <Show when={state().delta_weight !== 0}>
-              <span
-                class={
-                  state().delta_weight > 0
-                    ? "text-society"
-                    : "text-dangerous"
-                }
-                title="Delta — net weight change if you research this tech first (positive = unlocks valuable techs)"
-              >
-                {formatDelta(state().delta_weight)}
-              </span>
-            </Show>
-          </div>
-        </Show>
-      </div>
-
-      {/* Hit chance bar at bottom */}
-      <Show when={isAvailable() && hitChance() > 0}>
-        <div
-          class="absolute bottom-0 left-0 h-[3px] transition-all duration-500 ease-out"
-          style={{
-            width: `${Math.min(hitChance(), 100)}%`,
-            "background-color": barColor(),
-            "box-shadow": `0 0 6px ${barColor()}`,
-          }}
-        />
       </Show>
     </div>
   );

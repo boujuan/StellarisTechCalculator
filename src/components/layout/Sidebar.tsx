@@ -187,13 +187,24 @@ const Sidebar: Component = () => {
         </div>
         {/* Search input */}
         <div class="px-3 pb-2">
-          <input
-            type="text"
-            placeholder="Filter modifiers..."
-            value={sidebarSearch()}
-            onInput={(e) => setSidebarSearch(e.currentTarget.value)}
-            class="w-full bg-bg-primary/50 border border-border rounded text-xs px-2 py-1.5 text-text-primary placeholder:text-text-muted/60 focus:border-physics/50 focus:outline-none transition-colors"
-          />
+          <div class="relative">
+            <input
+              type="text"
+              placeholder="Filter modifiers..."
+              value={sidebarSearch()}
+              onInput={(e) => setSidebarSearch(e.currentTarget.value)}
+              class="w-full bg-bg-primary/50 border border-border rounded text-xs px-2 py-1.5 pr-6 text-text-primary placeholder:text-text-muted/60 focus:border-physics/50 focus:outline-none transition-colors"
+            />
+            <Show when={sidebarSearch()}>
+              <button
+                onClick={() => setSidebarSearch("")}
+                class="absolute right-1.5 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-primary text-xs leading-none"
+                title="Clear filter"
+              >
+                ×
+              </button>
+            </Show>
+          </div>
         </div>
       </div>
 
