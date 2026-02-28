@@ -1,4 +1,4 @@
-import { Show, createSignal, onMount, type Component } from "solid-js";
+import { Show, onMount, type Component } from "solid-js";
 import { techState } from "../../state/techState";
 import { activeTechnologies } from "../../state/techState";
 import { toggleResearched, toggleDrawnLast } from "../../state/techState";
@@ -12,10 +12,18 @@ interface Props {
 
 const base = import.meta.env.BASE_URL;
 
+// Border classes for available techs (brighter)
 const AREA_BORDER: Record<string, string> = {
   physics: "border-physics/60",
   society: "border-society/60",
   engineering: "border-engineering/60",
+};
+
+// Border classes for unavailable techs (dimmed — only visual distinction)
+const AREA_BORDER_DIM: Record<string, string> = {
+  physics: "border-physics/20",
+  society: "border-society/20",
+  engineering: "border-engineering/20",
 };
 
 const AREA_TEXT: Record<string, string> = {
@@ -41,6 +49,11 @@ const BORDER_MOD: Record<string, string> = {
   dangerous: "border-dangerous/80",
 };
 
+const BORDER_MOD_DIM: Record<string, string> = {
+  rare: "border-rare/25",
+  dangerous: "border-dangerous/25",
+};
+
 const GLOW_MOD: Record<string, string> = {
   rare: "0 0 15px 3px var(--color-glow-rare)",
   dangerous: "0 0 15px 3px var(--color-glow-dangerous)",
@@ -60,7 +73,6 @@ const TechCard: Component<Props> = (props) => {
   const area = () => tech().area;
   const bordermod = () => tech().bordermod;
 
-  const borderClass = () => BORDER_MOD[bordermod()] ?? AREA_BORDER[area()] ?? AREA_BORDER.physics;
   const textClass = () => AREA_TEXT[area()] ?? AREA_TEXT.physics;
   const hoverGlow = () => GLOW_MOD[bordermod()] ?? AREA_GLOW[area()] ?? AREA_GLOW.physics;
   const subtleGlow = () => AREA_SUBTLE_GLOW[area()] ?? AREA_SUBTLE_GLOW.physics;
@@ -82,20 +94,24 @@ const TechCard: Component<Props> = (props) => {
 
   const hitChance = () => state().hit_chance;
 
-  // Track entrance animation — only plays once on mount, never re-triggers
-  const [hasEntered, setHasEntered] = createSignal(false);
+  // Border: available = bright, unavailable = dimmed (the only visual distinction)
+  const borderClass = () => {
+    if (isAvailable()) return BORDER_MOD[bordermod()] ?? AREA_BORDER[area()] ?? AREA_BORDER.physics;
+    return BORDER_MOD_DIM[bordermod()] ?? AREA_BORDER_DIM[area()] ?? AREA_BORDER_DIM.physics;
+  };
+
+  // Ref for one-time entrance animation
+  let cardRef: HTMLDivElement | undefined;
   const delay = () => Math.min(props.index, 20) * 20;
 
   onMount(() => {
-    setTimeout(() => setHasEntered(true), delay() + 350);
+    if (cardRef) {
+      cardRef.style.animation = `fade-in-up 0.3s ease-out ${delay()}ms both`;
+      setTimeout(() => {
+        if (cardRef) cardRef.style.animation = "none";
+      }, delay() + 350);
+    }
   });
-
-  // Animation: entrance once → drawn-last pulse → none
-  const animationStyle = () => {
-    if (isDrawnLast()) return "subtle-pulse 2s ease-in-out infinite";
-    if (!hasEntered()) return `fade-in-up 0.3s ease-out ${delay()}ms both`;
-    return "none";
-  };
 
   const handleClick = () => {
     if (isPermanent()) return;
@@ -116,7 +132,8 @@ const TechCard: Component<Props> = (props) => {
 
   return (
     <div
-      class={`relative overflow-hidden rounded-lg border-2 cursor-pointer select-none transition-all duration-200
+      ref={cardRef}
+      class={`relative overflow-hidden rounded-lg border-2 cursor-pointer select-none transition-shadow duration-200
         ${borderClass()}
         ${isPermanent() ? "opacity-25" : ""}
       `}
@@ -124,11 +141,11 @@ const TechCard: Component<Props> = (props) => {
         "background-image": `url(${bgUrl()})`,
         "background-size": "cover",
         "background-position": "center",
-        "animation": animationStyle(),
-        // Researched: desaturate + dim smoothly
+        // Drawn-last pulse animation (reactive); entrance animation is ref-based
+        "animation": isDrawnLast() ? "subtle-pulse 2s ease-in-out infinite" : "none",
+        // Researched: desaturate + dim
         "filter": isResearched() ? "grayscale(0.6) brightness(0.5)" : "none",
-        // Available: full opacity + subtle glow. Unavailable (not researched): dimmed
-        "opacity": isResearched() ? "0.55" : (!isAvailable() && !isPermanent()) ? "0.6" : undefined,
+        "opacity": isResearched() ? "0.55" : undefined,
         "box-shadow": isAvailable() ? subtleGlow() : undefined,
       }}
       onClick={handleClick}

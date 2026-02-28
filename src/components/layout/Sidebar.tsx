@@ -17,7 +17,7 @@ import CouncilPositions from "../empire/CouncilPositions";
 import { AccordionProvider, type AccordionCommand } from "../empire/AccordionContext";
 import type { SectionFacts } from "../../types/facts";
 
-// ── Helpers for subsection constraint logic ────────────────────────────
+// ── Helpers ───────────────────────────────────────────────────────────
 
 function getSubsectionFacts(topSection: string, subSection: string): Record<string, string[]> {
   const top = metadata[topSection] as Record<string, unknown> | undefined;
@@ -26,9 +26,31 @@ function getSubsectionFacts(topSection: string, subSection: string): Record<stri
   return (sub?.facts ?? {}) as Record<string, string[]>;
 }
 
-/** Check if a display name matches a search filter */
+/** Check if a display name matches a search filter (empty filter = always match) */
 function matchesFilter(name: string, filter: string): boolean {
   return !filter || name.toLowerCase().includes(filter);
+}
+
+/** Recursively collect all fact display names from a metadata section object.
+ *  Display names are keys whose values are arrays (fact ID lists). */
+function collectDisplayNames(obj: unknown): string[] {
+  const names: string[] = [];
+  if (!obj || typeof obj !== "object") return names;
+  for (const [key, value] of Object.entries(obj as Record<string, unknown>)) {
+    if (Array.isArray(value)) {
+      names.push(key);
+    } else if (value && typeof value === "object") {
+      names.push(...collectDisplayNames(value));
+    }
+  }
+  return names;
+}
+
+/** Check if ANY display name in a top-level section matches the filter */
+function sectionHasMatch(sectionName: string, filter: string): boolean {
+  if (!filter) return true;
+  const section = metadata[sectionName];
+  return collectDisplayNames(section).some((name) => matchesFilter(name, filter));
 }
 
 // ── Sidebar component ──────────────────────────────────────────────────
@@ -55,6 +77,7 @@ const Sidebar: Component = () => {
 
   const [sidebarSearch, setSidebarSearch] = createSignal("");
   const searchFilter = () => sidebarSearch().toLowerCase().trim();
+  const isSearching = () => !!searchFilter();
 
   // ── DLC select-all logic ──────────────────────────────────────────
 
@@ -175,7 +198,7 @@ const Sidebar: Component = () => {
       </div>
 
       {/* Scrollable content */}
-      <AccordionProvider value={accordionCmd}>
+      <AccordionProvider value={() => accordionCmd()}>
         <div
           class="flex-1 overflow-y-auto relative z-10"
           ref={scrollRef}
@@ -185,42 +208,44 @@ const Sidebar: Component = () => {
             {(sectionName) => {
               const section = metadata[sectionName];
               return (
-                <SectionAccordion title={sectionName}>
-                  <Show
-                    when={sectionName === "Council"}
-                    fallback={
-                      <DefaultSection
-                        sectionData={section as Record<string, unknown>}
-                        sectionName={sectionName}
-                        searchFilter={searchFilter()}
-                        originFacts={originFacts}
-                        clearOtherOrigins={clearOtherOrigins}
-                        civicsAtMax={civicsAtMax}
-                        activeCivicCount={activeCivicCount}
-                        ethicsPoints={ethicsPoints}
-                      />
-                    }
-                  >
-                    <CouncilSection
-                      sectionData={
-                        (section as { facts?: unknown }).facts ?? section
+                <Show when={sectionHasMatch(sectionName, searchFilter())}>
+                  <SectionAccordion title={sectionName} forceOpen={isSearching()}>
+                    <Show
+                      when={sectionName === "Council"}
+                      fallback={
+                        <DefaultSection
+                          sectionData={section as Record<string, unknown>}
+                          sectionName={sectionName}
+                          searchFilter={searchFilter()}
+                          originFacts={originFacts}
+                          clearOtherOrigins={clearOtherOrigins}
+                          civicsAtMax={civicsAtMax}
+                          activeCivicCount={activeCivicCount}
+                          ethicsPoints={ethicsPoints}
+                        />
                       }
-                      searchFilter={searchFilter()}
-                    />
-                  </Show>
+                    >
+                      <CouncilSection
+                        sectionData={
+                          (section as { facts?: unknown }).facts ?? section
+                        }
+                        searchFilter={searchFilter()}
+                      />
+                    </Show>
 
-                  {/* DLC Select All button */}
-                  <Show when={sectionName === "DLC"}>
-                    <div class="px-1 pt-1 pb-0.5">
-                      <button
-                        onClick={toggleAllDlc}
-                        class="text-xs text-physics hover:text-physics/80 px-2 py-1 border border-physics/30 rounded w-full transition-colors"
-                      >
-                        {allDlcSelected() ? "Deselect All DLC" : "Select All DLC"}
-                      </button>
-                    </div>
-                  </Show>
-                </SectionAccordion>
+                    {/* DLC Select All button */}
+                    <Show when={sectionName === "DLC"}>
+                      <div class="px-1 pt-1 pb-0.5">
+                        <button
+                          onClick={toggleAllDlc}
+                          class="text-xs text-physics hover:text-physics/80 px-2 py-1 border border-physics/30 rounded w-full transition-colors"
+                        >
+                          {allDlcSelected() ? "Deselect All DLC" : "Select All DLC"}
+                        </button>
+                      </div>
+                    </Show>
+                  </SectionAccordion>
+                </Show>
               );
             }}
           </For>
@@ -292,7 +317,6 @@ const DefaultSection: Component<DefaultSectionProps> = (props) => {
             // Hide subsection if no entries match
             return (
               <Show when={filteredEntries().length > 0}>
-                {/* Build section title with constraint info */}
                 <SectionAccordion
                   title={
                     key === "Civics" ? `${key} (${props.activeCivicCount()}/3)` :
@@ -300,6 +324,7 @@ const DefaultSection: Component<DefaultSectionProps> = (props) => {
                     key
                   }
                   fontSize="13px"
+                  forceOpen={!!props.searchFilter}
                 >
                   <div class="space-y-0.5">
                     <For each={filteredEntries()}>
@@ -403,8 +428,7 @@ const CouncilSection: Component<{ sectionData: unknown; searchFilter: string }> 
             );
           };
 
-          // For special subsections (Expertise Traits, Council Positions),
-          // show them if the subsection name matches OR any child matches
+          // Show if subsection name matches OR any child matches
           const shouldShow = () => {
             const filter = props.searchFilter;
             if (!filter) return true;
@@ -414,7 +438,7 @@ const CouncilSection: Component<{ sectionData: unknown; searchFilter: string }> 
 
           return (
             <Show when={shouldShow()}>
-              <SectionAccordion title={name} fontSize="13px">
+              <SectionAccordion title={name} fontSize="13px" forceOpen={!!props.searchFilter}>
                 <Show
                   when={name === "Expertise Traits"}
                   fallback={

@@ -5,12 +5,16 @@ interface Props {
   title: string;
   fontSize?: string;
   defaultOpen?: boolean;
+  forceOpen?: boolean;
   children: JSX.Element;
 }
 
 const SectionAccordion: Component<Props> = (props) => {
   const [open, setOpen] = createSignal(props.defaultOpen ?? false);
   const command = useAccordionCommand();
+
+  // Effective open state: forceOpen overrides manual toggle
+  const effectiveOpen = () => props.forceOpen || open();
 
   // React to expand/collapse all commands
   createEffect(
@@ -40,7 +44,7 @@ const SectionAccordion: Component<Props> = (props) => {
         </span>
         <span
           class="text-text-muted text-xs transition-transform duration-200"
-          style={{ transform: open() ? "rotate(90deg)" : "rotate(0deg)" }}
+          style={{ transform: effectiveOpen() ? "rotate(90deg)" : "rotate(0deg)" }}
         >
           ▶
         </span>
@@ -49,7 +53,7 @@ const SectionAccordion: Component<Props> = (props) => {
       <div
         style={{
           display: "grid",
-          "grid-template-rows": open() ? "1fr" : "0fr",
+          "grid-template-rows": effectiveOpen() ? "1fr" : "0fr",
           transition: "grid-template-rows 0.25s ease-out",
         }}
       >
