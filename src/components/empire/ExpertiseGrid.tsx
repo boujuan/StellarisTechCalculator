@@ -68,7 +68,7 @@ const ScrollName: Component<{ name: string; colorClass: string; tooltip: string 
 
   return (
     <td
-      class={`py-0.5 pr-2 max-w-28 ${props.colorClass}`}
+      class={`py-0.5 pr-1 ${props.colorClass}`}
       title={props.tooltip}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
@@ -76,7 +76,7 @@ const ScrollName: Component<{ name: string; colorClass: string; tooltip: string 
       <div ref={containerRef} class="overflow-hidden whitespace-nowrap">
         <span
           ref={textRef}
-          class="inline-block text-sm"
+          class="inline-block text-xs"
           style={{
             animation:
               hovering() && scrollDist() > 0
@@ -115,8 +115,8 @@ const ExpertiseGrid: Component<Props> = (props) => {
   };
 
   return (
-    <div class="overflow-x-auto">
-      <table class="w-full text-sm">
+    <div>
+      <table class="w-full text-sm table-fixed">
         <thead>
           <tr class="text-text-muted">
             <th
@@ -155,10 +155,10 @@ const ExpertiseGrid: Component<Props> = (props) => {
                     {(tier) => {
                       const val = () => getValueForExpertise(atomicFact, tier);
                       return (
-                        <td class="text-center py-0.5">
+                        <td class="text-center py-0.5 px-0">
                           <div class="flex items-center justify-center">
                             <button
-                              class="w-5 h-5 flex items-center justify-center bg-bg-tertiary hover:bg-border rounded-l border border-border text-text-primary text-xs font-bold transition-all duration-150 hover:shadow-[0_0_4px_var(--color-glow-physics)]"
+                              class="w-4 h-4 flex items-center justify-center bg-bg-tertiary hover:bg-border rounded-l border border-border text-text-primary text-[10px] font-bold leading-none transition-all duration-150 hover:shadow-[0_0_4px_var(--color-glow-physics)]"
                               onClick={() => handleChange(atomicFact, tier, Math.max(0, val() - 1))}
                             >
                               −
@@ -172,10 +172,10 @@ const ExpertiseGrid: Component<Props> = (props) => {
                                 const v = Math.max(0, Math.min(6, Number(e.currentTarget.value)));
                                 handleChange(atomicFact, tier, v);
                               }}
-                              class="w-5 h-5 bg-bg-primary border-y border-border text-center text-text-primary text-xs font-semibold tabular-nums [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                              class="w-4 h-4 bg-bg-primary border-y border-border text-center text-text-primary text-[10px] font-semibold tabular-nums [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                             />
                             <button
-                              class="w-5 h-5 flex items-center justify-center bg-bg-tertiary hover:bg-border rounded-r border border-border text-text-primary text-xs font-bold transition-all duration-150 hover:shadow-[0_0_4px_var(--color-glow-physics)]"
+                              class="w-4 h-4 flex items-center justify-center bg-bg-tertiary hover:bg-border rounded-r border border-border text-text-primary text-[10px] font-bold leading-none transition-all duration-150 hover:shadow-[0_0_4px_var(--color-glow-physics)]"
                               onClick={() => handleChange(atomicFact, tier, Math.min(6, val() + 1))}
                             >
                               +
