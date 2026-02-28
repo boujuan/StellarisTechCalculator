@@ -86,39 +86,36 @@ body {
 
 /* ── Scrollbar styling ── */
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #333740 #1a1d23;
+}
+
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;
 }
 ::-webkit-scrollbar-track {
-  @apply bg-bg-secondary;
+  background-color: #1a1d23;
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-border rounded-full;
-  border: 2px solid var(--color-bg-secondary);
-  transition: background-color 0.2s, box-shadow 0.2s;
+  background-color: #333740;
+  border-radius: 9999px;
+  border: 2px solid #1a1d23;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--color-physics);
-  box-shadow: 0 0 8px var(--color-glow-physics);
+  background-color: #3b82f6;
+}
+::-webkit-scrollbar-corner {
+  background-color: #1a1d23;
 }
 
-/* Area-colored scrollbar glow */
-[data-area="society"] ::-webkit-scrollbar-thumb:hover,
-[data-area="society"]::-webkit-scrollbar-thumb:hover {
-  background-color: var(--color-society);
-  box-shadow: 0 0 8px var(--color-glow-society);
+/* Area-colored scrollbar thumb on hover */
+[data-area="society"] ::-webkit-scrollbar-thumb:hover {
+  background-color: #22c55e;
 }
-[data-area="engineering"] ::-webkit-scrollbar-thumb:hover,
-[data-area="engineering"]::-webkit-scrollbar-thumb:hover {
-  background-color: var(--color-engineering);
-  box-shadow: 0 0 8px var(--color-glow-engineering);
-}
-
-/* Firefox fallback */
-* {
-  scrollbar-width: auto;
-  scrollbar-color: var(--color-border) var(--color-bg-secondary);
+[data-area="engineering"] ::-webkit-scrollbar-thumb:hover {
+  background-color: #f59e0b;
 }
 
 /* ── Stellaris checkbox sprites ── */
