@@ -7,6 +7,7 @@ import {
 } from "../../state/empireState";
 import { resetTechState } from "../../state/techState";
 import { runUpdateCascade } from "../../engine/updateCascade";
+import { isFromSave, unmarkFromSave } from "../../state/importState";
 import SearchBar from "../common/SearchBar";
 
 type AreaFilter = "all" | Area;
@@ -42,8 +43,8 @@ const SORT_OPTIONS = [
 ];
 
 const PRESET_FILTERS: { key: string; label: string; desc: string; colorClass: string; filters: string[] }[] = [
-  { key: "current", label: "Current", desc: "Default view — available techs, drawn-last options, and permanent techs", colorClass: "text-physics", filters: ["available", "previous", "permanent"] },
-  { key: "current_researched", label: "Current + Past", desc: "Current view plus already-researched technologies", colorClass: "text-physics", filters: ["available", "researched", "previous", "permanent"] },
+  { key: "current", label: "Current", desc: "Default view — available techs and drawn-last options", colorClass: "text-physics", filters: ["available", "previous"] },
+  { key: "current_researched", label: "Current + Past", desc: "Current view plus already-researched technologies", colorClass: "text-physics", filters: ["available", "researched", "previous"] },
   { key: "potential", label: "Potential", desc: "All technologies passing the potential check (correct DLC, empire type, prerequisites)", colorClass: "text-society", filters: ["potential"] },
   { key: "not_possible", label: "Not Possible", desc: "Technologies that fail the potential check and cannot currently be researched", colorClass: "text-dangerous", filters: ["not_possible"] },
   { key: "all", label: "All", desc: "Show every technology regardless of availability or research status", colorClass: "text-text-primary", filters: ["available", "potential", "researched", "previous", "permanent", "zero_weight", "not_possible"] },
@@ -54,7 +55,7 @@ const INDIVIDUAL_FILTERS: { key: string; label: string; desc: string; colorClass
   { key: "potential", label: "Potential", desc: "All techs passing the potential check (includes blocked prerequisites)", colorClass: "text-society" },
   { key: "researched", label: "Researched", desc: "Already researched technologies", colorClass: "text-engineering" },
   { key: "previous", label: "Previous Options", desc: "Technologies marked as drawn last turn", colorClass: "text-rare" },
-  { key: "permanent", label: "Permanent Options", desc: "Always-available repeatable technologies", colorClass: "text-text-secondary" },
+  { key: "permanent", label: "Permanent Options", desc: "T0 starter techs always in the pool (late-game repeatables appear under Available)", colorClass: "text-text-secondary" },
   { key: "zero_weight", label: "Zero Weight", desc: "Techs with zero base weight (require specific conditions to appear)", colorClass: "text-text-muted" },
   { key: "not_possible", label: "Not Possible", desc: "Techs failing the potential check — cannot be researched", colorClass: "text-dangerous" },
 ];
@@ -104,6 +105,7 @@ const Toolbar: Component<Props> = (props) => {
         resetTechState();
       });
       runUpdateCascade();
+      selectPreset("current");
     }
   };
 
@@ -368,10 +370,17 @@ const Toolbar: Component<Props> = (props) => {
         title="Number of research alternatives offered each turn. Default is 3. Increased by certain techs, civics, and the Discovery tradition."
       >
         <span class="text-sm text-text-secondary font-medium whitespace-nowrap">Research Alternatives</span>
+        <Show when={isFromSave("Research Alternatives")}>
+          <span
+            class="w-1.5 h-1.5 rounded-full bg-rare shrink-0"
+            title="Loaded from save file"
+          />
+        </Show>
         <div class="flex items-center">
           <button
             class="w-8 h-8 flex items-center justify-center bg-bg-tertiary hover:bg-border rounded-l border border-border text-text-primary text-lg font-bold transition-all duration-150 hover:shadow-[0_0_6px_var(--color-glow-physics)]"
             onClick={() => {
+              unmarkFromSave("Research Alternatives");
               const v = Math.max(1, researchAlternatives() - 1);
               setResearchAlternatives(v);
               runUpdateCascade();
@@ -386,6 +395,7 @@ const Toolbar: Component<Props> = (props) => {
             max="10"
             value={researchAlternatives()}
             onInput={(e) => {
+              unmarkFromSave("Research Alternatives");
               const v = Math.max(1, Math.min(10, Number(e.currentTarget.value)));
               setResearchAlternatives(v);
               runUpdateCascade();
@@ -395,6 +405,7 @@ const Toolbar: Component<Props> = (props) => {
           <button
             class="w-8 h-8 flex items-center justify-center bg-bg-tertiary hover:bg-border rounded-r border border-border text-text-primary text-lg font-bold transition-all duration-150 hover:shadow-[0_0_6px_var(--color-glow-physics)]"
             onClick={() => {
+              unmarkFromSave("Research Alternatives");
               const v = Math.min(10, researchAlternatives() + 1);
               setResearchAlternatives(v);
               runUpdateCascade();

@@ -37,10 +37,10 @@ const TechGrid: Component<Props> = (props) => {
       {
         let passes = false;
         if (filters.has("available") && ts.prereqs_met === 1 && ts.researched === 0 && ts.current_weight > 0) passes = true;
-        if (filters.has("potential") && ts.potential === 1) passes = true;
+        if (filters.has("potential") && ts.potential === 1 && ts.researched === 0) passes = true;
         if (filters.has("researched") && ts.researched === 1) passes = true;
         if (filters.has("previous") && ts.drawn_last === 1) passes = true;
-        if (filters.has("permanent") && ts.permanent === 1) passes = true;
+        if (filters.has("permanent") && ts.permanent === 1 && ts.researched === 0) passes = true;
         if (filters.has("zero_weight") && tech.weight === 0) passes = true;
         if (filters.has("not_possible") && ts.potential === 0) passes = true;
         if (!passes) return false;

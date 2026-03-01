@@ -1,6 +1,7 @@
-import { createSignal, onMount, type Component } from "solid-js";
+import { createSignal, onMount, Show, type Component } from "solid-js";
 import { atomicFacts, setAtomicValue } from "../../state/empireState";
 import { runUpdateCascade } from "../../engine/updateCascade";
+import { isFromSave, unmarkFromSave } from "../../state/importState";
 
 interface Props {
   displayName: string;
@@ -42,6 +43,7 @@ const ToggleRow: Component<Props> = (props) => {
     const newValue = !checked;
     props.onBeforeToggle?.(newValue);
     for (const fact of props.facts) {
+      unmarkFromSave(fact);
       setAtomicValue(fact, newValue);
     }
     runUpdateCascade();
@@ -83,7 +85,7 @@ const ToggleRow: Component<Props> = (props) => {
           e.currentTarget.style.backgroundImage = `url(${checkboxImg()})`;
         }}
       />
-      <div ref={containerRef} class="overflow-hidden whitespace-nowrap min-w-0">
+      <div ref={containerRef} class="overflow-hidden whitespace-nowrap min-w-0 flex-1">
         <span
           ref={textRef}
           class="inline-block text-xs text-text-secondary select-none"
@@ -98,6 +100,12 @@ const ToggleRow: Component<Props> = (props) => {
           {props.displayName}
         </span>
       </div>
+      <Show when={props.facts.some(f => isFromSave(f))}>
+        <span
+          class="w-1.5 h-1.5 rounded-full bg-rare shrink-0"
+          title="Loaded from save file"
+        />
+      </Show>
     </label>
   );
 };
