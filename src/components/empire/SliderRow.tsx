@@ -3,7 +3,7 @@ import type { ScalarMetadata } from "../../types/facts";
 import { setScalarValue, scalarValues } from "../../state/empireState";
 import { runUpdateCascade } from "../../engine/updateCascade";
 import { debounce } from "../../utils/debounce";
-import { isFromSave } from "../../state/importState";
+import { isFromSave, unmarkFromSave } from "../../state/importState";
 
 interface Props {
   displayName: string;
@@ -28,6 +28,7 @@ const SliderRow: Component<Props> = (props) => {
   const value = () => scalarValues[props.displayName] ?? props.metadata.default;
 
   const handleChange = (newVal: number) => {
+    unmarkFromSave(props.displayName);
     const snapped =
       Math.round(newVal / props.metadata.step) * props.metadata.step;
     setScalarValue(props.displayName, snapped);

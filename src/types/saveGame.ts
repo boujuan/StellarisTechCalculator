@@ -73,6 +73,8 @@ export interface ParsedCountry {
   planetData: ParsedPlanetData;
   isInsideNebula: boolean;
   numPopsEnslaved: number;
+  researchAlternatives: number | null;
+  techInProgress: string[];
 }
 
 /** Full parsed save data returned from the Web Worker */
@@ -89,6 +91,9 @@ export interface CalculatorSaveState {
   techResearched: string[];
   expertiseCounts: Record<string, Record<number, number>>;
   councillorLevels: { shroudwalker_teacher: number; storm_caller: number };
+  researchAlternatives: number | null;
+  /** Tech IDs currently being researched (from research queues) */
+  techInProgress: string[];
   /** Keys of facts that were set from the save (for indicator dots) */
   saveSourceKeys: string[];
 }

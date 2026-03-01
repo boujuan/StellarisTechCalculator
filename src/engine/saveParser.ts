@@ -759,18 +759,97 @@ function parseNebulaPresence(
 ): boolean {
   if (ownedSystemIds.size === 0) return false;
 
-  // Nebulae are repeated top-level blocks: nebula={ galactic_object=<id> ... }
-  const re = /\nnebula=\n\{([^}]+)\}/g;
-  let m;
-  while ((m = re.exec(gamestateText)) !== null) {
-    const goMatch = m[1].match(/galactic_object=(\d+)/);
-    if (goMatch && ownedSystemIds.has(parseInt(goMatch[1], 10))) {
-      log("info", "Player system detected inside nebula");
-      return true;
+  // Nebulae are repeated top-level blocks: nebula={ ... galactic_object=N ... }
+  // Each block lists multiple galactic_object IDs for systems inside the nebula.
+  const needle = "\nnebula=\n";
+  let searchFrom = 0;
+  while (true) {
+    const idx = gamestateText.indexOf(needle, searchFrom);
+    if (idx === -1) break;
+
+    const braceStart = gamestateText.indexOf("{", idx + needle.length);
+    if (braceStart === -1) break;
+
+    const braceEnd = findMatchingBrace(gamestateText, braceStart);
+    if (braceEnd === -1) break;
+
+    const block = gamestateText.slice(braceStart + 1, braceEnd);
+    // Each nebula block has multiple galactic_object=<id> entries
+    const goRe = /galactic_object=(\d+)/g;
+    let m;
+    while ((m = goRe.exec(block)) !== null) {
+      if (ownedSystemIds.has(parseInt(m[1], 10))) {
+        log("info", "Player system detected inside nebula");
+        return true;
+      }
     }
+
+    searchFrom = braceEnd;
   }
 
   return false;
+}
+
+function parseResearchAlternatives(countrySlice: string): number | null {
+  // The save stores `alternatives={ physics={ "tech1" "tech2" ... } ... }`
+  // and repeated `always_available_tech="tech_id"` entries.
+  // Research alternatives = max across areas of (total - always_available).
+  const altBlock = extractSection(countrySlice, "alternatives");
+  if (!altBlock) return null;
+
+  // Collect always-available tech IDs
+  const alwaysAvailable = new Set<string>();
+  const aaRe = /always_available_tech="([^"]+)"/g;
+  let aaMatch;
+  while ((aaMatch = aaRe.exec(countrySlice)) !== null) {
+    alwaysAvailable.add(aaMatch[1]);
+  }
+
+  // Count normal (non-always-available) techs per area
+  let maxNormal = 0;
+  for (const area of ["physics", "society", "engineering"]) {
+    const areaBlock = extractSection(altBlock, area, "");
+    if (!areaBlock) continue;
+    const techs = extractQuotedStrings(areaBlock);
+    const normalCount = techs.filter(t => !alwaysAvailable.has(t)).length;
+    if (normalCount > maxNormal) maxNormal = normalCount;
+  }
+
+  if (maxNormal > 0) {
+    log("info", `Research alternatives: ${maxNormal} (derived from alternatives block, ${alwaysAvailable.size} always-available excluded)`);
+  }
+
+  return maxNormal > 0 ? maxNormal : null;
+}
+
+function parseResearchQueues(countrySlice: string): string[] {
+  const inProgress: string[] = [];
+
+  for (const area of ["physics_queue", "society_queue", "engineering_queue"]) {
+    // Direct indexOf — queue names are unique within the country slice,
+    // so no prefix needed (avoids subtle whitespace matching issues).
+    const needle = area + "=";
+    const idx = countrySlice.indexOf(needle);
+    if (idx === -1) continue;
+
+    const braceStart = countrySlice.indexOf("{", idx + needle.length);
+    if (braceStart === -1) continue;
+
+    const braceEnd = findMatchingBrace(countrySlice, braceStart);
+    if (braceEnd === -1) continue;
+
+    const block = countrySlice.slice(braceStart + 1, braceEnd);
+    const re = /technology="([^"]+)"/g;
+    let m;
+    while ((m = re.exec(block)) !== null) {
+      inProgress.push(m[1]);
+    }
+  }
+
+  if (inProgress.length > 0) {
+    log("info", `Research in progress: ${inProgress.join(", ")}`);
+  }
+  return inProgress;
 }
 
 function parseEnslavedPops(
@@ -905,6 +984,8 @@ export function parseSaveFile(buffer: ArrayBuffer): ParsedSaveData {
   const planetData = parsePlanetDetails(gamestateText, ownedPlanetIds);
   const isInsideNebula = parseNebulaPresence(gamestateText, ownedSystemIds);
   const numPopsEnslaved = parseEnslavedPops(gamestateText, ownedPlanetIds);
+  const researchAlternatives = parseResearchAlternatives(countrySlice);
+  const techInProgress = parseResearchQueues(countrySlice);
 
   log("success", "Parsing complete");
 
@@ -937,6 +1018,8 @@ export function parseSaveFile(buffer: ArrayBuffer): ParsedSaveData {
       planetData,
       isInsideNebula,
       numPopsEnslaved,
+      researchAlternatives,
+      techInProgress,
     },
     log: _log,
   };
@@ -970,5 +1053,7 @@ function emptyCountry(): ParsedCountry {
     planetData: { deposits: [], districts: [], planetClasses: [] },
     isInsideNebula: false,
     numPopsEnslaved: 0,
+    researchAlternatives: null,
+    techInProgress: [],
   };
 }

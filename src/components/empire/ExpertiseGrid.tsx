@@ -5,7 +5,7 @@ import {
   recomputeExpertiseBonus,
 } from "../../state/empireState";
 import { runUpdateCascade } from "../../engine/updateCascade";
-import { isFromSave } from "../../state/importState";
+import { isFromSave, unmarkFromSave } from "../../state/importState";
 
 // ── Expertise → area mapping + tooltip data ──────────────────────────
 
@@ -113,6 +113,7 @@ const ExpertiseGrid: Component<Props> = (props) => {
 
   const handleChange = (atomicFact: string, tier: number, value: number) => {
     if (getValueForExpertise(atomicFact, tier) === value) return;
+    unmarkFromSave(atomicFact);
     setCouncilExpertiseTier(atomicFact, tier, value);
     recomputeExpertiseBonus();
     runUpdateCascade();

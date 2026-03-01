@@ -5,6 +5,10 @@ import {
   setPanelState,
   clearLog,
   clearSaveSource,
+  inProgressTechs,
+  countInProgress,
+  setCountInProgress,
+  applyInProgressToggle,
 } from "../../state/importState";
 
 const LEVEL_STYLES: Record<string, { icon: string; color: string }> = {
@@ -112,6 +116,24 @@ const ImportLogPanel: Component = () => {
               </span>
             </Show>
           </div>
+
+          {/* In-progress toggle */}
+          <Show when={inProgressTechs().length > 0}>
+            <div class="px-3 py-1.5 border-t border-border">
+              <label class="flex items-center gap-1.5 text-[10px] text-text-secondary cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={countInProgress()}
+                  onChange={(e) => {
+                    setCountInProgress(e.currentTarget.checked);
+                    applyInProgressToggle(e.currentTarget.checked);
+                  }}
+                  class="w-3 h-3 accent-rare"
+                />
+                Count in-progress research as completed
+              </label>
+            </div>
+          </Show>
 
           {/* Footer */}
           <div class="flex items-center justify-between px-3 py-1.5 border-t border-border">

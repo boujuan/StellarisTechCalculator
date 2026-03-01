@@ -246,10 +246,10 @@ const TechCard: Component<Props> = (props) => {
         </Show>
       </div>
 
-      {/* Researched overlay badge — outside filtered wrapper, stays bright */}
+      {/* Researched badge — horizontal pill in lower-right corner */}
       <Show when={isResearched()}>
-        <div class="absolute inset-0 z-20 flex items-center justify-center">
-          <span class="text-[11px] font-bold font-display tracking-wider text-dangerous bg-black/60 px-2 py-0.5 rounded-full border border-dangerous/30 uppercase">
+        <div class="absolute bottom-1.5 right-1.5 z-20">
+          <span class="text-[9px] font-bold font-display tracking-wider text-dangerous bg-black/70 px-1.5 py-0.5 rounded uppercase select-none border border-dangerous/30">
             Researched
           </span>
         </div>

@@ -1,6 +1,7 @@
 /**
  * Web Worker for save game parsing — runs decompression and extraction off the main thread.
  * Receives an ArrayBuffer (Transferable, zero-copy), returns ParsedSaveData.
+ * Includes: research queue parsing for in-progress techs.
  */
 import * as Comlink from "comlink";
 import { parseSaveFile } from "../engine/saveParser";

@@ -31,6 +31,8 @@ import {
   markManyFromSave,
   setPanelState,
   setIsImporting,
+  setInProgressTechs,
+  countInProgress,
 } from "../../state/importState";
 import type { SaveParserWorkerApi } from "../../workers/saveParserWorker";
 import * as Comlink from "comlink";
@@ -275,11 +277,27 @@ const SaveLoadDialog: Component<{ onClose: () => void }> = (props) => {
         // Apply councillor levels
         setCouncillorLevel("shroudwalker_teacher", state.councillorLevels.shroudwalker_teacher);
         setCouncillorLevel("storm_caller", state.councillorLevels.storm_caller);
+
+        // Apply research alternatives if detected
+        if (state.researchAlternatives !== null) {
+          setResearchAlternatives(state.researchAlternatives);
+        }
       });
 
       recomputeExpertiseBonus();
       runUpdateCascade();
       markManyFromSave(state.saveSourceKeys);
+
+      // Store in-progress techs and apply if toggle is on
+      setInProgressTechs(state.techInProgress);
+      if (countInProgress() && state.techInProgress.length > 0) {
+        batch(() => {
+          for (const id of state.techInProgress) {
+            setTechField(id, "researched", 1);
+          }
+        });
+        runUpdateCascade();
+      }
 
       addLogEntry("success", "Applied to calculator");
       setPanelState("minimized");

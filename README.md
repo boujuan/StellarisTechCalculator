@@ -15,6 +15,7 @@ A browser-based technology research probability calculator for [Stellaris](https
 - **Tech View presets & filters** — 5 presets (Current, Current + Past, Potential, Not Possible, All) with 7 individual filters that can be toggled independently. Presets are shortcuts that set filter combinations; manual tweaks auto-deselect the preset
 - **Search, filter & sort** — find techs by name, filter by area (Physics/Society/Engineering), sort by 8 criteria: hit chance, weight, name, tier, delta, base weight, category, or area
 - **Zoom controls** — adjust tech card size (60%–140%), persisted across sessions
+- **Save game import** — drag-and-drop a Stellaris `.sav` file to auto-configure the calculator. Extracts DLCs, ethics, civics, origin, traditions, ascension perks, researched techs, council leaders, starbases, deposits, districts, megastructures, species traits, enslaved pops, nebula presence, and more. A detailed import log shows exactly what was detected
 - **Save/Load** — persist empire configurations to localStorage or export/import as JSON
 - **Tutorial overlay** — built-in guide for new users, auto-shown on first visit
 - **Self-contained** — all data and 800+ AVIF icons ship with the app. No Stellaris installation needed. Version tracking shows app + Stellaris version in the sidebar footer

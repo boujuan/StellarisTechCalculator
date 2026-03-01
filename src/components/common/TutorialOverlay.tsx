@@ -76,6 +76,19 @@ const TutorialOverlay: Component<Props> = (props) => {
             iterations). Values may fluctuate by approximately ±1% between
             recalculations — this is expected statistical variance, not a bug.
           </p>
+          <p>
+            <strong class="text-text-primary">Import Save Game:</strong>{" "}
+            Open Save/Load and drop a Stellaris <code class="text-rare">.sav</code> file to
+            auto-detect DLCs, ethics, civics, techs, and dozens of other modifiers.
+            A <span class="inline-block w-1.5 h-1.5 rounded-full bg-rare align-middle" /> purple dot
+            next to a setting means it was loaded from a save file.
+          </p>
+          <p>
+            <strong class="text-text-primary">Import Log:</strong>{" "}
+            After importing, a floating log panel shows what was extracted.
+            Warnings flag anything that couldn't be matched. Close the panel to
+            clear the save-source indicators.
+          </p>
         </div>
 
         <button

@@ -341,6 +341,7 @@ export function mapSaveToCalculatorState(
   // AP slot count — num_ascension_perk_slots:6 is true when ≥ 6 APs used
   if (parsed.country.ascensionPerks.length >= 6) {
     setFact(facts, "num_ascension_perk_slots:6", sourceKeys);
+    log("info", "Ascension perk slots >= 6: set");
   }
 
   // ── Country flags ───────────────────────────────────────────────────
@@ -387,6 +388,7 @@ export function mapSaveToCalculatorState(
 
   scalars["Number of Colonised Planets"] = parsed.country.ownedPlanetsCount;
   sourceKeys.push("Number of Colonised Planets");
+  log("info", `Owned planets: ${parsed.country.ownedPlanetsCount}`);
 
   // ── Technologies ────────────────────────────────────────────────────
 
@@ -407,6 +409,20 @@ export function mapSaveToCalculatorState(
       "warning",
       `Skipped ${techSkipped} unknown tech IDs (possibly modded)`,
     );
+  }
+
+  // ── In-progress research (from queues) ────────────────────────────
+
+  // In-progress techs are also listed in tech_status (without a status field),
+  // so they're already in techResearchedSet. We only filter against KNOWN_TECH_IDS.
+  const techInProgress: string[] = [];
+  for (const tech of parsed.country.techInProgress) {
+    if (KNOWN_TECH_IDS.has(tech)) {
+      techInProgress.push(tech);
+    }
+  }
+  if (techInProgress.length > 0) {
+    log("info", `${techInProgress.length} in-progress techs (toggle to exclude from researched count)`);
   }
 
   // ══════════════════════════════════════════════════════════════════════
@@ -453,6 +469,8 @@ export function mapSaveToCalculatorState(
 
   if (leaderTraitsMapped > 0) {
     log("success", `Mapped ${leaderTraitsMapped} leader traits from ${parsed.country.councilLeaders.length} council leaders`);
+  } else if (parsed.country.councilLeaders.length === 0) {
+    log("warning", "No council leaders found");
   }
 
   const expertiseCategories = Object.keys(expertiseCounts);
@@ -490,6 +508,9 @@ export function mapSaveToCalculatorState(
 
   scalars["Number of Cosmic Storms Encountered"] = parsed.country.numCosmicStorms;
   sourceKeys.push("Number of Cosmic Storms Encountered");
+  if (parsed.country.numCosmicStorms > 0) {
+    log("info", `Cosmic storms encountered: ${parsed.country.numCosmicStorms}`);
+  }
 
   // ── Enslaved pops ──────────────────────────────────────────────────
 
@@ -503,6 +524,7 @@ export function mapSaveToCalculatorState(
 
   scalars["Number of Communications"] = parsed.country.communications;
   sourceKeys.push("Number of Communications");
+  log("info", `Communications: ${parsed.country.communications}`);
 
   // ── Species detection ─────────────────────────────────────────────
 
@@ -587,6 +609,8 @@ export function mapSaveToCalculatorState(
   }
   if (depositsMapped > 0) {
     log("info", `Mapped ${depositsMapped} deposit types from owned planets`);
+  } else if (parsed.country.ownedPlanetsCount > 0) {
+    log("warning", "No deposits found on owned planets");
   }
 
   // ── Districts (from planet scan) ──────────────────────────────────
@@ -599,6 +623,8 @@ export function mapSaveToCalculatorState(
   }
   if (districtsMapped > 0) {
     log("info", `Mapped ${districtsMapped} district types from owned planets`);
+  } else if (parsed.country.ownedPlanetsCount > 0) {
+    log("warning", "No districts found on owned planets");
   }
 
   // Derived zone facts from districts
@@ -627,8 +653,14 @@ export function mapSaveToCalculatorState(
 
   // ── Planet classes ────────────────────────────────────────────────
 
+  let planetClassesMapped = 0;
   for (const planetClass of parsed.country.planetData.planetClasses) {
-    setFact(facts, `is_planet_class:${planetClass}`, sourceKeys);
+    if (setFact(facts, `is_planet_class:${planetClass}`, sourceKeys)) {
+      planetClassesMapped++;
+    }
+  }
+  if (planetClassesMapped > 0) {
+    log("info", `Planet classes: ${parsed.country.planetData.planetClasses.join(", ")}`);
   }
 
   // ── Megastructures ────────────────────────────────────────────────
@@ -652,6 +684,9 @@ export function mapSaveToCalculatorState(
 
   if (parsed.country.isInsideNebula) {
     setFact(facts, "is_inside_nebula:yes", sourceKeys);
+    log("info", "Nebula: owned system inside nebula");
+  } else {
+    log("info", "Nebula: no owned systems in nebulae");
   }
 
   // ── Crisis levels (derived from APs + flags) ─────────────────────
@@ -669,6 +704,7 @@ export function mapSaveToCalculatorState(
     }
     scalars["Galactic Hyperthermia Crisis Level"] = hyperLevel;
     sourceKeys.push("Galactic Hyperthermia Crisis Level");
+    log("info", `Crisis: Galactic Hyperthermia level ${hyperLevel}`);
   }
 
   // Cosmogenesis — AP implies at least level 1
@@ -683,15 +719,29 @@ export function mapSaveToCalculatorState(
     }
     scalars["Cosmogenesis Crisis Level"] = cosmoLevel;
     sourceKeys.push("Cosmogenesis Crisis Level");
+    log("info", `Crisis: Cosmogenesis level ${cosmoLevel}`);
   }
 
   // Galactic Nemesis — AP implies at least level 1
   if (parsed.country.ascensionPerks.includes("ap_become_the_crisis")) {
     scalars["Galactic Nemesis Crisis Level"] = 1;
     sourceKeys.push("Galactic Nemesis Crisis Level");
+    log("info", "Crisis: Galactic Nemesis level 1");
+  }
+
+  // ── Research alternatives ────────────────────────────────────────────
+
+  const researchAlternatives = parsed.country.researchAlternatives;
+  if (researchAlternatives !== null) {
+    sourceKeys.push("Research Alternatives");
+    log("info", `Research alternatives: ${researchAlternatives}`);
   }
 
   // ── Summary ─────────────────────────────────────────────────────────
+
+  const factCount = Object.keys(facts).filter(k => facts[k]).length;
+  const scalarCount = Object.keys(scalars).length;
+  log("info", `Summary: ${factCount} facts, ${scalarCount} scalars, ${techResearched.length} techs`);
 
   log(
     "success",
@@ -703,8 +753,10 @@ export function mapSaveToCalculatorState(
       atomicFacts: facts,
       scalarValues: scalars,
       techResearched,
+      techInProgress,
       expertiseCounts,
       councillorLevels,
+      researchAlternatives,
       saveSourceKeys: sourceKeys,
     },
     log: _log,

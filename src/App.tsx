@@ -17,7 +17,7 @@ const App: Component = () => {
   const [areaFilter, setAreaFilter] = createSignal<AreaFilter>("all");
   const [sortBy, setSortBy] = createSignal("hit_chance");
   const [showSaveLoad, setShowSaveLoad] = createSignal(false);
-  const [techViewFilters, setTechViewFilters] = createSignal<Set<string>>(new Set(["available", "previous", "permanent"]));
+  const [techViewFilters, setTechViewFilters] = createSignal<Set<string>>(new Set(["available", "previous"]));
 
   // Tutorial panel — auto-show on first visit
   const [showTutorial, setShowTutorial] = createSignal(

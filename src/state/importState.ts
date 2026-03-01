@@ -54,6 +54,10 @@ export function isFromSave(key: string): boolean {
   return saveSourceKeys[key] === true;
 }
 
+export function unmarkFromSave(key: string): void {
+  setSaveSourceKeys(key, undefined as unknown as boolean);
+}
+
 export function clearSaveSource(): void {
   setSaveSourceKeys({});
 }
@@ -63,3 +67,25 @@ export function clearSaveSource(): void {
 const [isImporting, setIsImporting] = createSignal(false);
 
 export { isImporting, setIsImporting };
+
+// ── In-progress research toggle ─────────────────────────────────────────
+
+import { batch } from "solid-js";
+import { setTechField } from "./techState";
+import { runUpdateCascade } from "../engine/updateCascade";
+
+const [inProgressTechs, setInProgressTechs] = createSignal<string[]>([]);
+const [countInProgress, setCountInProgress] = createSignal(true);
+
+export { inProgressTechs, setInProgressTechs, countInProgress, setCountInProgress };
+
+export function applyInProgressToggle(checked: boolean): void {
+  const techs = inProgressTechs();
+  if (techs.length === 0) return;
+  batch(() => {
+    for (const id of techs) {
+      setTechField(id, "researched", checked ? 1 : 0);
+    }
+  });
+  runUpdateCascade();
+}
